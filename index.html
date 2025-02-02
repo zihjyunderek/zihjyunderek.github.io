@@ -20,31 +20,37 @@
                 <h2 class="section-title">黃子竣</h2>
                 <h3 class="resume-title">履歷 | Curriculum Vitae, CV</h3>
                 <ul>
-                    <li>中文 <a href="upload/homepage/CV_zh.pdf" target="_blank">[ link ]</a></li>
-                    <li>English <a href="upload/homepage/CV_en.pdf" target="_blank">[ link ]</a></li>
+                    <li>中文 <a href="/upload/homepage/CV_zh.pdf" target="_blank">[ link ]</a></li>
+                    <li>English <a href="/upload/homepage/CV_en.pdf" target="_blank">[ link ]</a></li>
                 </ul>
             </div>
 
             <!-- 頭像區塊 -->
             <div class="col-lg-4 text-center">
-                <img src="images/profile.jpg" alt="Profile Picture" class="profile-img">
+                <img src="/images/profile.jpg" alt="Profile Picture" class="profile-img">
             </div>
         </div>
     </div>
 
-    <!-- 頁腳 -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 Zih Jyun (Derek) Huang. All Rights Reserved.</p>
-    </footer>
+    <!-- 這裡會動態載入 footer.html -->
+    <div id="footer-placeholder"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 使用 JavaScript 載入 navbar.html
-        fetch("navbar.html")
+        // 使用絕對路徑載入 navbar.html 和 footer.html
+        fetch("/navbar.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("navbar-placeholder").innerHTML = data;
             });
+
+        fetch("/footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
     </script>
 </body>
+
+
 </html>
