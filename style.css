@@ -49,3 +49,10 @@ body {
     font-weight: bold;
     color: #343a40;
 }
+
+.resume-title {
+    font-size: 20px; /* 與「黃子竣」相同大小 */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
