@@ -3,27 +3,55 @@ body {
     background-color: #f8f9fa;
 }
 
-.navbar {
+/* 頂部姓名區塊 */
+.name-header {
+    background-color: #fff;
     padding: 15px;
 }
 
-.profile-img {
-    width: 150px;
-    height: 150px;
-    border: 3px solid #343a40;
-}
-
-.container h1 {
+.name-header h1 {
     font-size: 28px;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
-.container h3 {
-    font-size: 20px;
-    font-weight: normal;
+.name-header h2 {
+    font-size: 22px;
     color: #6c757d;
 }
 
+/* 導覽列 */
+.navbar {
+    padding: 15px;
+    width: 100%;
+}
+
+/* 修正導覽列顏色，延伸整列 */
+.navbar-dark {
+    background-color: #343a40 !important;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+/* 讓導覽列充滿整列 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* 頭像（改成方形 & 縮小） */
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border: 3px solid #343a40;
+    border-radius: 5px; /* 讓圖片變成方形但帶點圓角 */
+    margin-top: 20px;
+}
+
+/* 頁腳 */
 footer {
     margin-top: 50px;
 }
