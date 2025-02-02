@@ -62,10 +62,11 @@ body {
 /* 大頭貼樣式 */
 .profile-img {
     width: 100%;
-    max-width: 250px; /* 控制圖片最大寬度 */
+    max-width: 250px; /* 確保圖片寬度不超過 250px */
     height: auto;
     border: 3px solid #343a40;
     border-radius: 5px;
     margin-top: 20px;
 }
+
 
