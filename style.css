@@ -11,7 +11,7 @@ body {
 }
 
 .name-header h1 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
 }
 
@@ -20,11 +20,16 @@ body {
     width: 100%;
 }
 
-/* 讓導覽列中文字與英文分行 */
 .navbar-nav .nav-link {
     font-size: 16px;
     text-align: center;
     line-height: 1.4;
+    padding: 10px;
+}
+
+/* 導覽列平分寬度 */
+.navbar-nav .nav-item {
+    flex-grow: 1;
 }
 
 /* 頭像樣式 */
@@ -39,7 +44,7 @@ body {
 
 /* 內容區塊 */
 .section-title {
-    font-size: 22px;
+    font-size: 24px;
     margin-top: 30px;
     font-weight: bold;
     color: #343a40;
