@@ -3,10 +3,11 @@ body {
     background-color: #f8f9fa;
 }
 
-/* 頂部姓名區塊 */
+/* 頂部姓名 */
 .name-header {
     background-color: #fff;
     padding: 15px;
+    text-align: center;
 }
 
 .name-header h1 {
@@ -22,36 +23,23 @@ body {
 
 /* 導覽列 */
 .navbar {
-    padding: 15px;
     width: 100%;
 }
 
-/* 修正導覽列顏色，延伸整列 */
-.navbar-dark {
-    background-color: #343a40 !important;
-}
-
-.navbar-nav .nav-link {
-    font-size: 16px;
-    padding: 10px 15px;
-}
-
-/* 讓導覽列充滿整列 */
-.container {
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* 頭像（改成方形 & 縮小） */
+/* 頭像樣式 */
 .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
     border: 3px solid #343a40;
-    border-radius: 5px; /* 讓圖片變成方形但帶點圓角 */
+    border-radius: 5px;
     margin-top: 20px;
 }
 
-/* 頁腳 */
-footer {
-    margin-top: 50px;
+/* 內容區塊 */
+.section-title {
+    font-size: 22px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #343a40;
 }
