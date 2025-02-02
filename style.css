@@ -3,27 +3,28 @@ body {
     background-color: #f8f9fa;
 }
 
-/* 頂部姓名 */
+/* 頂部姓名區塊 */
 .name-header {
     background-color: #fff;
-    padding: 15px;
+    padding: 30px 0;
     text-align: center;
 }
 
 .name-header h1 {
     font-size: 28px;
-    margin-bottom: 5px;
     font-weight: bold;
-}
-
-.name-header h2 {
-    font-size: 22px;
-    color: #6c757d;
 }
 
 /* 導覽列 */
 .navbar {
     width: 100%;
+}
+
+/* 讓導覽列中文字與英文分行 */
+.navbar-nav .nav-link {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.4;
 }
 
 /* 頭像樣式 */
