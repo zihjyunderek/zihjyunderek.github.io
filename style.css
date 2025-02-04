@@ -1,19 +1,27 @@
+/* 統一網站字體為 Microsoft YaHei */
 body {
-    font-family: 'Microsoft Yahei', 'PingFang TC', 'Times New Roman', serif;
-    background-color: #f8f9fa;
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #ffffff; /* 內容背景改為純白 */
+    color: #333; /* 文字顏色保持可讀性 */
 }
 
-/* 頂部姓名區塊 */
+/* 頂端姓名區塊 */
 .name-header {
-    background-color: #fff;
-    padding: 30px 0;
+    background-color: #eef2f5; /* 背景色 */
+    padding: 20px 0;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 讓圖標靠右 */
+    padding: 15px 50px;
 }
 
 .name-header h1 {
-    font-size: 32px;
+    font-size: 26pt;
     font-weight: bold;
+    margin: 0;
 }
+
 
 /* 導覽列 */
 .navbar {
@@ -33,7 +41,7 @@ body {
     flex-grow: 1;
 }
 
-/* 修改導覽列背景顏色 */
+/* 導覽列背景顏色 */
 .navbar-dark {
     background-color: #424242 !important;
 }
@@ -43,7 +51,37 @@ body {
 .container {
     width: 100%;
     max-width: 1200px;
+    background-color: #ffffff; /* 改為純白 */
 }
+
+/* 社群圖標區域 */
+.social-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.social-menu li {
+    display: inline-block;
+}
+
+.social-menu a {
+    display: flex;
+    align-items: center;
+}
+
+.social-menu svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: #2c3e50;
+    stroke-width: 1.5;
+}
+
+
 
 /* 內容標題 */
 .section-title {
