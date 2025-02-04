@@ -1,0 +1,148 @@
+/* 統一網站字體為 Microsoft YaHei */
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #ffffff; /* 內容背景改為純白 */
+    color: #333; /* 文字顏色保持可讀性 */
+}
+
+/* 頂端姓名區塊 */
+.name-header {
+    background-color: #eef2f5; /* 背景色 */
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 讓圖標靠右 */
+    padding: 15px 50px;
+}
+
+.name-header h1 {
+    font-size: 26pt; /* 縮小字體大小 */
+    font-weight: bold;
+    margin: 0;
+}
+
+/* 頭像樣式 */
+.profile-img {
+    width: 100%; /* 自適應大小 */
+    max-width: 200px; /* 限制最大寬度 */
+    border-radius: 50%; /* 圓形邊框 */
+    margin-bottom: 20px; /* 與下方內容間距 */
+}
+
+/* 個人網站連結樣式 */
+.personal-links {
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.personal-links li {
+    margin-bottom: 10px;
+}
+
+.personal-links a {
+    text-decoration: none; /* 去掉下劃線 */
+    color: #007bff; /* 藍色文字 */
+    font-size: 16px;
+}
+
+.personal-links a:hover {
+    text-decoration: underline; /* 滑過時加上下劃線 */
+}
+
+/* 導覽列 */
+.navbar {
+    width: 100%;
+}
+
+/* 讓導覽列中文字與英文分行，並讓欄位平均 */
+.navbar-nav .nav-link {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.4;
+    padding: 15px;
+}
+
+/* 讓導覽列充滿整列 */
+.navbar-nav .nav-item {
+    flex-grow: 1;
+}
+
+/* 導覽列背景顏色 */
+.navbar-dark {
+    background-color: #424242 !important; /* 修改為深灰色 */
+}
+
+/* 主要內容區塊 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff; /* 改為純白 */
+}
+
+/* 社群圖標區域 */
+.social-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.social-menu li {
+    display: inline-block;
+}
+
+.social-menu a {
+    display: flex;
+    align-items: center;
+}
+
+.social-menu svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: #2c3e50;
+    stroke-width: 1.5;
+}
+
+/* 內容標題 */
+.section-title {
+    font-size: 24px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* 履歷區標題 */
+.resume-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* 左側頭像及內容樣式 */
+.row .col-lg-4 {
+    text-align: center;
+    border-right: 1px solid #ddd; /* 增加分隔線 */
+}
+
+.row .col-lg-8 {
+    padding-left: 30px; /* 增加右側區塊內邊距 */
+}
+
+/* 刪除頂部 margin */
+.row {
+    margin-top: 20px;
+}
+
+/* 大頭貼樣式 */
+.profile-img {
+    width: 100%;
+    max-width: 200px; /* 限制圖片最大寬度 */
+    height: auto;
+    border-radius: 50%; /* 圓形圖片 */
+    margin: 0 auto 20px auto; /* 垂直置中 */
+}
