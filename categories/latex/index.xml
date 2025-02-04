@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LaTeX on Abner Den</title>
+        <link>https://abnerteng.github.io/categories/latex/</link>
+        <description>Recent content in LaTeX on Abner Den</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 29 May 2024 18:45:20 +0800</lastBuildDate><atom:link href="https://abnerteng.github.io/categories/latex/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>LaTeX Basic 2</title>
+        <link>https://abnerteng.github.io/post/latex-basic-2/</link>
+        <pubDate>Wed, 29 May 2024 18:45:20 +0800</pubDate>
+        
+        <guid>https://abnerteng.github.io/post/latex-basic-2/</guid>
+        <description>&lt;img src="https://abnerteng.github.io/post/latex-basic-2/logo.png" alt="Featured image of post LaTeX Basic 2" /&gt;&lt;blockquote&gt;
+&lt;p&gt;這是 &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://abnerteng.github.io/post/latex-basic/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LaTeX 入門心得（附模板）&lt;/a&gt;&lt;/strong&gt; 的接續教學，如果對 LaTeX 還不熟悉的人可以先去看看會比較知道這篇在幹嘛唷！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;插入圖片檔-jpg--png--jpeg&#34;&gt;插入圖片檔 (.jpg / .png / .jpeg)&lt;/h2&gt;
+&lt;p&gt;一般來說，我們會使用 &lt;code&gt;\begin{figure}...\end{figure}&lt;/code&gt; 來控制以及調整圖片檔在頁面中的位置，並使用 &lt;code&gt;\includegraphics{}&lt;/code&gt; 來插入圖片檔。注意到在使用 &lt;code&gt;\includegraphics{}&lt;/code&gt; 之前，我們需要先載入 &lt;code&gt;graphicx&lt;/code&gt; 套件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{graphicx}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\includegraphics&lt;/span&gt;{imgs/LaTeX_logo.png}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果需要調整圖片大小，可以在 &lt;code&gt;\includegraphics{}&lt;/code&gt; 中加入 &lt;code&gt;width&lt;/code&gt; 或 &lt;code&gt;height&lt;/code&gt; 的參數。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{graphicx}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\includegraphics&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[width=0.5\textwidth, height=4cm]&lt;/span&gt;{imgs/LaTeX_logo.png}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在我們還沒設定任何與位置相關的參數時，圖片檔會被放在頁面的最上方或最下方，這時就可以用 &lt;code&gt;h&lt;/code&gt;、&lt;code&gt;t&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;p&lt;/code&gt; 等參數來指定圖片檔的位置。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;參數&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;位置&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;h&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;置於當前插入的地方 (here)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;t&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;置於頁面最上方 (top)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;b&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;置於頁面最下方 (bottom)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;p&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;圖形單獨放在一個浮動頁面上 (page of floats)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;!&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;忽略系統美學標準&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;H&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;類似於 &lt;code&gt;h!&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;特別注意到，如果我們使用的參數是 &lt;code&gt;H&lt;/code&gt;，需要先載入 &lt;code&gt;float&lt;/code&gt; 套件。
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{float}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{graphicx}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}[H]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\includegraphics&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[width=0.5\textwidth, height=4cm]&lt;/span&gt;{imgs/LaTeX_logo.png}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;更改圖片檔路徑&#34;&gt;更改圖片檔路徑&lt;/h3&gt;
+&lt;p&gt;如果圖片檔在特定資料夾，可以使用 &lt;code&gt;\graphicspath{{path/}}&lt;/code&gt; 來指定路徑。以下範例假設圖片檔在 &lt;code&gt;imgs/&lt;/code&gt; 資料夾中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\graphicspath&lt;/span&gt;{{imgs/}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{figure}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\includegraphics&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[width=0.5\textwidth, height=4cm]&lt;/span&gt;{LaTeX_logo.png}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{figure}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;產生表格&#34;&gt;產生表格&lt;/h2&gt;
+&lt;p&gt;表格是另一種在 LaTeX 中常見的元素，且精美的表個常常可以區別出一篇文章的品質。在 LaTeX 中，我們可以使用 &lt;code&gt;tabular&lt;/code&gt; 環境來製作表格。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{center}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tabular}{ccc}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    1 &amp;amp; 2 &amp;amp; 3 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    4 &amp;amp; 5 &amp;amp; 6 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    7 &amp;amp; 8 &amp;amp; 9 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tabular}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{center}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;用上述的程式碼所獲得的表格會長得像這樣：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-1.png&#34;
+	width=&#34;326&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-1_hu327dec933b9ed1165ec1238ad5627b06_19757_480x0_resize_box_3.png 480w, https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-1_hu327dec933b9ed1165ec1238ad5627b06_19757_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;超陽春表格&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;289px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;來一一解釋程式碼的每一部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\begin{tabular}{ccc}&lt;/code&gt;：這裡的 &lt;code&gt;ccc&lt;/code&gt; 代表這個表格有三個欄位，且每個欄位都是置中對齊的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\hline&lt;/code&gt;：這是用來畫表格的橫線。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;：這是用來分隔每個欄位的符號。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\\&lt;/code&gt;：這是用來換行的符號，每一欄的結束都必須加上。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;multicolumn--multirow&#34;&gt;&lt;code&gt;multicolumn&lt;/code&gt; &amp;amp; &lt;code&gt;multirow&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;有時候我們會需要合併欄位或是合併列，這時候就可以使用 &lt;code&gt;multirow&lt;/code&gt; 這個套件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{multirow}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{center}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tabular}{lccc}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\multicolumn&lt;/span&gt;{4}{c}{&lt;span style=&#34;color:#66d9ef&#34;&gt;\textbf&lt;/span&gt;{Powers of Value}} &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\textbf&lt;/span&gt;{Index} &amp;amp; &lt;span style=&#34;color:#66d9ef&#34;&gt;\textbf&lt;/span&gt;{Value} &amp;amp; &lt;span style=&#34;color:#66d9ef&#34;&gt;\textbf&lt;/span&gt;{Square} &amp;amp; &lt;span style=&#34;color:#66d9ef&#34;&gt;\textbf&lt;/span&gt;{Cube} &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\multirow&lt;/span&gt;{3}{*}{First Try} &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &amp;amp; 2  &amp;amp; 4 &amp;amp; 8 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &amp;amp; 3  &amp;amp; 9 &amp;amp; 27 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tabular}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{center}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣的程式碼會產生出以下的表格：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-2.png&#34;
+	width=&#34;452&#34;
+	height=&#34;196&#34;
+	srcset=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-2_hu4a9fe58de70516c654981f42638be5f8_32100_480x0_resize_box_3.png 480w, https://abnerteng.github.io/post/latex-basic-2/page_asset/tabular-2_hu4a9fe58de70516c654981f42638be5f8_32100_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;合併欄位與列&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;553px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;multirow&lt;/code&gt; 與 &lt;code&gt;multicolumn&lt;/code&gt; 的用法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\multicolumn{欄位數}{對齊方式}{內容}&lt;/code&gt;：這個指令可以用來合併欄位。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\multirow{列數}{寬度}{內容}&lt;/code&gt;：這個指令可以用來合併列。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;插入表格與插入圖片一樣，也會遇到位置擺放的問題，我們可以使用 &lt;code&gt;table&lt;/code&gt; 環境來控制表格的位置。與 &lt;code&gt;\begin{figure}...\end{figure}&lt;/code&gt; 類似，我們可以使用 &lt;code&gt;h&lt;/code&gt;、&lt;code&gt;t&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;p&lt;/code&gt;、&lt;code&gt;!&lt;/code&gt;、&lt;code&gt;H&lt;/code&gt; 來控制表格的位置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{table}[H]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\centering&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tabular}{ccc}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        1 &amp;amp; 2 &amp;amp; 3 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        4 &amp;amp; 5 &amp;amp; 6 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        7 &amp;amp; 8 &amp;amp; 9 &lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;\hline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tabular}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\caption&lt;/span&gt;{Table Example}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\label&lt;/span&gt;{tab:example}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{table}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/table-1.png&#34;
+	width=&#34;312&#34;
+	height=&#34;174&#34;
+	srcset=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/table-1_hua9ac9d36a8e8cc3811cd1d14bdfbac84_18958_480x0_resize_box_3.png 480w, https://abnerteng.github.io/post/latex-basic-2/page_asset/table-1_hua9ac9d36a8e8cc3811cd1d14bdfbac84_18958_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;table 環境&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;179&#34;
+		data-flex-basis=&#34;430px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;上圖是使用 &lt;code&gt;table&lt;/code&gt; 環境的結果，我們可以用 &lt;code&gt;\centering&lt;/code&gt; 來替代 &lt;code&gt;center&lt;/code&gt; 環境，這樣可以讓表格置中。也可以使用 &lt;code&gt;\caption{}&lt;/code&gt; 來加入表格標題，並使用 &lt;code&gt;\label{}&lt;/code&gt; 來加入表格的標籤。&lt;/p&gt;
+&lt;h2 id=&#34;圖片--表格並排&#34;&gt;圖片 / 表格並排！&lt;/h2&gt;
+&lt;p&gt;圖片 / 表格並排通常是大多數新手很常遇到的問題，這裡提供一個簡單的解決方案。使用 &lt;code&gt;minipage&lt;/code&gt; 環境可以讓我們將圖片 / 表格並排。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{minipage}{0.5&lt;span style=&#34;color:#66d9ef&#34;&gt;\textwidth&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    table1 here
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{minipage}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\hfill&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{minipage}{0.5&lt;span style=&#34;color:#66d9ef&#34;&gt;\textwidth&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    table2 here
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{minipage}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;這樣的程式碼會讓兩個表格並排，且各佔一半的寬度。相同地，把 &lt;code&gt;table1&lt;/code&gt; 以及 &lt;code&gt;table2&lt;/code&gt; 的內容替換成插入圖片檔的程式碼，就可以讓圖片並排。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/minipage-1.png&#34;
+	width=&#34;768&#34;
+	height=&#34;230&#34;
+	srcset=&#34;https://abnerteng.github.io/post/latex-basic-2/page_asset/minipage-1_hu8ce3d80cc1dc285fc9e9bd4d1fd3f297_37996_480x0_resize_box_3.png 480w, https://abnerteng.github.io/post/latex-basic-2/page_asset/minipage-1_hu8ce3d80cc1dc285fc9e9bd4d1fd3f297_37996_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;表格並排 (程式碼中 table1, table2 內容省略)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;333&#34;
+		data-flex-basis=&#34;801px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;minipage&lt;/code&gt; 的用法如下：
+&lt;code&gt;\begin{minipage}{寬度}&lt;/code&gt;：這個指令可以用來指定 &lt;code&gt;minipage&lt;/code&gt; 的寬度。&lt;/p&gt;
+&lt;h2 id=&#34;後記&#34;&gt;後記&lt;/h2&gt;
+&lt;p&gt;表格與圖片相關的設定其實還有超多（就連我自己也沒什麼用到），但相關 Reference 我已經附在底下了，有興趣的讀者可以自行參考。如果是想使用 LaTeX 來交交學校作業、報告、甚至是碩士論文的讀者呢，讀到這邊已經可以 cover 掉大部分的需求了。這個系列應該也會先更到這邊 XDDD，下次可能會寫一下 beamer 或 Tikz 的使用方法吧（我也不確定）。有任何想要了解的主題或是有任何問題歡迎使用左側 sidebar 的各種方式聯絡我！&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.overleaf.com/learn/latex/Inserting_Images&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Overleaf 插入圖片檔 document&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.overleaf.com/learn/latex/Tables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Overleaf 表格 document&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://latex-tutorial.com/minipage-latex/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Minipage 教學&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>LaTeX Basic</title>
+        <link>https://abnerteng.github.io/post/latex-basic/</link>
+        <pubDate>Sun, 31 Mar 2024 19:45:38 +0800</pubDate>
+        
+        <guid>https://abnerteng.github.io/post/latex-basic/</guid>
+        <description>&lt;img src="https://abnerteng.github.io/post/latex-basic/imgs/LaTeX_logo.png" alt="Featured image of post LaTeX Basic" /&gt;&lt;blockquote&gt;
+&lt;p&gt;以下內容揭示我從自己的 Medium 搬過來的，但因為這邊放圖很不方便，所以圖的部分會少很多。想看圖可以至&lt;a class=&#34;link&#34; href=&#34;https://medium.com/@Abnerteng&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;我的 Medium&lt;/a&gt;觀賞（但之後應該不會更新ㄌ）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;什麼是-latex&#34;&gt;什麼是 $\LaTeX$?&lt;/h2&gt;
+&lt;p&gt;相信會看到這篇文章的人，應該都對 $\LaTeX$ 有基本認識了（不然你根本不會找到這篇ㄅ），所以他的優點缺點啥的這裡一概不贅述，僅以一言以蔽之：&lt;strong&gt;好看的 Word，上手難度較高的 Word（或 ppt)&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;editor&#34;&gt;Editor&lt;/h2&gt;
+&lt;p&gt;跟寫程式一樣，$\LaTeX$ 也需要一個編輯器，這邊就列上我有在用的兩個：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCode (Local)&lt;/li&gt;
+&lt;li&gt;Overleaf (Web)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Overleaf 應該是所有 Web Editor 裡面最廣為人知也最方便使用的了，而且還支援共編，強烈推薦新手都去用 Overleaf。&lt;/p&gt;
+&lt;p&gt;至於 Local Editor 的部分，除了 VSCode 這個寫啥都可以的工具以外，好像還有 TeXLive, MikTeX 之類的可以用（但我沒用過就是ㄌ）&lt;/p&gt;
+&lt;h2 id=&#34;start&#34;&gt;Start!!&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下介紹的是最基礎的 $\LaTeX$ 排版功能，包含設定字體大小、字體樣式、文件結構等等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一般 $\LaTeX$ 的文件結構會長得像
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\documentclass&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[12pt,a4paper]&lt;/span&gt;{article}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{package1}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{document}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Your content
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{document}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;來拆解程式碼ㄅ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\documentclass[]{}&lt;/code&gt; 中的 &lt;code&gt;[]&lt;/code&gt; 可以選擇字體、紙張大小（例如 &lt;code&gt;a4paper&lt;/code&gt; 為紙張大小，&lt;code&gt;12pt&lt;/code&gt; 為字體大小。而 &lt;code&gt;{}&lt;/code&gt; 則是選擇文件類別，例如 &lt;code&gt;article&lt;/code&gt;, &lt;code&gt;report&lt;/code&gt;, &lt;code&gt;moderncv&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\usepackage{}&lt;/code&gt; 用來載入套件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\begin{document}&lt;/code&gt; 與 &lt;code&gt;\end{document{}&lt;/code&gt; 代表的是文章的開始與結束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下附上 &lt;a class=&#34;link&#34; href=&#34;https://www.overleaf.com/learn/latex/Creating_a_document_in_LaTeX?source=post_page-----239bcd0ed48e--------------------------------&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Overleaf 更詳細的解說&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;字體&#34;&gt;字體&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\textbf{word}&lt;/code&gt; 是粗體&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\textit{word}&lt;/code&gt; 與 &lt;code&gt;\emph{word}&lt;/code&gt; 是斜體&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\underline{word}&lt;/code&gt; 是加上底線&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\\&lt;/code&gt; 或 &lt;code&gt;\newline&lt;/code&gt; 皆可以達到換行效果&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\newpage&lt;/code&gt; 則可以直接換頁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文章架構&#34;&gt;文章架構&lt;/h3&gt;
+&lt;p&gt;由大到小分別是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\part&lt;/span&gt;{part}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\chapter&lt;/span&gt;{chapter}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;\section&lt;/span&gt;{section}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\subsection&lt;/span&gt;{subsection}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#66d9ef&#34;&gt;\subsubsection&lt;/span&gt;{subsubsection}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\paragraph&lt;/span&gt;{paragraph}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#66d9ef&#34;&gt;\subparagraph&lt;/span&gt;{subparagraph}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;特別注意到，&lt;code&gt;\chapter&lt;/code&gt; 與 &lt;code&gt;\part&lt;/code&gt; 僅適用於 report 或 book 樣式的文件&lt;/li&gt;
+&lt;li&gt;以 section 為例，可以選擇使用 &lt;code&gt;\section{}&lt;/code&gt; 或 &lt;code&gt;\section*{}&lt;/code&gt;。 &lt;code&gt;*&lt;/code&gt; 的用途是捨棄章節的數字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lists-in-latex&#34;&gt;Lists in $\LaTeX$&lt;/h2&gt;
+&lt;p&gt;常用的 lists 有分三種，這邊先舉例性質比較相似的兩種：&lt;code&gt;itemize&lt;/code&gt; 以及 &lt;code&gt;enumerate&lt;/code&gt;。使用 &lt;code&gt;itemize&lt;/code&gt; 出現的是點，而使用 &lt;code&gt;enumerate&lt;/code&gt; 出現的是數字。用法如下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;%% itemize
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{itemize}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{itemize}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;%% enumerate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{enumerate}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; item 3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{enumerate}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;再來要介紹第三種 list &amp;ndash; &lt;code&gt;description&lt;/code&gt;，&lt;code&gt;description&lt;/code&gt; 的特別之處在於標籤是使用者自定義的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{description}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; This is an entry without label
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[One-line description]&lt;/span&gt; This is an one-line description. &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{description}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;nested-list&#34;&gt;Nested List&lt;/h3&gt;
+&lt;p&gt;Nested 指的是巢狀結構，意即可以在 list 中再放入一個甚至多個 lists，形成一份篇幅較大的筆記&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{enumerate}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; number item 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{itemize}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; bullet item 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; bullet item 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{description}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[Note:]&lt;/span&gt; Note
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[Caveat!]&lt;/span&gt; Warning
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{description}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{itemize}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;\item&lt;/span&gt; number item 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{enumerate}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://abnerteng.github.io/post/latex-basic/imgs/nested_list.png&#34;
+	width=&#34;1356&#34;
+	height=&#34;670&#34;
+	srcset=&#34;https://abnerteng.github.io/post/latex-basic/imgs/nested_list_huaa9971708b2599ca032e92fb778d205d_480802_480x0_resize_box_3.png 480w, https://abnerteng.github.io/post/latex-basic/imgs/nested_list_huaa9971708b2599ca032e92fb778d205d_480802_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;202&#34;
+		data-flex-basis=&#34;485px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;math-equations&#34;&gt;Math Equations&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\LaTeX$ 的重頭戲，我認為這邊是最一開始可以感受到 $\LaTeX$ 與 Microsoft Word 的差別。但我不會去細講數學式本身怎麼打，我會講的是如何把數學式寫得更好看。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先，數學是在一份文件中有兩種呈現方法，第一個是 Inline equation，顧名思義就是直接在句子中加入數學式，例如：Where  $y = \alpha + \beta x$。&lt;/p&gt;
+&lt;p&gt;第二種則是 block，例如：&lt;/p&gt;
+&lt;p&gt;$$\beta = \frac{\mathbf{x}^{\intercal}\mathbf{y}}{\mathbf{x}^{\intercal}\mathbf{x}}$$&lt;/p&gt;
+&lt;p&gt;Inline equation 比較單純，通常就是用 &lt;code&gt;$ type here $&lt;/code&gt; 或 &lt;code&gt;\begin{math} type here \end{math}&lt;/code&gt; 的方式呈現。&lt;/p&gt;
+&lt;p&gt;而 block 則有很多種寫法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$$ type here $$&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\[ type here \]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\begin{equation} type here \end{equation}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\begin{align} type here \end{align}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我自己是覺得後兩個比較正式也比較好看，就給大家參考ㄌ！&lt;/p&gt;
+&lt;h2 id=&#34;code-insertion&#34;&gt;Code Insertion&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Code Insertion 這個東西好像不是每個人都用得到，但是寫作業時特別好用 XD。尤其是當大家都在截圖貼 word 的時候，你的作業會顯得格外漂亮且工整。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;將程式碼嵌入文件中的方法就是使用 &lt;code&gt;listings&lt;/code&gt; 這個套件，接著使用 &lt;code&gt;\lstset{}&lt;/code&gt; 依照自己的喜好去更改 keyword, commend 等語法的顏色以及整個版面的其他設定（例如要不要留行數、程式碼的 block 要是什麼顏色、tab 是幾個 space 等等），最後則是使用 &lt;code&gt;\begin{lstlisting}type your code here \end{lstlisting}&lt;/code&gt; 來顯示程式碼。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{listings}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\lstset&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    frame=tb,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    language=C++,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    aboveskip=3mm,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    belowskip=3mm,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    numbers=left,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    tabsize=4
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    basicstyle={&lt;span style=&#34;color:#66d9ef&#34;&gt;\small\ttfamily&lt;/span&gt;} 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{document}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{lstlisting}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#include &amp;lt;iostream&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;using namespace std;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;int main() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    return 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{lstlisting}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{document}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;後記&#34;&gt;後記&lt;/h2&gt;
+&lt;p&gt;這次的內容主要 focus 在基礎的語法以及應用上（就是看完即可寫作業的程度），但其實 $\LaTeX$ 還有一個比較麻煩比較搞的地方是插入表格以及圖片的部分，想要兩張圖片並排還要多寫幾行程式碼XD，這部分就留到下一篇再講ㄌ（雖然我也不知道下一篇是啥時）。最後將附上自己的模板給需要的人使用。&lt;/p&gt;
+&lt;p&gt;Template Link: &lt;a class=&#34;link&#34; href=&#34;https://github.com/AbnerTeng/LaTeX-templates&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

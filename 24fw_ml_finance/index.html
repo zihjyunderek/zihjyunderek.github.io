@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Description: Page for 24FW TMBA Department of Algorithmic Trading. Including resources, timeline, and other information.
+Mentor: Yu-Chen (Abner) Den
+Member: 陳采妍、曾順偉、黃彥博、施如恩、林沂萱、劉語安、童思謙
+Group Information Final Presentation Date: Dec 28th, 2024 Discuss Time Wednesday 21:00 - 22:30: 陳采妍、曾順偉、黃彥博、施如恩、童思謙 Sunday 22:00 - 23:00: 林沂萱、劉語安 Table of Contents
+Timeline Resources Timeline Date Topic Duration Slides Sep 29th 21:30 - 22:00 Introduction, Topic Choosing 1hr W1 Oct 13rd 21:00 - 22:00 Interpretable Machine Learning (I) 1hr W3 Oct 13rd 22:00 - 23:00 Sunday Group Discussion (I) 1hr NaN Oct 16th 21:00 - 22:30 Wednesday Group Discussion (I) 1hr NaN Oct 27th 21:00 - 22:00 Interpretable Machine Learning (II) 1hr W5 Oct 27th 22:00 - 23:00 Sunday Group Discussion (II) 1hr NaN Oct 30th 21:00 - 22:30 Wednesday Group Discussion (II) 1hr NaN Nov 10th 22:00 - 23:00 Sunday Group Discussion (III) 1hr NaN Nov 13th 21:00 - 22:30 Wednesday Group Discussion (III) 1hr NaN Nov 17th 21:00 - 22:00 Interpretable Machine Learning (III) 1hr W8 Nov 24th 22:00 - 23:00 Sunday Group Discussion (IV) 1hr NaN Nov 27th 21:00 - 22:30 Wednesday Group Discussion (IV) 1hr NaN Dec 8th 21:00 - 22:00 Interpretable Machine Learning (IV) 1hr W11 Dec 8th 22:00 - 23:00 Subnday Group Discussion (V) 1hr NaN Dec 11th 21:00 - 22:30 Wednesday Group Discussion (V) 1hr NaN Dec 22th 21:00 - 22:00 Sunday Final Presentation Draft 1hr NaN Dec 25th 21:00 - 22:30 Wednesday Final Presentation Draft 1hr NaN Project Timeline (We have totally 13 weeks for the project)'>
+<title>24FW Machine Learning in Finance / Trading</title>
+
+<link rel='canonical' href='https://abnerteng.github.io/24fw_ml_finance/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='24FW Machine Learning in Finance / Trading'>
+<meta property='og:description' content='Description: Page for 24FW TMBA Department of Algorithmic Trading. Including resources, timeline, and other information.
+Mentor: Yu-Chen (Abner) Den
+Member: 陳采妍、曾順偉、黃彥博、施如恩、林沂萱、劉語安、童思謙
+Group Information Final Presentation Date: Dec 28th, 2024 Discuss Time Wednesday 21:00 - 22:30: 陳采妍、曾順偉、黃彥博、施如恩、童思謙 Sunday 22:00 - 23:00: 林沂萱、劉語安 Table of Contents
+Timeline Resources Timeline Date Topic Duration Slides Sep 29th 21:30 - 22:00 Introduction, Topic Choosing 1hr W1 Oct 13rd 21:00 - 22:00 Interpretable Machine Learning (I) 1hr W3 Oct 13rd 22:00 - 23:00 Sunday Group Discussion (I) 1hr NaN Oct 16th 21:00 - 22:30 Wednesday Group Discussion (I) 1hr NaN Oct 27th 21:00 - 22:00 Interpretable Machine Learning (II) 1hr W5 Oct 27th 22:00 - 23:00 Sunday Group Discussion (II) 1hr NaN Oct 30th 21:00 - 22:30 Wednesday Group Discussion (II) 1hr NaN Nov 10th 22:00 - 23:00 Sunday Group Discussion (III) 1hr NaN Nov 13th 21:00 - 22:30 Wednesday Group Discussion (III) 1hr NaN Nov 17th 21:00 - 22:00 Interpretable Machine Learning (III) 1hr W8 Nov 24th 22:00 - 23:00 Sunday Group Discussion (IV) 1hr NaN Nov 27th 21:00 - 22:30 Wednesday Group Discussion (IV) 1hr NaN Dec 8th 21:00 - 22:00 Interpretable Machine Learning (IV) 1hr W11 Dec 8th 22:00 - 23:00 Subnday Group Discussion (V) 1hr NaN Dec 11th 21:00 - 22:30 Wednesday Group Discussion (V) 1hr NaN Dec 22th 21:00 - 22:00 Sunday Final Presentation Draft 1hr NaN Dec 25th 21:00 - 22:30 Wednesday Final Presentation Draft 1hr NaN Project Timeline (We have totally 13 weeks for the project)'>
+<meta property='og:url' content='https://abnerteng.github.io/24fw_ml_finance/'>
+<meta property='og:site_name' content='Abner Den'>
+<meta property='og:type' content='article'><meta property='article:section' content='' /><meta property='article:published_time' content='2024-09-04T11:20:04&#43;08:00'/><meta property='article:modified_time' content='2024-09-04T11:20:04&#43;08:00'/>
+<meta name="twitter:title" content="24FW Machine Learning in Finance / Trading">
+<meta name="twitter:description" content="Description: Page for 24FW TMBA Department of Algorithmic Trading. Including resources, timeline, and other information.
+Mentor: Yu-Chen (Abner) Den
+Member: 陳采妍、曾順偉、黃彥博、施如恩、林沂萱、劉語安、童思謙
+Group Information Final Presentation Date: Dec 28th, 2024 Discuss Time Wednesday 21:00 - 22:30: 陳采妍、曾順偉、黃彥博、施如恩、童思謙 Sunday 22:00 - 23:00: 林沂萱、劉語安 Table of Contents
+Timeline Resources Timeline Date Topic Duration Slides Sep 29th 21:30 - 22:00 Introduction, Topic Choosing 1hr W1 Oct 13rd 21:00 - 22:00 Interpretable Machine Learning (I) 1hr W3 Oct 13rd 22:00 - 23:00 Sunday Group Discussion (I) 1hr NaN Oct 16th 21:00 - 22:30 Wednesday Group Discussion (I) 1hr NaN Oct 27th 21:00 - 22:00 Interpretable Machine Learning (II) 1hr W5 Oct 27th 22:00 - 23:00 Sunday Group Discussion (II) 1hr NaN Oct 30th 21:00 - 22:30 Wednesday Group Discussion (II) 1hr NaN Nov 10th 22:00 - 23:00 Sunday Group Discussion (III) 1hr NaN Nov 13th 21:00 - 22:30 Wednesday Group Discussion (III) 1hr NaN Nov 17th 21:00 - 22:00 Interpretable Machine Learning (III) 1hr W8 Nov 24th 22:00 - 23:00 Sunday Group Discussion (IV) 1hr NaN Nov 27th 21:00 - 22:30 Wednesday Group Discussion (IV) 1hr NaN Dec 8th 21:00 - 22:00 Interpretable Machine Learning (IV) 1hr W11 Dec 8th 22:00 - 23:00 Subnday Group Discussion (V) 1hr NaN Dec 11th 21:00 - 22:30 Wednesday Group Discussion (V) 1hr NaN Dec 22th 21:00 - 22:00 Sunday Final Presentation Draft 1hr NaN Dec 25th 21:00 - 22:30 Wednesday Final Presentation Draft 1hr NaN Project Timeline (We have totally 13 weeks for the project)">
+    <link rel="shortcut icon" href="/img/logo.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/abner_hu894ca2164f907707a2e3eb75c53bd33f_1837809_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abner Den</a></h1>
+            <h2 class="site-description">NTU GINM D13 | MLE @ SinoPac Turing</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbnerTeng'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/yu-chen-abner/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://drive.google.com/file/d/1s27Gsu_MLPwPw4iwucSblPzFymksn9TR/view?usp=sharing'
+                        target="_blank"
+                        title="CV"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <line x1="9" y1="9" x2="10" y2="9" />
+  <line x1="9" y1="13" x2="15" y2="13" />
+  <line x1="9" y1="17" x2="15" y2="17" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:abnerteng16@gmail.com'
+                        
+                        title="email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="3" y="5" width="18" height="14" rx="2" />
+  <polyline points="3 7 12 13 21 7" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/24fw_ml_finance/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"/><path d="M15 7h6v6"/></svg>
+
+                
+                <span>24FW ML Finance</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/list100/' >
+                
+                
+                
+                <span>List 100</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/resources/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+                
+                <span>Resources</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tool-box' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+
+                
+                <span>Tool Box</span>
+            </a>
+        </li>
+        
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </ol>
+    </div>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/24fw_ml_finance/">24FW Machine Learning in Finance / Trading</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 04, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Description: Page for 24FW TMBA Department of Algorithmic Trading. Including resources, timeline, and other information.</p>
+<p>Mentor: Yu-Chen (Abner) Den<br>
+Member: 陳采妍、曾順偉、黃彥博、施如恩、林沂萱、劉語安、童思謙</p>
+<hr>
+<h3 id="group-information">Group Information</h3>
+<ul>
+<li><strong>Final Presentation Date</strong>: Dec 28th, 2024</li>
+<li><strong>Discuss Time</strong>
+<ul>
+<li>Wednesday 21:00 - 22:30: 陳采妍、曾順偉、黃彥博、施如恩、童思謙</li>
+<li>Sunday 22:00 - 23:00: 林沂萱、劉語安</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Table of Contents</p>
+<ul>
+<li><a class="link" href="#timeline" >Timeline</a></li>
+<li><a class="link" href="#resources" >Resources</a></li>
+</ul>
+<hr>
+<h2 id="timeline">Timeline</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center">Date</th>
+<th style="text-align:center">Topic</th>
+<th style="text-align:center">Duration</th>
+<th style="text-align:center">Slides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Sep 29th 21:30 - 22:00</td>
+<td style="text-align:center">Introduction, Topic Choosing</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center"><a class="link" href="https://docs.google.com/presentation/d/1q1fMoN3Bf2gURp7bWWPqD0A7CSx1fg8VbeUBP7-zfb4/edit?usp=sharing"  target="_blank" rel="noopener"
+    >W1</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 13rd 21:00 - 22:00</td>
+<td style="text-align:center">Interpretable Machine Learning (I)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center"><a class="link" href="https://docs.google.com/presentation/d/1Zi3MkYKS43Ly8x9AKW15gsYadx5fXua15b2YhPWttcw/edit?usp=sharing"  target="_blank" rel="noopener"
+    >W3</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 13rd 22:00 - 23:00</td>
+<td style="text-align:center">Sunday Group Discussion (I)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 16th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Group Discussion (I)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 27th 21:00 - 22:00</td>
+<td style="text-align:center">Interpretable Machine Learning (II)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center"><a class="link" href="https://docs.google.com/presentation/d/1dQU3PKpdktTmT-QhGh5yMRwF9FfpVKJwj4sBafU8G0c/edit?usp=sharing"  target="_blank" rel="noopener"
+    >W5</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 27th 22:00 - 23:00</td>
+<td style="text-align:center">Sunday Group Discussion (II)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Oct 30th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Group Discussion (II)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Nov 10th 22:00 - 23:00</td>
+<td style="text-align:center">Sunday Group Discussion (III)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Nov 13th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Group Discussion (III)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Nov 17th 21:00 - 22:00</td>
+<td style="text-align:center">Interpretable Machine Learning (III)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center"><a class="link" href="https://docs.google.com/presentation/d/1Q8uTOgv_EeGOHJF0sC0nxcZb9xst_FKWguDbBWB4BDQ/edit?usp=sharing"  target="_blank" rel="noopener"
+    >W8</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Nov 24th 22:00 - 23:00</td>
+<td style="text-align:center">Sunday Group Discussion (IV)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Nov 27th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Group Discussion (IV)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Dec 8th 21:00 - 22:00</td>
+<td style="text-align:center">Interpretable Machine Learning (IV)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center"><a class="link" href="temp" >W11</a></td>
+</tr>
+<tr>
+<td style="text-align:center">Dec 8th 22:00 - 23:00</td>
+<td style="text-align:center">Subnday Group Discussion (V)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Dec 11th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Group Discussion (V)</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Dec 22th 21:00 - 22:00</td>
+<td style="text-align:center">Sunday Final Presentation Draft</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Dec 25th 21:00 - 22:30</td>
+<td style="text-align:center">Wednesday Final Presentation Draft</td>
+<td style="text-align:center">1hr</td>
+<td style="text-align:center">NaN</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Project Timeline</strong> (We have totally 13 weeks for the project)</p>
+<ul>
+<li>Week 1-3: Introduction, Topic Choosing</li>
+<li>Week 3-9: Strategy / Model development, Paper reproduction</li>
+<li>Week 9-11: Check model / strategy performance, project enhancement, presentation draft</li>
+<li>Week 12 &amp; 13: Presentation revise, Final Presentation</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<p><strong>Python &amp; Engineering</strong></p>
+<ul>
+<li><a class="link" href="https://peps.python.org/pep-0008/"  target="_blank" rel="noopener"
+    >Python Style Guide</a></li>
+<li><a class="link" href="https://github.com/Davisy/Machine-Learning-Project-with-Configuration-File?tab=readme-ov-file"  target="_blank" rel="noopener"
+    >Model configuration</a></li>
+<li><a class="link" href="https://www.freecodecamp.org/news/bash-scripting-tutorial-linux-shell-script-and-command-line-for-beginners/"  target="_blank" rel="noopener"
+    >Bash Scripting</a></li>
+</ul>
+<p><strong>Quant Trading / Finance</strong></p>
+<ul>
+<li><a class="link" href="https://notes.yeshiwei.com/_downloads/2ce792aff8596ea9453a9714f39d957a/Machine_Learning_for_Algorithmic_Trading_Predictive.pdf"  target="_blank" rel="noopener"
+    >ML4Trading</a></li>
+<li><a class="link" href="https://press.princeton.edu/books/hardcover/9780691218700/machine-learning-in-asset-pricing?srsltid=AfmBOoo-GZ-Jy0NAT31ocHUZLQcfFr7EcD6DNV-xcbGfo-rIZrJOUVjG"  target="_blank" rel="noopener"
+    >Machine Learning in Asset Pricing</a></li>
+<li><a class="link" href="https://github.com/thuquant/awesome-quant?tab=readme-ov-file"  target="_blank" rel="noopener"
+    >awesome-quant</a></li>
+<li><a class="link" href="https://drive.google.com/file/d/1WpvEY7apFMaAp4OhHgN_wLessaw5K4xL/view?usp=sharing"  target="_blank" rel="noopener"
+    >Advances in Financial Machine Learning</a></li>
+</ul>
+<p><strong>Machine Learning / Deep Learning models</strong></p>
+<ul>
+<li><a class="link" href="https://web.stanford.edu/class/cs224n/"  target="_blank" rel="noopener"
+    >Stanford CS224n NLP</a></li>
+<li><a class="link" href="https://cs.uwaterloo.ca/~wenhuche/teaching/cs886/"  target="_blank" rel="noopener"
+    >Waterloo CS886 Foundation Model</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>License under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Abner Den
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

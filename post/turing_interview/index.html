@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='網路上好像幾乎沒有關於圖靈計畫的面試心得，但這次面試體驗真的不錯，就想說寫下來記錄一下，也順便給想投遞的人參考。
+投遞方式 我是在校招的時段直接從他們官網上下載資料表寄到 HR 的信箱，之前有聽說他們一年四季都會招人直到這屆招滿為止，蠻酷的。我大概是三月中投遞的履歷，隔天收到補件通知，大概一週後收到一面通知。其實效率還算蠻高的。
+Timeline 3/20 申請 3/26 一面通知 4/9 一面 &amp;amp; 二面通知 4/17 二面 4/22 發錄取通知 一面(On site Technical Interview) 一面大約是一個半小時，面試官是永豐的數位科技長張天豪教授、一位感覺偏 Senior 的正職以及一位 HR 。這次面試剛好只有我一位面試者（聽說之前都會有超過一位），所以時間抓得比較鬆，光自我介紹環節就講掉十幾分鐘了ㄅ XDD，中途問的東西其實蠻細的比如我寫說會從上一份實習離職是因為「個人生涯規劃」，他們還特別問了一下是什麼樣的生涯規劃。接下來就是專案介紹環節，我選了三個跟機器學習、推薦系統相關的專案，這部分就是順順的帶過去，因為對專案都蠻熟悉的所以被問問題的時候其實也都沒有遲疑。最後一個環節就蠻特別的，有別於大部分的 coding test 是以算法題為主，圖靈的 coding test 是 base on 你自己的專案，教授會直接請你延伸出某個東西（像我被問到的就是希望可以算出某兩個東西的分配以及敘述統計量以證明這兩項是真的有差異的），時間大約是 10 - 15 分鐘，HR 會計時，所以其實蠻緊張的，在寫的當下教授也會透過投影的螢幕去看你寫的過程（所以其實沒寫完或沒寫出來也沒關係，寫的過程在他們眼裡是 ok 的應該就行，因為我沒寫完XD，主要是因為原本的 coding style 有點糟糕，class 的 input 已經鎖住 data type 是 string, a.k.a 我當初使用的 data 的 path，所以遇到這種需要生成模擬資料直接傳 array 進去的就直接爆炸，導致我大概有一半的時間在試著 refactor 主程式，然後這也被教授看出來了，超狠）。最後就是我提問的環節，這部分我覺得很用心的點是他們還有準備投影片介紹自己的單位，而且都講得很詳細。
+二面(On site Behavioral Interview) 一面過後大概一小時就收到二面邀請（事後教授有說是因為時間剛好所以才這麼快），二面有三個面試者與三個面試官，而第一關有出現的張天豪教授也有在現場。二面基本上就沒有技術問題了，基本上都是 behavioral 的問題，面試官除了針對履歷上寫的內容進行提問之外，也會問一些類似面 MA 才會出現的問題（舉一個科技與金融結合的例子），整體面試的感覺蠻像在聊天的，沒有什麼壓力，目的應該就是要確認你的動機以及人個特質有沒有跟這個 team 符合吧！'>
+<title>永豐圖靈面試心得</title>
+
+<link rel='canonical' href='https://abnerteng.github.io/post/turing_interview/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='永豐圖靈面試心得'>
+<meta property='og:description' content='網路上好像幾乎沒有關於圖靈計畫的面試心得，但這次面試體驗真的不錯，就想說寫下來記錄一下，也順便給想投遞的人參考。
+投遞方式 我是在校招的時段直接從他們官網上下載資料表寄到 HR 的信箱，之前有聽說他們一年四季都會招人直到這屆招滿為止，蠻酷的。我大概是三月中投遞的履歷，隔天收到補件通知，大概一週後收到一面通知。其實效率還算蠻高的。
+Timeline 3/20 申請 3/26 一面通知 4/9 一面 &amp;amp; 二面通知 4/17 二面 4/22 發錄取通知 一面(On site Technical Interview) 一面大約是一個半小時，面試官是永豐的數位科技長張天豪教授、一位感覺偏 Senior 的正職以及一位 HR 。這次面試剛好只有我一位面試者（聽說之前都會有超過一位），所以時間抓得比較鬆，光自我介紹環節就講掉十幾分鐘了ㄅ XDD，中途問的東西其實蠻細的比如我寫說會從上一份實習離職是因為「個人生涯規劃」，他們還特別問了一下是什麼樣的生涯規劃。接下來就是專案介紹環節，我選了三個跟機器學習、推薦系統相關的專案，這部分就是順順的帶過去，因為對專案都蠻熟悉的所以被問問題的時候其實也都沒有遲疑。最後一個環節就蠻特別的，有別於大部分的 coding test 是以算法題為主，圖靈的 coding test 是 base on 你自己的專案，教授會直接請你延伸出某個東西（像我被問到的就是希望可以算出某兩個東西的分配以及敘述統計量以證明這兩項是真的有差異的），時間大約是 10 - 15 分鐘，HR 會計時，所以其實蠻緊張的，在寫的當下教授也會透過投影的螢幕去看你寫的過程（所以其實沒寫完或沒寫出來也沒關係，寫的過程在他們眼裡是 ok 的應該就行，因為我沒寫完XD，主要是因為原本的 coding style 有點糟糕，class 的 input 已經鎖住 data type 是 string, a.k.a 我當初使用的 data 的 path，所以遇到這種需要生成模擬資料直接傳 array 進去的就直接爆炸，導致我大概有一半的時間在試著 refactor 主程式，然後這也被教授看出來了，超狠）。最後就是我提問的環節，這部分我覺得很用心的點是他們還有準備投影片介紹自己的單位，而且都講得很詳細。
+二面(On site Behavioral Interview) 一面過後大概一小時就收到二面邀請（事後教授有說是因為時間剛好所以才這麼快），二面有三個面試者與三個面試官，而第一關有出現的張天豪教授也有在現場。二面基本上就沒有技術問題了，基本上都是 behavioral 的問題，面試官除了針對履歷上寫的內容進行提問之外，也會問一些類似面 MA 才會出現的問題（舉一個科技與金融結合的例子），整體面試的感覺蠻像在聊天的，沒有什麼壓力，目的應該就是要確認你的動機以及人個特質有沒有跟這個 team 符合吧！'>
+<meta property='og:url' content='https://abnerteng.github.io/post/turing_interview/'>
+<meta property='og:site_name' content='Abner Den'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-04-22T19:41:42&#43;08:00'/><meta property='article:modified_time' content='2024-04-22T19:41:42&#43;08:00'/><meta property='og:image' content='https://abnerteng.github.io/post/turing_interview/turing.jpg' />
+<meta name="twitter:title" content="永豐圖靈面試心得">
+<meta name="twitter:description" content="網路上好像幾乎沒有關於圖靈計畫的面試心得，但這次面試體驗真的不錯，就想說寫下來記錄一下，也順便給想投遞的人參考。
+投遞方式 我是在校招的時段直接從他們官網上下載資料表寄到 HR 的信箱，之前有聽說他們一年四季都會招人直到這屆招滿為止，蠻酷的。我大概是三月中投遞的履歷，隔天收到補件通知，大概一週後收到一面通知。其實效率還算蠻高的。
+Timeline 3/20 申請 3/26 一面通知 4/9 一面 &amp;amp; 二面通知 4/17 二面 4/22 發錄取通知 一面(On site Technical Interview) 一面大約是一個半小時，面試官是永豐的數位科技長張天豪教授、一位感覺偏 Senior 的正職以及一位 HR 。這次面試剛好只有我一位面試者（聽說之前都會有超過一位），所以時間抓得比較鬆，光自我介紹環節就講掉十幾分鐘了ㄅ XDD，中途問的東西其實蠻細的比如我寫說會從上一份實習離職是因為「個人生涯規劃」，他們還特別問了一下是什麼樣的生涯規劃。接下來就是專案介紹環節，我選了三個跟機器學習、推薦系統相關的專案，這部分就是順順的帶過去，因為對專案都蠻熟悉的所以被問問題的時候其實也都沒有遲疑。最後一個環節就蠻特別的，有別於大部分的 coding test 是以算法題為主，圖靈的 coding test 是 base on 你自己的專案，教授會直接請你延伸出某個東西（像我被問到的就是希望可以算出某兩個東西的分配以及敘述統計量以證明這兩項是真的有差異的），時間大約是 10 - 15 分鐘，HR 會計時，所以其實蠻緊張的，在寫的當下教授也會透過投影的螢幕去看你寫的過程（所以其實沒寫完或沒寫出來也沒關係，寫的過程在他們眼裡是 ok 的應該就行，因為我沒寫完XD，主要是因為原本的 coding style 有點糟糕，class 的 input 已經鎖住 data type 是 string, a.k.a 我當初使用的 data 的 path，所以遇到這種需要生成模擬資料直接傳 array 進去的就直接爆炸，導致我大概有一半的時間在試著 refactor 主程式，然後這也被教授看出來了，超狠）。最後就是我提問的環節，這部分我覺得很用心的點是他們還有準備投影片介紹自己的單位，而且都講得很詳細。
+二面(On site Behavioral Interview) 一面過後大概一小時就收到二面邀請（事後教授有說是因為時間剛好所以才這麼快），二面有三個面試者與三個面試官，而第一關有出現的張天豪教授也有在現場。二面基本上就沒有技術問題了，基本上都是 behavioral 的問題，面試官除了針對履歷上寫的內容進行提問之外，也會問一些類似面 MA 才會出現的問題（舉一個科技與金融結合的例子），整體面試的感覺蠻像在聊天的，沒有什麼壓力，目的應該就是要確認你的動機以及人個特質有沒有跟這個 team 符合吧！"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://abnerteng.github.io/post/turing_interview/turing.jpg' />
+    <link rel="shortcut icon" href="/img/logo.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/abner_hu894ca2164f907707a2e3eb75c53bd33f_1837809_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abner Den</a></h1>
+            <h2 class="site-description">NTU GINM D13 | MLE @ SinoPac Turing</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbnerTeng'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/yu-chen-abner/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://drive.google.com/file/d/1s27Gsu_MLPwPw4iwucSblPzFymksn9TR/view?usp=sharing'
+                        target="_blank"
+                        title="CV"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <line x1="9" y1="9" x2="10" y2="9" />
+  <line x1="9" y1="13" x2="15" y2="13" />
+  <line x1="9" y1="17" x2="15" y2="17" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:abnerteng16@gmail.com'
+                        
+                        title="email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="3" y="5" width="18" height="14" rx="2" />
+  <polyline points="3 7 12 13 21 7" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/24fw_ml_finance/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"/><path d="M15 7h6v6"/></svg>
+
+                
+                <span>24FW ML Finance</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/list100/' >
+                
+                
+                
+                <span>List 100</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/resources/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+                
+                <span>Resources</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tool-box' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+
+                
+                <span>Tool Box</span>
+            </a>
+        </li>
+        
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </ol>
+    </div>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/turing_interview/">
+                <img src="/post/turing_interview/turing_hu0fc1d439568a9c203dfd1c28cc6bb1da_20382_800x0_resize_q75_box.jpg"
+                        srcset="/post/turing_interview/turing_hu0fc1d439568a9c203dfd1c28cc6bb1da_20382_800x0_resize_q75_box.jpg 800w, /post/turing_interview/turing_hu0fc1d439568a9c203dfd1c28cc6bb1da_20382_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post 永豐圖靈面試心得" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/sharing/" >
+                Sharing
+            </a>
+        
+            <a href="/categories/career/" >
+                Career
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/turing_interview/">永豐圖靈面試心得</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 22, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>網路上好像幾乎沒有關於圖靈計畫的面試心得，但這次面試體驗真的不錯，就想說寫下來記錄一下，也順便給想投遞的人參考。</p>
+<h2 id="投遞方式">投遞方式</h2>
+<p>我是在校招的時段直接從他們官網上下載資料表寄到 HR 的信箱，之前有聽說他們一年四季都會招人直到這屆招滿為止，蠻酷的。我大概是三月中投遞的履歷，隔天收到補件通知，大概一週後收到一面通知。其實效率還算蠻高的。</p>
+<h2 id="timeline">Timeline</h2>
+<ul>
+<li>3/20 申請</li>
+<li>3/26 一面通知</li>
+<li>4/9 一面 &amp; 二面通知</li>
+<li>4/17 二面</li>
+<li>4/22 發錄取通知</li>
+</ul>
+<h2 id="一面on-site-technical-interview">一面(On site Technical Interview)</h2>
+<p>一面大約是一個半小時，面試官是永豐的數位科技長張天豪教授、一位感覺偏 Senior 的正職以及一位 HR 。這次面試剛好只有我一位面試者（聽說之前都會有超過一位），所以時間抓得比較鬆，光自我介紹環節就講掉十幾分鐘了ㄅ XDD，中途問的東西其實蠻細的比如我寫說會從上一份實習離職是因為「個人生涯規劃」，他們還特別問了一下是什麼樣的生涯規劃。接下來就是專案介紹環節，我選了三個跟機器學習、推薦系統相關的專案，這部分就是順順的帶過去，因為對專案都蠻熟悉的所以被問問題的時候其實也都沒有遲疑。最後一個環節就蠻特別的，有別於大部分的 coding test 是以算法題為主，圖靈的 coding test 是 base on 你自己的專案，教授會直接請你延伸出某個東西（像我被問到的就是希望可以算出某兩個東西的分配以及敘述統計量以證明這兩項是真的有差異的），時間大約是 10 - 15 分鐘，HR 會計時，所以其實蠻緊張的，在寫的當下教授也會透過投影的螢幕去看你寫的過程（所以其實沒寫完或沒寫出來也沒關係，寫的過程在他們眼裡是 ok 的應該就行，因為我沒寫完XD，主要是因為原本的 coding style 有點糟糕，class 的 input 已經鎖住 data type 是 string, a.k.a 我當初使用的 data 的 path，所以遇到這種需要生成模擬資料直接傳 array 進去的就直接爆炸，導致我大概有一半的時間在試著 refactor 主程式，然後這也被教授看出來了，超狠）。最後就是我提問的環節，這部分我覺得很用心的點是他們還有準備投影片介紹自己的單位，而且都講得很詳細。</p>
+<h2 id="二面on-site-behavioral-interview">二面(On site Behavioral Interview)</h2>
+<p>一面過後大概一小時就收到二面邀請（事後教授有說是因為時間剛好所以才這麼快），二面有三個面試者與三個面試官，而第一關有出現的張天豪教授也有在現場。二面基本上就沒有技術問題了，基本上都是 behavioral 的問題，面試官除了針對履歷上寫的內容進行提問之外，也會問一些類似面 MA 才會出現的問題（舉一個科技與金融結合的例子），整體面試的感覺蠻像在聊天的，沒有什麼壓力，目的應該就是要確認你的動機以及人個特質有沒有跟這個 team 符合吧！</p>
+<h2 id="收-offer">收 offer</h2>
+<p>二面後大概五天我就收到了錄取通知（真的超快）。目前還在核薪以及討論兵役該如何處理的階段。</p>
+<h2 id="後記">後記</h2>
+<p>真的很感謝張天豪老師願意收留我這個跨領域跨到天邊的人，其實在二面後真的蠻沒有把握自己會錄取（同場的面試者都是本科系碩班畢業），但好險還是上了，也算是為碩班這兩年生活畫上完美的句點。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>License under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Abner Den
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

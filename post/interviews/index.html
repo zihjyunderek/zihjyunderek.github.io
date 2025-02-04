@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='包含各種 intern, full-time DS / MLE 的面試記錄及心得'>
+<title>2024 面試心得總結</title>
+
+<link rel='canonical' href='https://abnerteng.github.io/post/interviews/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='2024 面試心得總結'>
+<meta property='og:description' content='包含各種 intern, full-time DS / MLE 的面試記錄及心得'>
+<meta property='og:url' content='https://abnerteng.github.io/post/interviews/'>
+<meta property='og:site_name' content='Abner Den'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-05-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-05-31T00:00:00&#43;00:00'/><meta property='og:image' content='https://abnerteng.github.io/post/interviews/assets/bg.jpeg' />
+<meta name="twitter:title" content="2024 面試心得總結">
+<meta name="twitter:description" content="包含各種 intern, full-time DS / MLE 的面試記錄及心得"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://abnerteng.github.io/post/interviews/assets/bg.jpeg' />
+    <link rel="shortcut icon" href="/img/logo.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/abner_hu894ca2164f907707a2e3eb75c53bd33f_1837809_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abner Den</a></h1>
+            <h2 class="site-description">NTU GINM D13 | MLE @ SinoPac Turing</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbnerTeng'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/yu-chen-abner/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://drive.google.com/file/d/1s27Gsu_MLPwPw4iwucSblPzFymksn9TR/view?usp=sharing'
+                        target="_blank"
+                        title="CV"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <line x1="9" y1="9" x2="10" y2="9" />
+  <line x1="9" y1="13" x2="15" y2="13" />
+  <line x1="9" y1="17" x2="15" y2="17" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:abnerteng16@gmail.com'
+                        
+                        title="email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="3" y="5" width="18" height="14" rx="2" />
+  <polyline points="3 7 12 13 21 7" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/24fw_ml_finance/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"/><path d="M15 7h6v6"/></svg>
+
+                
+                <span>24FW ML Finance</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/list100/' >
+                
+                
+                
+                <span>List 100</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/resources/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+                
+                <span>Resources</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tool-box' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+
+                
+                <span>Tool Box</span>
+            </a>
+        </li>
+        
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </ol>
+    </div>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/interviews/">
+                <img src="/post/interviews/assets/bg_hu28e6a9096dce8bceb50131f769d90bbd_21758_800x0_resize_q75_box.jpeg"
+                        srcset="/post/interviews/assets/bg_hu28e6a9096dce8bceb50131f769d90bbd_21758_800x0_resize_q75_box.jpeg 800w, /post/interviews/assets/bg_hu28e6a9096dce8bceb50131f769d90bbd_21758_1600x0_resize_q75_box.jpeg 1600w"
+                        width="800" 
+                        height="439" 
+                        loading="lazy"
+                        alt="Featured image of post 2024 面試心得總結" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/sharing/" >
+                Sharing
+            </a>
+        
+            <a href="/categories/career/" >
+                Career
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/interviews/">2024 面試心得總結</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            包含各種 intern, full-time DS / MLE 的面試記錄及心得
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 31, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>以下內容將不會涵蓋面試中自己回答的內容，其一是因為我忘記了，其二是每個人的成長背景以及經歷都不同，放上自己的回答並沒有特別的意義，幫助也不大。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>這篇文章主要是幫自己在 2023.08 - 2024.05 這段時間內參加的面試做一個總結，也趁機感謝一些在這段路上幫助我的人。作為一個大學讀財政，碩班讀金融的純商學背景的學生，在大 CS 時代硬是跟相關科系的學生一起擠 DS / MLE 的窄門，老實說真的蠻辛苦的 XDDD，過程中也一直在懷疑自己是否真的有辦法走到最後，但所幸是撐下來了，好累。</p>
+<p><img src="/post/interviews/assets/rejects.png"
+	width="1920"
+	height="1548"
+	srcset="/post/interviews/assets/rejects_hubcf01d62bda17f6b0fc8eeea761e5b4a_737794_480x0_resize_box_3.png 480w, /post/interviews/assets/rejects_hubcf01d62bda17f6b0fc8eeea761e5b4a_737794_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="被 Reject 的 positions"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="124"
+		data-flex-basis="297px"
+	
+></p>
+<p>我從 23 年八月開始就一路投履歷，到 24 年五月底，總共投了莫約 50 個職缺，收到大概 10 個面試機會，最後拿到的 offer 張數一隻手指頭數得完 XDDD。以下就列出幾個我參加過，且比較有記憶點的面試：</p>
+<p>(有兩個面試已經獨立放在 <a class="link" href="https://abnerteng.github.io/post/turing_interview/"  target="_blank" rel="noopener"
+    >這裡</a> 以及 <a class="link" href="https://abnerteng.github.io/post/kronos_interview/"  target="_blank" rel="noopener"
+    >這裡</a>，因此這篇不會提及到這兩個職位的面試心得)</p>
+<h2 id="sea-group-map-garena-track">SEA Group MAP (Garena Track)</h2>
+<blockquote>
+<p>Progress: 1st Round Behavioral Interview</p>
+</blockquote>
+<p>開始找正職後的第一份面試，非常的緊張，連自我介紹都講到喘不過氣來（真的不知道在幹嘛）。但面試的主管人非常好叫我放輕鬆，後來的過程就比較像在聊天了。這次面試主要是針對履歷以及個人經驗的問題，針對履歷的問題有些也都問得蠻深入的，面試前建議可以複習一下自己的履歷以及做過的事情，會回答得比較游刃有餘。</p>
+<p>至於為什麼會在第一關就打住呢？因為我不小心透漏出有可能要讀博士班的傾象（真的好笨）</p>
+<h2 id="appier-machine-learning-scientist-intern">Appier Machine Learning Scientist Intern</h2>
+<blockquote>
+<p>Progress: 1st Round Technical Interview</p>
+</blockquote>
+<p>蠻意外可以收到的一份面試，我印象中是 2023 年十月底投的履歷，但是到 2024 年二月才收到面試通知，收到的時候很驚訝，因為我印象中這個職位的 FT / intern 幾乎都是台大資工的學生，我這種商學背景的學生能收到面試真的很驚訝 XDD。</p>
+<p>一開始面試官就丟 code share 的網站給我，然後分別請我算出兩個 loss function 的 gradient &amp; Hessian。寫完後還針對我的 code 提問，比如說為什麼使用 <code>np.ndarray</code> 而非 <code>list</code>，或是問我的 code 的時間複雜度、空間複雜度等等。</p>
+<p>第二題是給我一個小情境，請我 build 出一個推薦系統，問我為什麼會選擇這個 model，要怎麼 evaluate 之類的問題。</p>
+<p>整體來說面試難度稍高，沒想到會直接需要手刻 loss function，但是也是一個很不錯的體驗。</p>
+<h2 id="ibm-associate-application-consultant">IBM Associate Application Consultant</h2>
+<blockquote>
+<p>Progress: 2nd Round Behavioral Interview</p>
+</blockquote>
+<p>第一次面試是 Group Interview，也是他們所稱的 Career Day，會先有一個 5 分鐘的自我介紹，等大家都介紹完後則開始進行 30 分鐘的 Group Discussion，內容應該不太能提 XDDD，
+有趣的是在 Group A 分享完後會由 Group B 來提問。另外，主管們也會在旁邊觀察我們討論以及合作的狀況。在結束後會有一點 Behavioral Question。</p>
+<p>第二次面試是直接對他們的 lead，也是 pure behavioral question，問的都是履歷內容以及跟個人生涯規劃發展相關的事情。</p>
+<h2 id="ibm-associate-data-scientist">IBM Associate Data Scientist</h2>
+<blockquote>
+<p>Progress: 1st Round Behavioral &amp; Technical Interview</p>
+</blockquote>
+<p>這個職缺是由陳欣婷學姊內推得到的，非常感謝她的幫忙。這次面試前有先準備一個 self-intro 以及 project-intro 的簡報，在面試過程中也持續有被問到 project 的細節，甚至是跟客戶溝通的方法等等。</p>
+<h2 id="後記data-相關職缺面試建議">後記（Data 相關職缺面試建議）</h2>
+<p>投遞以及面試了這麼多場，算是大概了解到這個圈子的遊戲規則，以下是我認為蠻重要的一些建議，提供給大家參考。</p>
+<h3 id="cv--resume">CV / Resume</h3>
+<p>履歷基本上以白底黑字為主，不要太花俏（去年在審社員履歷的時後真的遇到一堆用 Canva 在做履歷然後因為顏色用太多導致我完全看不下去，有需要模板的話請左轉<a class="link" href="https://github.com/AbnerTeng/LaTeX-templates"  target="_blank" rel="noopener"
+    >我的 templates</a>，裡面有一個 <code>cv.tex</code>），內榮要簡潔明瞭，主要闡述自己在這段實習、這個活動、這個 project 中做了什麼，以及有什麼成果。如果有的話，可以加上一些數據，比如說這個 project 有幫助到公司省下多少成本，或是提升了多少效率等等（可量化的數字真的很重要）。</p>
+<h3 id="面試準備">面試準備</h3>
+<p>首先，一定要熟悉自己履歷寫了什麼，以過去一整年的經驗來說，面試真的很常（甚至說是一定）會被問到履歷上的東西，有些面試官甚至會深挖實習、project 的細節，並且跟你討論他覺得哪裡可以改、可以弄的更好等等的。從另一種角度上來看，相較於沒有範圍的面試問題，問履歷內容其實偏向送分，因為這全部都是你已經獲得、已經會的東西，所以是不是要好好準備ㄋ！</p>
+<p>再來是 DA / DS / MLE 也都很常見 project 介紹環節（啊其實這也是履歷問題的延伸），但比較需要注意的是，這個環節除了介紹 project 之外，高機率也會參雜一些 behav question，比如說：project 進行中遇到的困難、與 project member 的溝通、討論狀況等等的。另外就是針對 project 使用到的技術進行延伸，例如某個 project 做了 PCA，面試官可能問 PCA 的原理、或是其他降維方法之類的。</p>
+<p>剩下的可能就是 coding / math test 吧，那這部分沒啥好多說的，就是 Leetcode 刷起來，或是把 ML / DL / 數統 / 機率的題目都大概看過一次。</p>
+<blockquote>
+<p>如果對於面試以及我是如何鬼轉成為 MLE 有興趣或想要建議的話，可以直接使用左側 side bar 的各種方式聯繫我。</p>
+</blockquote>
+<h2 id="acknowledgement">Acknowledgement</h2>
+<p>感謝以下幾位在這段時間幫助我的人：</p>
+<ol>
+<li>Andrew Lee 李錫諺</li>
+<li>Angela You 游孟純</li>
+<li>Annie Chou 周彥妤</li>
+<li>Alice Lu 呂佳蓉</li>
+<li>Eric Yeh 葉宗瑋</li>
+<li>Jerry Chen 陳瑾叡</li>
+<li>Jiawei Liao 廖家緯</li>
+<li>Laura Chen 陳欣婷</li>
+<li>Liangyu Hsu 許亮瑜</li>
+<li>Liz Lee 李晏萌</li>
+<li>Prof. Chuan-Ju Wang 王釧茹教授</li>
+<li>Prof. Kendro Vincent 羅秉政教授</li>
+<li>Prof. Timothy Kuang 匡顯吉教授</li>
+<li>Prof. Victor Tsai 蔡銘峰教授</li>
+<li>Roger Hsu 許勝翔</li>
+<li>Stephen Chen 陳皓宇</li>
+<li>Steven Lee 李廷偉</li>
+<li>Tim Hsu 許祖源</li>
+<li>Vincent Hsieh 謝宗暄</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>License under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Abner Den
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

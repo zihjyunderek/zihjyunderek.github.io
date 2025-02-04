@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='LaTeX 入門心得 Ver.2'>
+<title>LaTeX Basic 2</title>
+
+<link rel='canonical' href='https://abnerteng.github.io/post/latex-basic-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='LaTeX Basic 2'>
+<meta property='og:description' content='LaTeX 入門心得 Ver.2'>
+<meta property='og:url' content='https://abnerteng.github.io/post/latex-basic-2/'>
+<meta property='og:site_name' content='Abner Den'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-05-29T18:45:20&#43;08:00'/><meta property='article:modified_time' content='2024-05-29T18:45:20&#43;08:00'/><meta property='og:image' content='https://abnerteng.github.io/post/latex-basic-2/logo.png' />
+<meta name="twitter:title" content="LaTeX Basic 2">
+<meta name="twitter:description" content="LaTeX 入門心得 Ver.2"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://abnerteng.github.io/post/latex-basic-2/logo.png' />
+    <link rel="shortcut icon" href="/img/logo.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/abner_hu894ca2164f907707a2e3eb75c53bd33f_1837809_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Abner Den</a></h1>
+            <h2 class="site-description">NTU GINM D13 | MLE @ SinoPac Turing</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/AbnerTeng'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/yu-chen-abner/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://drive.google.com/file/d/1s27Gsu_MLPwPw4iwucSblPzFymksn9TR/view?usp=sharing'
+                        target="_blank"
+                        title="CV"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <line x1="9" y1="9" x2="10" y2="9" />
+  <line x1="9" y1="13" x2="15" y2="13" />
+  <line x1="9" y1="17" x2="15" y2="17" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:abnerteng16@gmail.com'
+                        
+                        title="email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="3" y="5" width="18" height="14" rx="2" />
+  <polyline points="3 7 12 13 21 7" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/24fw_ml_finance/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"/><path d="M15 7h6v6"/></svg>
+
+                
+                <span>24FW ML Finance</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/list100/' >
+                
+                
+                
+                <span>List 100</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/resources/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+                
+                <span>Resources</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tool-box' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+
+                
+                <span>Tool Box</span>
+            </a>
+        </li>
+        
+    </ol>
+    <div class="menu-bottom-section">
+        <ol class="menu">
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </ol>
+    </div>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/latex-basic-2/">
+                <img src="/post/latex-basic-2/logo_huef0765454aab0881aa951edc93662bd8_14578_800x0_resize_box_3.png"
+                        srcset="/post/latex-basic-2/logo_huef0765454aab0881aa951edc93662bd8_14578_800x0_resize_box_3.png 800w, /post/latex-basic-2/logo_huef0765454aab0881aa951edc93662bd8_14578_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="363" 
+                        loading="lazy"
+                        alt="Featured image of post LaTeX Basic 2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/latex/" >
+                LaTeX
+            </a>
+        
+            <a href="/categories/sharing/" >
+                Sharing
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/latex-basic-2/">LaTeX Basic 2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            LaTeX 入門心得 Ver.2
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 29, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>這是 <strong><a class="link" href="https://abnerteng.github.io/post/latex-basic/"  target="_blank" rel="noopener"
+    >LaTeX 入門心得（附模板）</a></strong> 的接續教學，如果對 LaTeX 還不熟悉的人可以先去看看會比較知道這篇在幹嘛唷！</p>
+</blockquote>
+<h2 id="插入圖片檔-jpg--png--jpeg">插入圖片檔 (.jpg / .png / .jpeg)</h2>
+<p>一般來說，我們會使用 <code>\begin{figure}...\end{figure}</code> 來控制以及調整圖片檔在頁面中的位置，並使用 <code>\includegraphics{}</code> 來插入圖片檔。注意到在使用 <code>\includegraphics{}</code> 之前，我們需要先載入 <code>graphicx</code> 套件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{graphicx}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\includegraphics</span>{imgs/LaTeX_logo.png}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}</span></span></code></pre></div>
+<p>如果需要調整圖片大小，可以在 <code>\includegraphics{}</code> 中加入 <code>width</code> 或 <code>height</code> 的參數。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{graphicx}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[width=0.5\textwidth, height=4cm]</span>{imgs/LaTeX_logo.png}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}</span></span></code></pre></div>
+<p>在我們還沒設定任何與位置相關的參數時，圖片檔會被放在頁面的最上方或最下方，這時就可以用 <code>h</code>、<code>t</code>、<code>b</code>、<code>p</code> 等參數來指定圖片檔的位置。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>參數</th>
+<th style="text-align:center">位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code></td>
+<td style="text-align:center">置於當前插入的地方 (here)</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td style="text-align:center">置於頁面最上方 (top)</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td style="text-align:center">置於頁面最下方 (bottom)</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td style="text-align:center">圖形單獨放在一個浮動頁面上 (page of floats)</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td style="text-align:center">忽略系統美學標準</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td style="text-align:center">類似於 <code>h!</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>特別注意到，如果我們使用的參數是 <code>H</code>，需要先載入 <code>float</code> 套件。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{float}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{graphicx}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}[H]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[width=0.5\textwidth, height=4cm]</span>{imgs/LaTeX_logo.png}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}</span></span></code></pre></div></p>
+<h3 id="更改圖片檔路徑">更改圖片檔路徑</h3>
+<p>如果圖片檔在特定資料夾，可以使用 <code>\graphicspath{{path/}}</code> 來指定路徑。以下範例假設圖片檔在 <code>imgs/</code> 資料夾中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\graphicspath</span>{{imgs/}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{figure}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\includegraphics</span><span style="color:#a6e22e">[width=0.5\textwidth, height=4cm]</span>{LaTeX_logo.png}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{figure}</span></span></code></pre></div>
+<h2 id="產生表格">產生表格</h2>
+<p>表格是另一種在 LaTeX 中常見的元素，且精美的表個常常可以區別出一篇文章的品質。在 LaTeX 中，我們可以使用 <code>tabular</code> 環境來製作表格。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{center}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{tabular}{ccc}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>    1 &amp; 2 &amp; 3 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>    4 &amp; 5 &amp; 6 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>    7 &amp; 8 &amp; 9 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{tabular}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{center}</span></span></code></pre></div>
+<p>用上述的程式碼所獲得的表格會長得像這樣：</p>
+<p><img src="/post/latex-basic-2/page_asset/tabular-1.png"
+	width="326"
+	height="270"
+	srcset="/post/latex-basic-2/page_asset/tabular-1_hu327dec933b9ed1165ec1238ad5627b06_19757_480x0_resize_box_3.png 480w, /post/latex-basic-2/page_asset/tabular-1_hu327dec933b9ed1165ec1238ad5627b06_19757_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="超陽春表格"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="120"
+		data-flex-basis="289px"
+	
+></p>
+<p>來一一解釋程式碼的每一部分：</p>
+<ul>
+<li><code>\begin{tabular}{ccc}</code>：這裡的 <code>ccc</code> 代表這個表格有三個欄位，且每個欄位都是置中對齊的。</li>
+<li><code>\hline</code>：這是用來畫表格的橫線。</li>
+<li><code>&amp;</code>：這是用來分隔每個欄位的符號。</li>
+<li><code>\\</code>：這是用來換行的符號，每一欄的結束都必須加上。</li>
+</ul>
+<h3 id="multicolumn--multirow"><code>multicolumn</code> &amp; <code>multirow</code></h3>
+<p>有時候我們會需要合併欄位或是合併列，這時候就可以使用 <code>multirow</code> 這個套件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\usepackage</span>{multirow}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{center}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\begin</span>{tabular}{lccc}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\multicolumn</span>{4}{c}{<span style="color:#66d9ef">\textbf</span>{Powers of Value}} <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\textbf</span>{Index} &amp; <span style="color:#66d9ef">\textbf</span>{Value} &amp; <span style="color:#66d9ef">\textbf</span>{Square} &amp; <span style="color:#66d9ef">\textbf</span>{Cube} <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\multirow</span>{3}{*}{First Try} &amp; 1 &amp; 1 &amp; 1 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        &amp; 2  &amp; 4 &amp; 8 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        &amp; 3  &amp; 9 &amp; 27 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\end</span>{tabular}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{center}</span></span></code></pre></div>
+<p>這樣的程式碼會產生出以下的表格：</p>
+<p><img src="/post/latex-basic-2/page_asset/tabular-2.png"
+	width="452"
+	height="196"
+	srcset="/post/latex-basic-2/page_asset/tabular-2_hu4a9fe58de70516c654981f42638be5f8_32100_480x0_resize_box_3.png 480w, /post/latex-basic-2/page_asset/tabular-2_hu4a9fe58de70516c654981f42638be5f8_32100_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="合併欄位與列"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="553px"
+	
+></p>
+<p><code>multirow</code> 與 <code>multicolumn</code> 的用法如下：</p>
+<ul>
+<li><code>\multicolumn{欄位數}{對齊方式}{內容}</code>：這個指令可以用來合併欄位。</li>
+<li><code>\multirow{列數}{寬度}{內容}</code>：這個指令可以用來合併列。</li>
+</ul>
+<p>插入表格與插入圖片一樣，也會遇到位置擺放的問題，我們可以使用 <code>table</code> 環境來控制表格的位置。與 <code>\begin{figure}...\end{figure}</code> 類似，我們可以使用 <code>h</code>、<code>t</code>、<code>b</code>、<code>p</code>、<code>!</code>、<code>H</code> 來控制表格的位置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{table}[H]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\centering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\begin</span>{tabular}{ccc}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>        1 &amp; 2 &amp; 3 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        4 &amp; 5 &amp; 6 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        7 &amp; 8 &amp; 9 <span style="color:#66d9ef">\\</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">\hline</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\end</span>{tabular}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\caption</span>{Table Example}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">\label</span>{tab:example}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{table}</span></span></code></pre></div>
+<p><img src="/post/latex-basic-2/page_asset/table-1.png"
+	width="312"
+	height="174"
+	srcset="/post/latex-basic-2/page_asset/table-1_hua9ac9d36a8e8cc3811cd1d14bdfbac84_18958_480x0_resize_box_3.png 480w, /post/latex-basic-2/page_asset/table-1_hua9ac9d36a8e8cc3811cd1d14bdfbac84_18958_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="table 環境"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="430px"
+	
+></p>
+<p>上圖是使用 <code>table</code> 環境的結果，我們可以用 <code>\centering</code> 來替代 <code>center</code> 環境，這樣可以讓表格置中。也可以使用 <code>\caption{}</code> 來加入表格標題，並使用 <code>\label{}</code> 來加入表格的標籤。</p>
+<h2 id="圖片--表格並排">圖片 / 表格並排！</h2>
+<p>圖片 / 表格並排通常是大多數新手很常遇到的問題，這裡提供一個簡單的解決方案。使用 <code>minipage</code> 環境可以讓我們將圖片 / 表格並排。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{minipage}{0.5<span style="color:#66d9ef">\textwidth</span>}
+</span></span><span style="display:flex;"><span>    table1 here
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{minipage}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\hfill</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{minipage}{0.5<span style="color:#66d9ef">\textwidth</span>}
+</span></span><span style="display:flex;"><span>    table2 here
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{minipage}</span></span></code></pre></div>
+<p>這樣的程式碼會讓兩個表格並排，且各佔一半的寬度。相同地，把 <code>table1</code> 以及 <code>table2</code> 的內容替換成插入圖片檔的程式碼，就可以讓圖片並排。</p>
+<p><img src="/post/latex-basic-2/page_asset/minipage-1.png"
+	width="768"
+	height="230"
+	srcset="/post/latex-basic-2/page_asset/minipage-1_hu8ce3d80cc1dc285fc9e9bd4d1fd3f297_37996_480x0_resize_box_3.png 480w, /post/latex-basic-2/page_asset/minipage-1_hu8ce3d80cc1dc285fc9e9bd4d1fd3f297_37996_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="表格並排 (程式碼中 table1, table2 內容省略)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="801px"
+	
+></p>
+<p><code>minipage</code> 的用法如下：
+<code>\begin{minipage}{寬度}</code>：這個指令可以用來指定 <code>minipage</code> 的寬度。</p>
+<h2 id="後記">後記</h2>
+<p>表格與圖片相關的設定其實還有超多（就連我自己也沒什麼用到），但相關 Reference 我已經附在底下了，有興趣的讀者可以自行參考。如果是想使用 LaTeX 來交交學校作業、報告、甚至是碩士論文的讀者呢，讀到這邊已經可以 cover 掉大部分的需求了。這個系列應該也會先更到這邊 XDDD，下次可能會寫一下 beamer 或 Tikz 的使用方法吧（我也不確定）。有任何想要了解的主題或是有任何問題歡迎使用左側 sidebar 的各種方式聯絡我！</p>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a class="link" href="https://www.overleaf.com/learn/latex/Inserting_Images"  target="_blank" rel="noopener"
+    >Overleaf 插入圖片檔 document</a></li>
+<li><a class="link" href="https://www.overleaf.com/learn/latex/Tables"  target="_blank" rel="noopener"
+    >Overleaf 表格 document</a></li>
+<li><a class="link" href="https://latex-tutorial.com/minipage-latex/"  target="_blank" rel="noopener"
+    >Minipage 教學</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>License under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 Abner Den
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
