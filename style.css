@@ -1,0 +1,117 @@
+/* 統一網站字體為 Microsoft YaHei */
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #ffffff; /* 內容背景改為純白 */
+    color: #333; /* 文字顏色保持可讀性 */
+}
+
+/* 頂端姓名區塊 */
+.name-header {
+    background-color: #eef2f5; /* 背景色 */
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 讓圖標靠右 */
+    padding: 15px 50px;
+}
+
+.name-header h1 {
+    font-size: 26pt;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* 頂端小標（灰色副標題） */
+.name-header h2 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #666; /* 灰色文字 */
+    margin-top: 5px;
+}
+
+/* 導覽列 */
+.navbar {
+    width: 100%;
+}
+
+/* 讓導覽列中文字與英文分行，並讓欄位平均 */
+.navbar-nav .nav-link {
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.4;
+    padding: 15px;
+}
+
+/* 讓導覽列充滿整列 */
+.navbar-nav .nav-item {
+    flex-grow: 1;
+}
+
+/* 導覽列背景顏色 */
+.navbar-dark {
+    background-color: #424242 !important;
+}
+
+/* 主要內容區塊 */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff; /* 改為純白 */
+}
+
+/* 內容標題 */
+.section-title {
+    font-size: 24px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* 履歷區標題 */
+.resume-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* 頭像樣式（長方形，限制最大高度和寬度） */
+.profile-img {
+    width: 100%;
+    max-width: 150px; /* 最大寬度 150px */
+    height: auto; /* 保持比例 */
+    margin-bottom: 20px; /* 與下方內容間距 */
+}
+
+/* 個人網站連結樣式 */
+.personal-links {
+    margin-top: 20px;
+    text-align: left; /* 左對齊 */
+    padding-left: 10px; /* 左側留白 */
+}
+
+.personal-links li {
+    margin-bottom: 10px;
+    display: flex; /* 使用 Flex 排版 */
+    align-items: center;
+}
+
+.personal-links a {
+    text-decoration: none; /* 去掉下劃線 */
+    color: #424242; /* 深灰色文字 */
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* 圖標與文字之間間距 */
+}
+
+.personal-links a:hover {
+    text-decoration: underline; /* 滑過時添加下劃線 */
+}
+
+.icon {
+    stroke: #424242; /* 圖標顏色為深灰色 */
+    width: 24px; /* 圖標大小 */
+    height: 24px;
+}
+
