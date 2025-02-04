@@ -1,6 +1,9 @@
+/* 統一網站字體為 Microsoft YaHei */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #ffffff; /* 內容背景改為純白 */
+    color: #333; /* 文字顏色保持可讀性 */
+    font-size: 14pt; /* 中文字體設置為 14pt */
 }
 
 /* 頂端姓名區塊 */
@@ -31,7 +34,7 @@ body {
 /* 導覽列 */
 .navbar {
     width: 100%;
-    background-color: #424242 !important; /* 修正背景顏色為深灰色 */
+    background-color: #424242 !important; /* 深灰色背景 */
 }
 
 /* 導覽列中文字與英文分行，並讓欄位平均 */
@@ -40,7 +43,7 @@ body {
     text-align: center;
     line-height: 1.4;
     padding: 15px;
-    color: #d9d9d9 !important; /* 修正文字顏色為白色 */
+    color: #d9d9d9 !important; /* 文字顏色 */
 }
 
 /* 讓導覽列充滿整列 */
@@ -48,7 +51,7 @@ body {
     flex-grow: 1;
 }
 
-/* 主要內容區塊 */
+/* 主要內容區塊：最大寬度設定 */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -62,39 +65,79 @@ body {
     color: #343a40;
 }
 
-/* 目錄大綱樣式 */
-.outline {
-    border: 1px solid #ddd;
-    padding: 20px;
-    max-width: 200px; /* 和頭像區的寬度一致 */
-    background-color: #f8f9fa; /* 淺灰色背景 */
-    position: sticky;
-    top: 20px;
+/* 履歷區標題 */
+.resume-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
-.outline h4 {
-    font-size: 18px;
+/* 頭像樣式（長方形，限制最大高度和寬度） */
+.profile-img {
+    width: 100%;
+    max-width: 200px; /* 最大寬度 200px */
+    height: auto; /* 保持比例 */
+    margin-bottom: 20px; /* 與下方內容間距 */
+}
+
+/* 個人網站連結樣式 */
+.personal-links {
+    margin-top: 20px;
+    text-align: left; /* 左對齊 */
+    padding-left: 10px; /* 左側留白 */
+}
+
+.personal-links li {
+    margin-bottom: 10px;
+    display: flex; /* 使用 Flex 排版 */
+    align-items: center;
+}
+
+.personal-links a {
+    text-decoration: none; /* 去掉下劃線 */
+    color: #424242; /* 深灰色文字 */
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* 圖標與文字之間間距 */
+}
+
+.personal-links a:hover {
+    text-decoration: underline; /* 滑過時添加下劃線 */
+}
+
+.icon {
+    stroke: #424242; /* 圖標顏色為深灰色 */
+    width: 24px; /* 圖標大小 */
+    height: 24px;
+}
+
+/* ---- 以下為研究頁面目錄大綱的額外樣式 ---- */
+
+/* 目錄大綱標題 */
+.toc-title {
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-#outline-menu li {
+/* 目錄連結列表 */
+.toc-list {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+}
+
+.toc-list li {
     margin-bottom: 10px;
 }
 
-#outline-menu a {
+.toc-list a {
     text-decoration: none;
-    color: #333;
-    font-size: 14px;
+    color: #424242; /* 深灰色 */
 }
 
-#outline-menu a.active {
-    color: #007bff;
-    font-weight: bold;
+.toc-list a:hover {
     text-decoration: underline;
 }
 
-/* 主要內容區塊 */
-section {
-    margin-bottom: 50px;
-}
