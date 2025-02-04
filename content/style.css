@@ -116,7 +116,7 @@ body {
 .research-toc {
     /* 讓內容在區塊內文字置中 */
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
     /* 若想與右欄標題同高度，搭配 .section-title 的 margin-top: 30px; */
     /* 可視需要自行增減此處的 margin-top */
 }
