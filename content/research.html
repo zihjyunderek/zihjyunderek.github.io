@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>研究 | Research</title>
+    <title>過往研究 | Past Research</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <!-- 建議改用 \content 目錄下的 style.css -->
+    <!-- 建議引用 \content 目錄下的 style.css -->
     <link rel="stylesheet" href="/content/style.css">
 </head>
 <body>
@@ -14,24 +14,28 @@
     <!-- 動態載入導覽列 navbar.html -->
     <div id="navbar-placeholder"></div>
 
-    <!-- 主要內容容器 -->
+    <!-- 主要內容容器，含上方外距 mt-5 -->
     <div class="container mt-5">
         <div class="row">
-            <!-- 目錄大綱區（左側），Bootstrap 預設寬度同 index.html 的 col-lg-4 -->
-            <div class="col-lg-4 research-toc mb-4">
-                <h3 class="toc-title">研究目錄</h3>
-                <ul class="toc-list">
-                    <li><a href="#section1">研究主題 A</a></li>
-                    <li><a href="#section2">研究主題 B</a></li>
-                    <li><a href="#section3">研究主題 C</a></li>
-                    <!-- 可依實際內容增減 -->
-                </ul>
+            <!-- 左側：研究目錄（與 index.html 相同 col-lg-4 寬度） -->
+            <!-- 透過 d-flex + justify-content-center + align-items-start 置中，頂端對齊 -->
+            <div class="col-lg-4 d-flex justify-content-center align-items-start">
+                <!-- 研究目錄外包一層容器來置中，可用自訂 research-toc 來調整樣式 -->
+                <div class="research-toc text-center">
+                    <h3 class="toc-title">研究目錄</h3>
+                    <ul class="toc-list">
+                        <li><a href="#section1">研究主題 A</a></li>
+                        <li><a href="#section2">研究主題 B</a></li>
+                        <li><a href="#section3">研究主題 C</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- 研究內容區（右側） -->
+            <!-- 右側：研究內容（col-lg-8） -->
             <div class="col-lg-8">
-                <h2 class="section-title">研究 | Research</h2>
-                <p>這裡是研究的簡介，可以放置一段概述...</p>
+                <!-- 過往研究標題，與左側目錄同樣的起始高度 -->
+                <h2 class="section-title">過往研究 | Past Research</h2>
+                <p>這裡是過往研究內容的簡介，可以放置一段概述...</p>
 
                 <!-- 範例研究主題 A -->
                 <h3 id="section1">研究主題 A</h3>

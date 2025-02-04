@@ -113,18 +113,23 @@ body {
 }
 
 /* ---- 以下為研究頁面目錄大綱的額外樣式 ---- */
+.research-toc {
+    /* 讓內容在區塊內文字置中 */
+    text-align: center;
+    /* 若想與右欄標題同高度，搭配 .section-title 的 margin-top: 30px; */
+    /* 可視需要自行增減此處的 margin-top */
+}
 
-/* 目錄大綱標題 */
 .toc-title {
     font-size: 20px;
     font-weight: bold;
+    margin-top: 30px; /* 與右側 .section-title 同樣的上方距離  */
     margin-bottom: 15px;
 }
 
-/* 目錄連結列表 */
 .toc-list {
-    list-style-type: none; 
-    margin: 0; 
+    list-style-type: none;
+    margin: 0;
     padding: 0;
 }
 
@@ -140,4 +145,3 @@ body {
 .toc-list a:hover {
     text-decoration: underline;
 }
-
