@@ -113,7 +113,7 @@ body {
 }
 
 /* ---- 以下為研究頁面目錄大綱的額外樣式 ---- */
-.research-toc {
+.toc {
     /* 讓內容在區塊內文字置中 */
     text-align: center;
     margin-top: 20px;
