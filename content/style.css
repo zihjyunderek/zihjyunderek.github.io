@@ -181,7 +181,7 @@ body {
 
 .article-image img {
     width: 100%;             /* 或固定寬度，如 800px */
-    height: 200px;           /* 指定想要的高度，例如 200px */
+    height: 100px;           /* 指定想要的高度，例如 200px */
     object-fit: cover;       /* 裁切圖片以填滿此寬高 */
     display: block;          /* 移除底部空白 */
 }
