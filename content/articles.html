@@ -14,21 +14,26 @@
     <!-- 動態載入導覽列 navbar.html -->
     <div id="navbar-placeholder"></div>
 
-    <!-- 主要內容容器：.container + Bootstrap Grid .row -->
+    <!-- 網頁內容：.container + Bootstrap Grid .row -->
     <div class="container mt-5">
+
+        <!-- 網頁內容左側：目錄  -->
         <div class="row">
-            <!-- 左側：文章目錄 (與 research.html 相同 col-lg-4) -->
             <div class="col-lg-4 d-flex justify-content-center align-items-start">
+
+                <!-- 目錄標題  -->
                 <div class="toc text-center">
                     <h3 class="toc-title">文章目錄</h3>
+
+                    <!-- 目錄文章項目  -->
                     <ul class="toc-list">
-                        <!-- 這裡依照每篇文章逐一列出 -->
+
+                        <!-- 依照文章逐列列出 -->
                         <li>
-                            <!-- 全部文字指向同一個連結，可用錨點 #article1 或直接連 .html 檔 -->
-                            <a href="#article1">
+                            <!-- 第一篇目錄文章 -->
+                            <a href="#article1"> <!-- #article1 可替換為 .html -->
                                 <strong>我的第一篇文章</strong><br />
                                 <span>這是副標題，說明文章大綱</span><br />
-                                <!-- 以下僅示範，若要更符合需求可換成 inline-block 排版等 -->
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      class="icon icon-tabler icon-tabler-calendar-time"
                                      width="20"
@@ -52,7 +57,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#article2">
+                            <!-- 第二篇目錄文章 -->
+                            <a href="#article2"> <!-- #article2 可替換為 .html -->
                                 <strong>我的第二篇文章</strong><br />
                                 <span>這是副標題，說明文章大綱</span><br />
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -77,34 +83,46 @@
                                 <time>Oct 10, 2025</time>
                             </a>
                         </li>
+
                         <!-- 更多文章目錄項目... -->
+
                     </ul>
                 </div>
             </div>
 
-            <!-- 右側：文章列表 (col-lg-8) -->
+
+
+
+
+            <!-- 網頁右側：文章列表 (col-lg-8) -->
             <div class="col-lg-8">
+
                 <h2 class="section-title">專題文章 | Articles</h2>
                 <p>這裡是專題文章的總覽，點擊文章卡片可進入詳細內容...</p>
 
-                <!-- 模仿 Abner Den 的 article 結構 -->
                 <section class="article-list">
-                    <!-- 範例 Article 1 -->
+
+                    <!-- 範例文章 1 Article 1 -->
                     <article id="article1" class="has-image">
+
+                        <!-- 文章架構 -->
                         <header class="article-header">
+
                             <!-- 文章縮圖 -->
                             <div class="article-image">
                                 <a href="/content/articles/my-first-article.html">
                                     <!-- 將此處替換為實際圖片 path, e.g. /content/articles/my-first-article/img.jpg -->
                                     <img src="https://via.placeholder.com/800x400.png?text=Article+Image+1"
-                                         width="800"
-                                         height="400"
+                                         width="200"
+                                         height="100"
                                          loading="lazy"
                                          alt="Featured image of Article 1" />
                                 </a>
                             </div>
 
                             <div class="article-details">
+                                
+                                <!-- 文章分類：Sharing -->
                                 <header class="article-category">
                                     <a href="/categories/sharing/">Sharing</a>
                                 </header>
@@ -117,7 +135,7 @@
                                     <h3 class="article-subtitle">這是副標題，說明文章大綱</h3>
                                 </div>
 
-                                <!-- 文章時間 + 閱讀時間 (可自行決定是否顯示) -->
+                                <!-- 文章發布時間 + 閱讀時間  -->
                                 <footer class="article-time">
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -161,31 +179,43 @@
                             </div>
                         </header>
                     </article>
-                    <!-- 範例 Article 1 結束 -->
+                    <!-- 範例文章 1 Article 1 -->
 
-                    <!-- 範例 Article 2 -->
+                    <!-- 範例文章 2 Article 2 -->
                     <article id="article2" class="has-image">
+
+                        <!-- 文章架構 -->
                         <header class="article-header">
+
+                            <!-- 文章縮圖 -->    
                             <div class="article-image">
                                 <a href="/content/articles/my-second-article.html">
                                     <!-- 將此處替換為實際圖片 path, e.g. /content/articles/my-second-article/img.jpg -->
                                     <img src="https://via.placeholder.com/800x400.png?text=Article+Image+2"
-                                         width="800"
-                                         height="400"
+                                         width="200"
+                                         height="100"
                                          loading="lazy"
                                          alt="Featured image of Article 2" />
                                 </a>
                             </div>
+
+
                             <div class="article-details">
+
+                                <!-- 文章分類：Sharing -->
                                 <header class="article-category">
                                     <a href="/categories/tech/">Tech</a>
                                 </header>
+
+                                <!-- 文章標題與副標題 -->
                                 <div class="article-title-wrapper">
                                     <h2 class="article-title">
                                         <a href="/content/articles/my-second-article.html">我的第二篇文章</a>
                                     </h2>
                                     <h3 class="article-subtitle">這是副標題，說明文章大綱</h3>
                                 </div>
+
+                                <!-- 文章發布時間 + 閱讀時間  -->
                                 <footer class="article-time">
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -229,13 +259,20 @@
                             </div>
                         </header>
                     </article>
-                    <!-- 範例 Article 2 結束 -->
+                    <!-- 範例文章 2 Article 2 結束 -->
 
                     <!-- 更多文章 ... -->
                 </section>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
     <!-- 動態載入頁尾 footer.html -->
     <div id="footer-placeholder"></div>
