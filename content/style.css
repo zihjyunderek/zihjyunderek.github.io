@@ -178,12 +178,12 @@ body {
     display: block; /* 預設堆疊在一起，如需圖文並排可用 flex 或 grid */
 }
 
-/* 文章圖片區 */
+
 .article-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* 建議先確保每篇文章的圖片尺寸盡量一致，畫面較整齊 */
+    width: 100%;             /* 或固定寬度，如 800px */
+    height: 200px;           /* 指定想要的高度，例如 200px */
+    object-fit: cover;       /* 裁切圖片以填滿此寬高 */
+    display: block;          /* 移除底部空白 */
 }
 
 /* 文章詳細資訊 */
