@@ -4,23 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>專題文章 | Articles</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- 依照您的專案路徑：建議使用 /content/style.css 或其他指定檔案 -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <!-- 這裡會動態載入 navbar.html -->
+    <!-- 動態載入導覽列 navbar.html -->
     <div id="navbar-placeholder"></div>
 
-    <!-- 主要內容 -->
+    <!-- 主要內容容器 -->
     <div class="container mt-5">
         <h2 class="section-title">專題文章 | Articles</h2>
-        <p>這裡是專題文章的內容...</p>
-    </div>
+        <p>這裡是專題文章的總覽，點擊文章卡片可進入詳細內容...</p>
 
-    <!-- 這裡會動態載入 footer.html -->
+        <!-- 模仿 Abner Den 的 article 結構 -->
+        <section class="article-list">
+
+            <!-- 範例 Article 1 -->
+            <article class="has-image">
+                <header class="article-header">
+
+                    <!-- 文章縮圖/橫幅 -->
+                    <div class="article-image">
+                        <!-- href 指向文章詳細頁或任意連結 -->
+                        <a href="/post/my-first-article/">
+                            <!-- 範例圖片路徑請自行替換 -->
+                            <img src="https://via.placeholder.com/800x400.png?text=Article+Image+1"
+                                 width="800"
+                                 height="400"
+                                 loading="lazy"
+                                 alt="Featured image of Article 1" />
+                        </a>
+                    </div>
+
+                    <div class="article-details">
+                        <!-- 類別標籤（可放多個 <a>） -->
+                        <header class="article-category">
+                            <a href="/categories/sharing/">Sharing</a>
+                            <!-- <a href="/categories/otherCategory/">Other Category</a> -->
+                        </header>
+
+                        <!-- 文章標題與副標題 -->
+                        <div class="article-title-wrapper">
+                            <h2 class="article-title">
+                                <a href="/post/my-first-article/">我的第一篇文章</a>
+                            </h2>
+                            <h3 class="article-subtitle">
+                                這是副標題，說明文章大綱
+                            </h3>
+                        </div>
+
+                        <!-- 文章時間與閱讀時間 -->
+                        <footer class="article-time">
+                            <div>
+                                <!-- 發佈日期 -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-time"
+                                     width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                    <circle cx="18" cy="18" r="4" />
+                                    <path d="M15 3v4" />
+                                    <path d="M7 3v4" />
+                                    <path d="M3 11h16" />
+                                    <path d="M18 16.496v1.504l1 1" />
+                                </svg>
+                                <time class="article-time--published">Oct 15, 2025</time>
+                            </div>
+
+                            <div class="ms-3">
+                                <!-- 閱讀時間 -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-clock"
+                                     width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <circle cx="12" cy="12" r="9" />
+                                    <polyline points="12 7 12 12 15 15" />
+                                </svg>
+                                <time class="article-time--reading">3 min read</time>
+                            </div>
+                        </footer>
+                    </div>
+                </header>
+            </article>
+            <!-- 範例 Article 1 結束 -->
+
+            <!-- 範例 Article 2 -->
+            <article class="has-image">
+                <header class="article-header">
+                    <div class="article-image">
+                        <a href="/post/my-second-article/">
+                            <img src="https://via.placeholder.com/800x400.png?text=Article+Image+2"
+                                 width="800"
+                                 height="400"
+                                 loading="lazy"
+                                 alt="Featured image of Article 2" />
+                        </a>
+                    </div>
+                    <div class="article-details">
+                        <header class="article-category">
+                            <a href="/categories/tech/">Tech</a>
+                        </header>
+                        <div class="article-title-wrapper">
+                            <h2 class="article-title">
+                                <a href="/post/my-second-article/">第二篇技術文章</a>
+                            </h2>
+                            <h3 class="article-subtitle">
+                                關於某項技術的分享或教學
+                            </h3>
+                        </div>
+                        <footer class="article-time">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-time"
+                                     width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                    <circle cx="18" cy="18" r="4" />
+                                    <path d="M15 3v4" />
+                                    <path d="M7 3v4" />
+                                    <path d="M3 11h16" />
+                                    <path d="M18 16.496v1.504l1 1" />
+                                </svg>
+                                <time class="article-time--published">Oct 10, 2025</time>
+                            </div>
+                            <div class="ms-3">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-clock"
+                                     width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <circle cx="12" cy="12" r="9" />
+                                    <polyline points="12 7 12 12 15 15" />
+                                </svg>
+                                <time class="article-time--reading">5 min read</time>
+                            </div>
+                        </footer>
+                    </div>
+                </header>
+            </article>
+            <!-- 範例 Article 2 結束 -->
+
+            <!-- 更多文章結構 (article) 可自行複製貼上 -->
+
+        </section>
+        <!-- End .article-list -->
+
+    </div>
+    <!-- container 結束 -->
+
+    <!-- 動態載入頁尾 footer.html -->
     <div id="footer-placeholder"></div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // 載入 navbar.html
@@ -39,3 +204,4 @@
     </script>
 </body>
 </html>
+
