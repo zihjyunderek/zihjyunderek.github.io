@@ -1,7 +1,7 @@
 /* 統一網站字體為 Microsoft YaHei */
 body {
     font-family: 'Microsoft YaHei', sans-serif;
-    background-color: #ffffff; /* 內容背景改為純白 */
+    background-color: #f0f0f0; /* 淺灰色背景 */
     color: #333; /* 文字顏色保持可讀性 */
     font-size: 14pt; /* 中文字體設置為 14pt */
 }
