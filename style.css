@@ -1,4 +1,4 @@
-/* 統一網站字體為 Microsoft YaHei */
+/* === 全站字體與顏色設定 === */
 body {
     font-family: 'Microsoft YaHei', sans-serif;
     background-color: #f0f0f0; /* 淺灰色背景 */
@@ -6,7 +6,7 @@ body {
     font-size: 14pt; /* 中文字體設置為 14pt */
 }
 
-/* 頂端姓名區塊 */
+/* === 頂端姓名區塊 === */
 .name-header {
     background-color: #eef2f5; /* 背景色 */
     padding: 20px 0; /* 減少上下 padding, 使頂端高度更緊湊 (原本 20px 0) */
@@ -15,13 +15,11 @@ body {
     flex-direction: column; /* 讓內容垂直排列 */
     align-items: center; /* 垂直置中 */
 }
-
 .name-header h1 {
     font-size: 26pt; /* 字體大小 */
     font-weight: bold;
     margin: 0; /* 去掉上下邊距 */
 }
-
 .name-header h2 {
     font-size: 14pt; /* 副標字體大小 */
     font-weight: normal;
