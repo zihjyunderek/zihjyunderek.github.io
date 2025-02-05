@@ -58,12 +58,17 @@ body {
 .container {
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    /* 原本 padding: 20px; -> 改小 (例如 10px) */
+    padding: 10px;
 }
 
-/* 內容標題 */
+
+/* === 內容標題 === */
 .section-title {
     font-size: 24px;
-    margin-top: 30px;
+    /* 若想再縮小標題上方空間，可視需要將 margin-top: 30px; 改小 */
+    margin-top: 20px;
     font-weight: bold;
     color: #343a40;
 }

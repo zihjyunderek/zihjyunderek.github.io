@@ -71,6 +71,10 @@ body {
     color: #343a40;
 }
 
+.row .col-lg-8 {
+    padding-left: 20px; /* 確保右側內容與線條保持距離 */
+}
+
 /* 履歷區標題 */
 .resume-title {
     font-size: 20px;
