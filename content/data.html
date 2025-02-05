@@ -4,23 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>資料 | Data</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/style.css">
+    <!-- 建議共用 /content/style.css 與其他頁面相同 -->
+    <link rel="stylesheet" href="/content/style.css">
 </head>
 <body>
 
-    <!-- 這裡會動態載入 navbar.html -->
+    <!-- 動態載入導覽列 navbar.html -->
     <div id="navbar-placeholder"></div>
 
-    <!-- 主要內容 -->
-    <div class="container mt-5">
-        <h2 class="section-title">資料 | Data</h2>
-        <p>這裡是資料的內容...</p>
+    <!-- 主要內容容器 (含上方外距較小以縮短與導覽列距離) -->
+    <div class="container mt-2">
+        <div class="row">
+            <!-- 左側：資料目錄 (col-lg-4) -->
+            <div class="col-lg-4 d-flex justify-content-center align-items-start">
+                <div class="toc text-center">
+                    <h3 class="toc-title">資料目錄</h3>
+                    <ul class="toc-list">
+                        <!-- 您可在此新增更多資料項目 -->
+                        <li>
+                            <a href="#data1">
+                                <strong>我的第一筆資料</strong><br />
+                                <span>這是副標題，說明資料大綱</span><br />
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-time"
+                                     width="20"
+                                     height="20"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     style="vertical-align: middle; margin-right: 4px;">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                    <circle cx="18" cy="18" r="4" />
+                                    <path d="M15 3v4" />
+                                    <path d="M7 3v4" />
+                                    <path d="M3 11h16" />
+                                    <path d="M18 16.496v1.504l1 1" />
+                                </svg>
+                                <time>Dec 01, 2025</time>
+                            </a>
+                        </li>
+                        <!-- 更多資料項目... -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 右側：資料區 (col-lg-8) -->
+            <div class="col-lg-8">
+                <!-- 標題 / 簡介文字改為資料 (Data) -->
+                <h2 class="section-title">資料 | Data</h2>
+                <p>這裡是資料的總覽，您可以在此介紹各種數據集或檔案。點擊左側目錄進入詳細內容...</p>
+
+                <!-- 刪除原本的範例專案(文章)區塊，只保留空的 section -->
+                <section class="article-list">
+                    <!-- 若無卡片，可留空或自行新增個別資料展示 -->
+                </section>
+            </div>
+        </div>
     </div>
 
-    <!-- 這裡會動態載入 footer.html -->
+    <!-- 動態載入頁尾 footer.html -->
     <div id="footer-placeholder"></div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // 載入 navbar.html
@@ -39,3 +90,4 @@
     </script>
 </body>
 </html>
+
