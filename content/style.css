@@ -5,55 +5,57 @@
    --------------------------------------------------
    建議將網頁背景由原本的 #ffffff 改為 #f0f0f0（或其他淺灰）
    文字顏色維持 #333，利於閱讀
-*/
+/* === 全站字體與顏色設定 === */
 body {
     font-family: 'Microsoft YaHei', sans-serif;
-    background-color: #f0f0f0; /* 內容背景改為淺灰色 */
-    color: #333;              /* 文字保持深色，提高可讀性 */
-    font-size: 14pt;          /* 中文字體設置為 14pt */
-    margin: 0;                /* 建議將 body 預設 margin 清零 */
+    background-color: #f0f0f0; /* 淺灰色背景 */
+    color: #333;
+    font-size: 14pt;
+    margin: 0;    
     padding: 0;
 }
 
 /* === 頂端姓名區塊 === */
 .name-header {
-    background-color: #eef2f5; /* 淺色背景，可保持或自行調整 */
-    padding: 20px 0;
-    text-align: center;        /* 水平置中 */
+    background-color: #eef2f5;
+    /* 減少上下 padding, 使頂端高度更緊湊 (原本 20px 0) */
+    padding: 10px 0;
+    text-align: center;
     display: flex;
-    flex-direction: column;    /* 讓內容垂直排列 */
-    align-items: center;       /* 垂直置中 */
+    flex-direction: column;
+    align-items: center;
 }
-
 .name-header h1 {
-    font-size: 26pt; /* 字體大小 */
+    font-size: 26pt;
     font-weight: bold;
-    margin: 0;       /* 去掉上下邊距 */
+    margin: 0;
 }
-
 .name-header h2 {
-    font-size: 14pt;      /* 副標字體大小 */
+    font-size: 14pt;
     font-weight: normal;
-    color: #a6a6a6;       /* 灰色字體 */
-    margin: 5px 0 0;      /* 調整與 h1 的距離 */
-    line-height: 1.5;     /* 增加行距 */
-    text-align: center;   /* 確保文字居中對齊 */
+    color: #a6a6a6;
+    margin: 5px 0 0;
+    line-height: 1.5;
+    text-align: center;
 }
 
 /* === 導覽列 === */
-
-/* 深灰色背景，文字維持淺色，符合深色主題感 */
 .navbar {
     width: 100%;
-    background-color: #424242 !important; /* 深灰色背景 (固定) */
+    background-color: #424242 !important; /* 深灰色背景 */
+    /* 若想再進一步縮小整個 navbar 高度，可以減少上下 padding：
+       padding-top: 5px; padding-bottom: 5px;  (視需要增減)
+    */
 }
 
+/* 讓導覽列的高度變窄：調整 nav-link padding 與 line-height */
 .navbar-nav .nav-link {
-    font-size: 14pt;       /* 中文字體設定為 14pt */
+    font-size: 14pt;
     text-align: center;
-    line-height: 1.4;
-    padding: 15px;
-    color: #d9d9d9 !important; /* 文字顏色 */
+    /* 原本 padding: 15px;  改小一些 (如 8px 或 10px) */
+    padding: 8px;
+    line-height: 1.2;    /* 視需要微調 (原本 1.1 或更大) */
+    color: #d9d9d9 !important; 
 }
 
 /* 讓導覽列充滿整列 */
@@ -65,14 +67,16 @@ body {
 .container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;   /* 水平置中 */
-    padding: 20px;    /* 可適度留白 */
+    margin: 0 auto;
+    /* 原本 padding: 20px; -> 改小 (例如 10px) */
+    padding: 10px;
 }
 
 /* === 內容標題 === */
 .section-title {
     font-size: 24px;
-    margin-top: 30px;
+    /* 若想再縮小標題上方空間，可視需要將 margin-top: 30px; 改小 */
+    margin-top: 20px;
     font-weight: bold;
     color: #343a40;
 }
@@ -181,7 +185,7 @@ body {
 
 .article-image img {
     width: 100%;             /* 或固定寬度，如 800px */
-    height: 100px;           /* 指定想要的高度，例如 200px */
+    height: 100px;           /* 指定想要的高度，例如 100px */
     object-fit: cover;       /* 裁切圖片以填滿此寬高 */
     display: block;          /* 移除底部空白 */
 }
