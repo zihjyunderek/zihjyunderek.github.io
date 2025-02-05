@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>過往研究 | Past Research</title>
+    <title>研究 | Research</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <!-- 共用 /content/style.css -->
     <link rel="stylesheet" href="/content/style.css">
@@ -17,48 +17,219 @@
     <div class="container mt-5">
 
         <div class="row">
-            <!-- 左側：研究目錄（與 index.html 相同 col-lg-4 寬度） -->
-            <!-- 透過 d-flex + justify-content-center + align-items-start 置中，頂端對齊 -->
-             
+            <!-- 左側：研究目錄（類似 articles.html 的 toc） -->
             <div class="col-lg-4 d-flex justify-content-center align-items-start">
-                <!-- 研究目錄外包一層容器來置中，可用自訂 research-toc 來調整樣式 -->
                 <div class="toc text-center">
                     <h3 class="toc-title">研究目錄</h3>
                     <ul class="toc-list">
-                        <li><a href="#section1">研究主題 A</a></li>
-                        <li><a href="#section2">研究主題 B</a></li>
-                        <li><a href="#section3">研究主題 C</a></li>
+                        <!-- 依照您的研究逐篇列出 -->
+                        <li>
+                            <a href="#research1">
+                                <strong>我的第一個研究</strong><br />
+                                <span>這是副標題，說明研究大綱</span><br />
+                                <!-- 日期 SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-time"
+                                     width="20"
+                                     height="20"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     style="vertical-align: middle; margin-right: 4px;">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                    <circle cx="18" cy="18" r="4" />
+                                    <path d="M15 3v4" />
+                                    <path d="M7 3v4" />
+                                    <path d="M3 11h16" />
+                                    <path d="M18 16.496v1.504l1 1" />
+                                </svg>
+                                <time>Oct 15, 2025</time>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#research2">
+                                <strong>我的第二個研究</strong><br />
+                                <span>這是副標題，說明研究大綱</span><br />
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-time"
+                                     width="20"
+                                     height="20"
+                                     viewBox="0 0 24 24"
+                                     stroke-width="2"
+                                     stroke="currentColor"
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     style="vertical-align: middle; margin-right: 4px;">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                    <circle cx="18" cy="18" r="4" />
+                                    <path d="M15 3v4" />
+                                    <path d="M7 3v4" />
+                                    <path d="M3 11h16" />
+                                    <path d="M18 16.496v1.504l1 1" />
+                                </svg>
+                                <time>Oct 10, 2025</time>
+                            </a>
+                        </li>
+                        <!-- 更多研究目錄項目... -->
                     </ul>
                 </div>
             </div>
 
             <!-- 右側：研究內容（col-lg-8） -->
             <div class="col-lg-8">
-                <!-- 過往研究標題，與左側目錄同樣的起始高度 -->
-                <h2 class="section-title">過往研究 | Past Research</h2>
-                <p>這裡是過往研究內容的簡介，可以放置一段概述...</p>
+                <h2 class="section-title">研究 | Research</h2>
+                <p>這裡是研究的總覽，點擊研究卡片可進入詳細內容...</p>
 
-                <!-- 範例研究主題 A -->
-                <h3 id="section1">研究主題 A</h3>
-                <p>
-                    這裡是研究主題 A 的說明...
-                </p>
+                <section class="article-list">
+                    <!-- 範例研究1 -->
+                    <article id="research1" class="has-image">
+                        <header class="article-header">
+                            <div class="article-image">
+                                <!-- e.g. /content/research/my-first-research/img.jpg -->
+                                <a href="/content/research/my-first-research.html">
+                                    <img src="https://via.placeholder.com/800x400.png?text=Research+Image+1"
+                                         loading="lazy"
+                                         alt="Featured image of Research 1" />
+                                </a>
+                            </div>
+                            <div class="article-details">
+                                <!-- 研究分類 (可視需求修改) -->
+                                <header class="article-category">
+                                    <a href="/categories/lab/">Lab</a>
+                                </header>
+                                <div class="article-title-wrapper">
+                                    <h2 class="article-title">
+                                        <a href="/content/research/my-first-research.html">我的第一個研究</a>
+                                    </h2>
+                                    <h3 class="article-subtitle">這是副標題，說明研究大綱</h3>
+                                </div>
+                                <footer class="article-time">
+                                    <div>
+                                        <!-- 發布日期圖示 + 日期 -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon icon-tabler icon-tabler-calendar-time"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             stroke-width="2"
+                                             stroke="currentColor"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"/>
+                                            <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                            <circle cx="18" cy="18" r="4" />
+                                            <path d="M15 3v4" />
+                                            <path d="M7 3v4" />
+                                            <path d="M3 11h16" />
+                                            <path d="M18 16.496v1.504l1 1" />
+                                        </svg>
+                                        <time class="article-time--published">Oct 15, 2025</time>
+                                    </div>
+                                    <div class="ms-3">
+                                        <!-- 若需要顯示閱讀時間或研究花費時間等 -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon icon-tabler icon-tabler-clock"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             stroke-width="2"
+                                             stroke="currentColor"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"/>
+                                            <circle cx="12" cy="12" r="9" />
+                                            <polyline points="12 7 12 12 15 15" />
+                                        </svg>
+                                        <time class="article-time--reading">3 min read</time>
+                                    </div>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                    <!-- 範例研究1 結束 -->
 
-                <!-- 範例研究主題 B -->
-                <h3 id="section2">研究主題 B</h3>
-                <p>
-                    這裡是研究主題 B 的說明...
-                </p>
+                    <!-- 範例研究2 -->
+                    <article id="research2" class="has-image">
+                        <header class="article-header">
+                            <div class="article-image">
+                                <!-- e.g. /content/research/my-second-research/img.jpg -->
+                                <a href="/content/research/my-second-research.html">
+                                    <img src="https://via.placeholder.com/800x400.png?text=Research+Image+2"
+                                         loading="lazy"
+                                         alt="Featured image of Research 2" />
+                                </a>
+                            </div>
+                            <div class="article-details">
+                                <header class="article-category">
+                                    <a href="/categories/experiment/">Experiment</a>
+                                </header>
+                                <div class="article-title-wrapper">
+                                    <h2 class="article-title">
+                                        <a href="/content/research/my-second-research.html">我的第二個研究</a>
+                                    </h2>
+                                    <h3 class="article-subtitle">這是副標題，說明研究大綱</h3>
+                                </div>
+                                <footer class="article-time">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon icon-tabler icon-tabler-calendar-time"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             stroke-width="2"
+                                             stroke="currentColor"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"/>
+                                            <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+                                            <circle cx="18" cy="18" r="4" />
+                                            <path d="M15 3v4" />
+                                            <path d="M7 3v4" />
+                                            <path d="M3 11h16" />
+                                            <path d="M18 16.496v1.504l1 1" />
+                                        </svg>
+                                        <time class="article-time--published">Oct 10, 2025</time>
+                                    </div>
+                                    <div class="ms-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon icon-tabler icon-tabler-clock"
+                                             width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24"
+                                             stroke-width="2"
+                                             stroke="currentColor"
+                                             fill="none"
+                                             stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"/>
+                                            <circle cx="12" cy="12" r="9" />
+                                            <polyline points="12 7 12 12 15 15" />
+                                        </svg>
+                                        <time class="article-time--reading">5 min read</time>
+                                    </div>
+                                </footer>
+                            </div>
+                        </header>
+                    </article>
+                    <!-- 範例研究2 結束 -->
 
-                <!-- 範例研究主題 C -->
-                <h3 id="section3">研究主題 C</h3>
-                <p>
-                    這裡是研究主題 C 的說明...
-                </p>
+                    <!-- 更多研究 ... -->
+                </section>
             </div>
         </div>
     </div>
 
+
+    
     <!-- 動態載入頁尾 footer.html -->
     <div id="footer-placeholder"></div>
 
