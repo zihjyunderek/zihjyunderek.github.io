@@ -9,7 +9,7 @@ body {
 /* 頂端姓名區塊 */
 .name-header {
     background-color: #eef2f5; /* 背景色 */
-    padding: 20px 0;
+    padding: 20px 0; /* 減少上下 padding, 使頂端高度更緊湊 (原本 20px 0) */
     text-align: center; /* 水平置中 */
     display: flex;
     flex-direction: column; /* 讓內容垂直排列 */
