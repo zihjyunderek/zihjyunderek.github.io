@@ -40,7 +40,7 @@ body {
 
 /* 讓導覽列的高度變窄：調整 nav-link padding 與 line-height */
 .navbar-nav .nav-link {
-    font-size: 12pt;
+    font-size: 14pt;
     text-align: center;
     /* 原本 padding: 15px;  改小一些 (如 8px 或 10px) */
     padding: 5px;
