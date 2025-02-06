@@ -238,11 +238,12 @@ body {
     margin-right: 0.3rem;
 }
 
-/* === Pagination (研究頁面) === */
+/* === Pagination (通用) === */
 
-/* 外層容器：置中 */
+/* 外層容器：置中顯示分頁 */
 .pagination {
-    margin-top: 20px;         /* 與上方文章卡片保持一些距離 */
+    margin-top: 20px;     /* 與上方內容保持距離 */
+    text-align: center;   /* 置中顯示 */
 }
 
 /* 單個頁碼項目 */
@@ -268,9 +269,11 @@ body {
 
 /* 當前頁面 (active) */
 .pagination .page-item.active a {
-    background-color: #424242;
+    background-color: #424242; /* 或任意深色 */
     color: #fff;
     border-color: #424242;
 }
+
+
 
 /* 如有需要調整更深淺顏色可自行修改 */
