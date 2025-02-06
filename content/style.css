@@ -241,18 +241,18 @@ body {
 /* === Pagination (研究頁面) === */
 
 /* 外層容器：置中 */
-.research-pagination {
+.pagination {
     margin-top: 20px;         /* 與上方文章卡片保持一些距離 */
 }
 
 /* 單個頁碼項目 */
-.research-pagination .page-item {
+.pagination .page-item {
     display: inline-block;
     margin: 0 5px;
 }
 
 /* 頁碼連結本身 */
-.research-pagination .page-item a {
+.pagination .page-item a {
     text-decoration: none;
     color: #333;
     padding: 6px 12px;
@@ -262,12 +262,12 @@ body {
 }
 
 /* 滑過時 */
-.research-pagination .page-item a:hover {
+.pagination .page-item a:hover {
     background-color: #ccc;
 }
 
 /* 當前頁面 (active) */
-.research-pagination .page-item.active a {
+.pagination .page-item.active a {
     background-color: #424242;
     color: #fff;
     border-color: #424242;
