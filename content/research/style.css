@@ -1,0 +1,276 @@
+/* === 全站字體與顏色設定 === */
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #f0f0f0; /* 淺灰色背景 */
+    color: #333; /* 文字顏色保持可讀性 */
+    font-size: 14pt; /* 中文字體設置為 14pt */
+}
+
+/* === 頂端姓名區塊 === */
+.name-header {
+    background-color: #eef2f5; /* 背景色 */
+    padding: 30px 0; /* 減少上下 padding, 使頂端高度更緊湊 (原本 20px 0) */
+    text-align: center; /* 水平置中 */
+    display: flex;
+    flex-direction: column; /* 讓內容垂直排列 */
+    align-items: center; /* 垂直置中 */
+}
+.name-header h1 {
+    font-size: 26pt; /* 字體大小 */
+    font-weight: bold;
+    margin: 0; /* 去掉上下邊距 */
+}
+.name-header h2 {
+    font-size: 14pt; /* 副標字體大小 */
+    font-weight: normal;
+    color: #a6a6a6; /* 灰色字體 */
+    margin: 5px 0 0; /* 調整與 h1 的距離 */
+    line-height: 1.5; /* 增加行距 */
+    text-align: center; /* 確保文字居中對齊 */
+}
+
+/* === 導覽列 === */
+.navbar {
+    width: 100%;
+    background-color: #424242 !important; /* 深灰色背景 */
+    /* 若想再進一步縮小整個 navbar 高度，可以減少上下 padding：
+       padding-top: 5px; padding-bottom: 5px;  (視需要增減)
+    */
+}
+
+/* 讓導覽列的高度變窄：調整 nav-link padding 與 line-height */
+.navbar-nav .nav-link {
+    font-size: 14pt;
+    text-align: center;
+    /* 原本 padding: 15px;  改小一些 (如 8px 或 10px) */
+    padding: 5px;
+    line-height: 1.2;    /* 視需要微調 (原本 1.1 或更大) */
+    color: #d9d9d9 !important; 
+}
+
+/* 讓導覽列充滿整列 */
+.navbar-nav .nav-item {
+    flex-grow: 1;
+}
+
+/* === 主要內容區塊 === */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 原本 padding: 20px; -> 改小 (例如 10px) */
+    padding: 10px;
+}
+
+/* === 內容標題 === */
+.section-title {
+    font-size: 24px;
+    /* 若想再縮小標題上方空間，可視需要將 margin-top: 30px; 改小 */
+    margin-top: 20px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.row .col-lg-8 {
+    padding-left: 20px; /* 確保右側內容與線條保持距離 */
+}
+
+/* 履歷區標題 */
+.resume-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* === 頭像樣式（長方形，限制最大高度和寬度） === */
+.profile-img {
+    width: 100%;
+    max-width: 200px; /* 最大寬度 200px */
+    height: auto;     /* 保持比例 */
+    margin-bottom: 20px;
+}
+
+/* === 個人網站連結 === */
+.personal-links {
+    margin-top: 20px;
+    text-align: left; 
+    padding-left: 10px; 
+}
+
+.personal-links li {
+    margin-bottom: 10px;
+    display: flex;        /* 使用 Flex 排版 */
+    align-items: center;
+}
+
+.personal-links a {
+    text-decoration: none; 
+    color: #424242;        /* 深灰色文字 */
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;              /* 圖標與文字之間間距 */
+}
+
+.personal-links a:hover {
+    text-decoration: underline; 
+}
+
+.icon {
+    stroke: #424242; /* 圖標顏色為深灰色 */
+    width: 24px; 
+    height: 24px;
+}
+
+/* === 目錄 (Table of Content, TOC) 相關樣式 === */
+.toc {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.toc-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.toc-list {
+    text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc-list li {
+    margin-bottom: 10px;
+}
+
+.toc-list a {
+    text-decoration: none;
+    color: #424242;
+}
+
+.toc-list a:hover {
+    text-decoration: underline;
+}
+
+/* === 專題文章 (Articles) 相關樣式 === */
+
+/* 文章列表容器：可在此調整整體間距 */
+.article-list {
+    margin-top: 30px;
+}
+
+/* 單一篇文章卡片的外層 */
+.has-image {
+    margin-bottom: 2rem;            /* 各篇文章間距 */
+    background-color: #fff;         /* 若想區分，可用純白卡片 */
+    border: 1px solid #ccc;         /* 淺色邊框 */
+    border-radius: 6px;            /* 讓卡片邊角稍微圓弧 */
+    overflow: hidden;               /* 讓邊角超出時被隱藏 */
+}
+
+/* 文章標頭：通常含圖 + 文字資訊 */
+.article-header {
+    display: block; /* 預設堆疊在一起，如需圖文並排可用 flex 或 grid */
+}
+
+
+.article-image img {
+    width: 100%;             /* 或固定寬度，如 800px */
+    height: 100px;           /* 指定想要的高度，例如 100px */
+    object-fit: cover;       /* 裁切圖片以填滿此寬高 */
+    display: block;          /* 移除底部空白 */
+}
+
+/* 文章詳細資訊 */
+.article-details {
+    padding: 1rem 1.5rem; /* 卡片內部留白 */
+}
+
+/* 類別標籤（可自行增減樣式） */
+.article-category a {
+    color: #666;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+.article-category a:hover {
+    text-decoration: underline;
+}
+
+/* 文章標題與副標題 */
+.article-title {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+.article-title a {
+    text-decoration: none;
+    color: inherit; /* 繼承上方的 color: #333 */
+}
+.article-title a:hover {
+    text-decoration: underline;
+}
+
+.article-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin: 0 0 0.5rem;
+}
+
+/* 文章底部時間資訊 */
+.article-time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: #555;
+}
+.article-time--published,
+.article-time--reading {
+    font-size: 0.9rem;
+}
+
+/* SVG 圖示可視需要調整大小或間距 */
+.article-time svg {
+    vertical-align: middle;
+    margin-right: 0.3rem;
+}
+
+/* === Pagination (研究頁面) === */
+
+/* 外層容器：置中 */
+.research-pagination {
+    margin-top: 20px;         /* 與上方文章卡片保持一些距離 */
+}
+
+/* 單個頁碼項目 */
+.research-pagination .page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* 頁碼連結本身 */
+.research-pagination .page-item a {
+    text-decoration: none;
+    color: #333;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* 滑過時 */
+.research-pagination .page-item a:hover {
+    background-color: #ccc;
+}
+
+/* 當前頁面 (active) */
+.research-pagination .page-item.active a {
+    background-color: #424242;
+    color: #fff;
+    border-color: #424242;
+}
+
+/* 如有需要調整更深淺顏色可自行修改 */
