@@ -219,6 +219,11 @@ body {
     margin: 0 0 0.5rem;
 }
 
+.article-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
 /* 文章底部時間資訊 */
 .article-time {
     display: flex;

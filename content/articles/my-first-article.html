@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一篇文章 | Articles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/content/style.css">
+</head>
+
+<body>
+
+    <!-- 動態載入導覽列 -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+                <!-- 文章標題 -->
+                <article>
+                    <header class="mb-4">
+                        <h1 class="fw-bold">我的第一篇文章</h1>
+                        <h3 class="text-muted">這是副標題，說明文章大綱</h3>
+                        <div class="text-muted">
+                            <time datetime="2025-10-15">發布日期：2025年10月15日</time>
+                        </div>
+                    </header>
+
+                    <!-- 文章內容 -->
+                    <section>
+                        <p>
+                            這是我的第一篇文章內容。我可以在這裡寫一些關於這篇文章的介紹、觀點，或者是技術分享。
+                        </p>
+
+                        <h2>段落標題示範</h2>
+                        <p>
+                            這是一個範例段落，你可以在這裡撰寫更完整的內容。
+                        </p>
+
+                        <h3>小標題</h3>
+                        <p>這是更細分的內容描述。</p>
+
+                        <blockquote class="blockquote">
+                            <p>這是一個引用示範：「一個好的網站應該有清晰的架構與內容。」</p>
+                        </blockquote>
+
+                        <p>
+                            這裡可以加入圖片或其他多媒體元素：
+                        </p>
+
+                        <figure class="text-center">
+                            <img src="https://via.placeholder.com/800x400.png?text=Article+Image" class="img-fluid rounded" alt="示範圖片">
+                            <figcaption class="text-muted">圖片說明：這是一張示範圖片</figcaption>
+                        </figure>
+
+                    </section>
+
+                    <!-- 文章結尾 -->
+                    <footer class="mt-5">
+                        <p class="text-muted">感謝您的閱讀！</p>
+                        <a href="/content/articles.html" class="btn btn-primary">返回文章列表</a>
+                    </footer>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 動態載入頁尾 -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 載入 navbar.html
+        fetch("/navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+
+        // 載入 footer.html
+        fetch("/footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
