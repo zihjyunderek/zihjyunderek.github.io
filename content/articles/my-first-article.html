@@ -6,6 +6,24 @@
     <title>我的第一篇文章 | Articles</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/content/style.css">
+
+    <style>
+        /* 調整標題字體大小 */
+        h1 { font-size: 1.8rem; font-weight: bold; }
+        h2 { font-size: 1.5rem; font-weight: bold; }
+        h3 { font-size: 1.2rem; font-weight: bold; color: #6c757d; }
+
+        /* 修改返回按鈕為大地色系 */
+        .btn-earth {
+            background-color: #8B5A2B;
+            color: white;
+            border: none;
+        }
+
+        .btn-earth:hover {
+            background-color: #6F4226;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +34,7 @@
     <div class="container mt-4">
         <div class="row">
 
-            <!-- 左側目錄 (與 articles.html 相同) -->
+            <!-- 左側目錄 -->
             <div class="col-lg-4 d-flex justify-content-center align-items-start">
                 <div class="toc text-center">
                     <h3 class="toc-title">文章目錄</h3>
@@ -26,25 +44,6 @@
                             <a href="/content/articles/my-first-article.html">
                                 <strong>我的第一篇文章</strong><br />
                                 <span>這是副標題，說明文章大綱</span><br />
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="icon icon-tabler icon-tabler-calendar-time"
-                                     width="20"
-                                     height="20"
-                                     viewBox="0 0 24 24"
-                                     stroke-width="2"
-                                     stroke="currentColor"
-                                     fill="none"
-                                     stroke-linecap="round"
-                                     stroke-linejoin="round"
-                                     style="vertical-align: middle; margin-right: 4px;">
-                                    <path stroke="none" d="M0 0h24v24H0z"/>
-                                    <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-                                    <circle cx="18" cy="18" r="4" />
-                                    <path d="M15 3v4" />
-                                    <path d="M7 3v4" />
-                                    <path d="M3 11h16" />
-                                    <path d="M18 16.496v1.504l1 1" />
-                                </svg>
                                 <time>Oct 15, 2025</time>
                             </a>
                         </li>
@@ -52,25 +51,6 @@
                             <a href="/content/articles/my-second-article.html">
                                 <strong>我的第二篇文章</strong><br />
                                 <span>這是副標題，說明文章大綱</span><br />
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                class="icon icon-tabler icon-tabler-calendar-time"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                style="vertical-align: middle; margin-right: 4px;">
-                               <path stroke="none" d="M0 0h24v24H0z"/>
-                               <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-                               <circle cx="18" cy="18" r="4" />
-                               <path d="M15 3v4" />
-                               <path d="M7 3v4" />
-                               <path d="M3 11h16" />
-                               <path d="M18 16.496v1.504l1 1" />
-                           </svg>
                                 <time>Oct 10, 2025</time>
                             </a>
                         </li>
@@ -78,29 +58,9 @@
                             <a href="/content/articles/my-third-article.html">
                                 <strong>我的第三篇文章</strong><br />
                                 <span>這是副標題，說明文章大綱</span><br />
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                class="icon icon-tabler icon-tabler-calendar-time"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                style="vertical-align: middle; margin-right: 4px;">
-                               <path stroke="none" d="M0 0h24v24H0z"/>
-                               <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-                               <circle cx="18" cy="18" r="4" />
-                               <path d="M15 3v4" />
-                               <path d="M7 3v4" />
-                               <path d="M3 11h16" />
-                               <path d="M18 16.496v1.504l1 1" />
-                           </svg>
                                 <time>Oct 5, 2025</time>
                             </a>
                         </li>
-                        <!-- 可繼續新增更多文章 -->
                     </ul>
                 </div>
             </div>
@@ -108,9 +68,15 @@
             <!-- 右側：文章內容 -->
             <div class="col-lg-8">
                 <article>
+
+                    <!-- 上方返回文章列表按鈕 -->
+                    <div class="text-start mb-3">
+                        <a href="/content/articles.html" class="btn btn-earth">← 返回文章列表</a>
+                    </div>
+
                     <header class="mb-4">
-                        <h1 class="fw-bold">我的第一篇文章</h1>
-                        <h3 class="text-muted">這是副標題，說明文章大綱</h3>
+                        <h1>我的第一篇文章</h1>
+                        <h3>這是副標題，說明文章大綱</h3>
                         <div class="text-muted">
                             <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-calendar-time"
@@ -147,18 +113,20 @@
                         </p>
 
                         <h3>小標題</h3>
-                        <p>這是更細分的內容描述。</p>
+                        <p>
+                            這是更細分的內容描述，適合補充詳細說明或技術解析。
+                        </p>
 
                         <blockquote class="blockquote">
-                            <p>這是一個引用示範：「一個好的網站應該有清晰的架構與內容。」</p>
+                            <p>「好的內容應該具備清晰的結構與引人入勝的敘述方式。」</p>
                         </blockquote>
 
                         <p>
-                            這裡可以加入圖片或其他多媒體元素：
+                            這裡可以加入圖片來補充文章內容：
                         </p>
 
                         <figure class="text-center">
-                            <img src="https://via.placeholder.com/800x400.png?text=Article+Image" class="img-fluid rounded" alt="示範圖片">
+                            <img src="https://via.placeholder.com/800x400.png?text=Article+Image+1" class="img-fluid rounded" alt="示範圖片">
                             <figcaption class="text-muted">圖片說明：這是一張示範圖片</figcaption>
                         </figure>
 
@@ -167,7 +135,7 @@
                     <!-- 文章結尾 -->
                     <footer class="mt-5">
                         <p class="text-muted">感謝您的閱讀！</p>
-                        <a href="/content/articles.html" class="btn btn-primary">返回文章列表</a>
+                        <a href="/content/articles.html" class="btn btn-earth">← 返回文章列表</a>
                     </footer>
                 </article>
             </div>
@@ -198,4 +166,5 @@
 
 </body>
 </html>
+
 
