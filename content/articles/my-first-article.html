@@ -15,9 +15,41 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
 
-                <!-- 文章標題 -->
+            <!-- 左側目錄 (與 articles.html 相同) -->
+            <div class="col-lg-4 d-flex justify-content-center align-items-start">
+                <div class="toc text-center">
+                    <h3 class="toc-title">文章目錄</h3>
+
+                    <ul class="toc-list">
+                        <li>
+                            <a href="/content/articles/my-first-article.html">
+                                <strong>我的第一篇文章</strong><br />
+                                <span>這是副標題，說明文章大綱</span><br />
+                                <time>Oct 15, 2025</time>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/content/articles/my-second-article.html">
+                                <strong>我的第二篇文章</strong><br />
+                                <span>這是副標題，說明文章大綱</span><br />
+                                <time>Oct 10, 2025</time>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/content/articles/my-third-article.html">
+                                <strong>我的第三篇文章</strong><br />
+                                <span>這是副標題，說明文章大綱</span><br />
+                                <time>Oct 5, 2025</time>
+                            </a>
+                        </li>
+                        <!-- 可繼續新增更多文章 -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 右側：文章內容 -->
+            <div class="col-lg-8">
                 <article>
                     <header class="mb-4">
                         <h1 class="fw-bold">我的第一篇文章</h1>
@@ -62,8 +94,8 @@
                         <a href="/content/articles.html" class="btn btn-primary">返回文章列表</a>
                     </footer>
                 </article>
-
             </div>
+
         </div>
     </div>
 
@@ -90,3 +122,4 @@
 
 </body>
 </html>
+
