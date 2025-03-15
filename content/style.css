@@ -282,7 +282,7 @@ body {
 /* 按鈕風格：深灰色，符合網站整體配色 */
 .btn-neutral {
     background-color: #8c8240;
-    color: rgb(218, 179, 41);
+    color: white;
     border: none;
     padding: 10px 16px;
     font-size: 1rem;
@@ -291,7 +291,7 @@ body {
 }
 
 .btn-neutral:hover {
-    background-color: #444444;
+    background-color: #d7ac62;
 }
 
 
