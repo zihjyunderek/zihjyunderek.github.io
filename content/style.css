@@ -279,9 +279,9 @@ body {
     border-color: #424242;
 }
 
-/* 按鈕風格：深灰色，符合網站整體配色 */
+/* 按鈕風格：適合網站整體的中性色 */
 .btn-neutral {
-    background-color: #8c8240;
+    background-color: #6C757D;
     color: white;
     border: none;
     padding: 10px 16px;
@@ -291,8 +291,9 @@ body {
 }
 
 .btn-neutral:hover {
-    background-color: #d7ac62;
+    background-color: #545B62;
 }
+
 
 
 
