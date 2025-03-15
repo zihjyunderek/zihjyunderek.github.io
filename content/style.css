@@ -279,7 +279,11 @@ body {
     border-color: #424242;
 }
 
-/* 按鈕風格：適合網站整體的中性色 */
+/* 調整文章字體大小 */
+h1 { font-size: 1.8rem; font-weight: bold; }
+h2 { font-size: 1.5rem; font-weight: bold; }
+h3 { font-size: 1.2rem; font-weight: bold; color: #6c757d; }
+
 .btn-neutral {
     background-color: #6C757D;
     color: white;
@@ -293,9 +297,4 @@ body {
 .btn-neutral:hover {
     background-color: #545B62;
 }
-
-
-
-
-
 /* 如有需要調整更深淺顏色可自行修改 */
