@@ -279,6 +279,22 @@ body {
     border-color: #424242;
 }
 
+/* 按鈕風格：深灰色，符合網站整體配色 */
+.btn-neutral {
+    background-color: #8c8240;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-neutral:hover {
+    background-color: #444444;
+}
+
+
 
 
 /* 如有需要調整更深淺顏色可自行修改 */
