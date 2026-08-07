@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.0",
-    "@fontsource-variable/jetbrains-mono": "^5.2.5",
-    "astro": "^5.8.0"
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "astro": "^7.1.6"
   }
 }
