@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { DOMAINS } from '../config';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+const { title, tagline, domain, stack, stats } = project.data;
+---
+
+<article class="card" data-domain={domain}>
+  <span class="domain">{DOMAINS[domain]}</span>
+  <h3><a href={`/projects/${project.id}/`}>{title}</a></h3>
+  <p class="tagline">{tagline}</p>
+  <div class="stats">
+    {stats.slice(0, 3).map((s) => (
+      <span class="stat">
+        <span class="v">{s.value}</span>
+        <span class="l">{s.label}</span>
+      </span>
+    ))}
+  </div>
+  <div class="chip-row">
+    {stack.slice(0, 4).map((t) => <span class="chip">{t}</span>)}
+  </div>
+</article>

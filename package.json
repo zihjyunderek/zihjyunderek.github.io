@@ -1,0 +1,26 @@
+{
+  "name": "zihjyunderek.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio of Zih-Jyun (Derek) Huang: spatial statistics, urban analytics, quantitative risk.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Zih-Jyun Huang <derek4953098@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zihjyunderek/zihjyunderek.github.io.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.0",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "astro": "^5.8.0"
+  }
+}

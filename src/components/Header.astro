@@ -1,0 +1,21 @@
+---
+import { SITE } from '../config';
+const path = Astro.url.pathname;
+const onProjects = path.startsWith('/projects');
+const onExperience = path.startsWith('/experience');
+const onSkills = path.startsWith('/skills');
+const onContact = path.startsWith('/contact');
+---
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Home">Home</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/projects/" aria-current={onProjects ? 'page' : undefined}>Projects</a>
+      <a href="/experience/" aria-current={onExperience ? 'page' : undefined}>Experience</a>
+      <a href="/skills/" aria-current={onSkills ? 'page' : undefined}>Skills</a>
+      <a href="/contact/" aria-current={onContact ? 'page' : undefined}>Contact</a>
+      <a href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { SITE } from '../../config';
+
+const title = `Contact – ${SITE.shortName}`;
+const description =
+  'Contact Zih-Jyun (Derek) Huang (黃子竣) for urban analytics, spatial econometrics, quantitative risk, and research collaborations.';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: new URL('/contact/', SITE.url).href },
+  ],
+};
+---
+
+<Base title={title} description={description} jsonLd={[breadcrumbLd]}>
+  <!-- ============ 05 Contact (detail page) ============ -->
+  <section>
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <span>Contact</span>
+      </nav>
+
+      <SectionHeading
+        no="05"
+        title="Contact"
+        sub="Open to conversations on urban analytics, spatial econometrics, quantitative risk, and research collaborations."
+      />
+
+      <div class="contact-box">
+        <h2>Taipei and New York. One analyst.</h2>
+        <p>
+          The fastest way to reach me is email. My CV and code are one click
+          away if you want the full picture first.
+        </p>
+        <div class="hero-cta" style="justify-content:center">
+          <a class="btn" href={`mailto:${SITE.email}`}>Email</a>
+          <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+          {SITE.linkedin && (
+            <a class="btn ghost" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+          )}
+        </div>
+      </div>
+
+      <p style="margin-top:2.75rem">
+        <a class="btn ghost" href="/">&larr; Back to home</a>
+      </p>
+    </div>
+  </section>
+</Base>

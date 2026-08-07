@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { SITE, DOMAINS } from '../../config';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const title = `Projects – ${SITE.shortName}`;
+const description =
+  'Projects across geospatial statistics (MGWR, GWPCA, spatial ML), urban analytics for 31 US cities, option-implied VaR forecasting, and reproducible engineering toolkits.';
+
+const collectionLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  url: new URL('/projects/', SITE.url).href,
+  author: { '@type': 'Person', name: SITE.name, url: SITE.url },
+  hasPart: projects.map((p) => ({
+    '@type': 'CreativeWork',
+    name: p.data.title,
+    url: new URL(`/projects/${p.id}/`, SITE.url).href,
+  })),
+};
+---
+
+<Base title={title} description={description} jsonLd={[collectionLd]}>
+  <section>
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <span>Projects</span>
+      </nav>
+
+      <SectionHeading
+        no="02"
+        title="All Projects"
+        sub="Ordered macro to micro within each domain. Private work is shown at methodology level with de-identified results only."
+      />
+
+      <div class="filter-bar" role="group" aria-label="Filter projects by domain">
+        <button class="active" data-filter="all">All ({projects.length})</button>
+        {Object.entries(DOMAINS).map(([key, label]) => (
+          <button data-filter={key}>
+            {label} ({projects.filter((p) => p.data.domain === key).length})
+          </button>
+        ))}
+      </div>
+
+      <div class="project-grid" id="grid">
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </div>
+
+      <p style="margin-top:2.75rem">
+        <a class="btn ghost" href="/">&larr; Back to home</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  /* Domain filter: pure DOM toggling, no framework needed. */
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('#grid [data-domain]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.toggle('active', b === btn));
+      const f = btn.dataset.filter;
+      cards.forEach((c) => {
+        c.style.display = f === 'all' || c.dataset.domain === f ? '' : 'none';
+      });
+    })
+  );
+</script>

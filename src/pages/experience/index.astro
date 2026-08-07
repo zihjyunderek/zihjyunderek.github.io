@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { SITE } from '../../config';
+import { experience } from '../../data/profile';
+
+const title = `Experience – ${SITE.shortName}`;
+const description =
+  'Career timeline of Zih-Jyun (Derek) Huang (黃子竣): macro research at CIER, market risk at CTBC and Foxconn, urban data science at Gensler Research Institute, incoming risk management MA at CTBC Bank.';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Experience', item: new URL('/experience/', SITE.url).href },
+  ],
+};
+---
+
+<Base title={title} description={description} jsonLd={[breadcrumbLd]}>
+  <!-- ============ 03 Experience (detail page) ============ -->
+  <section>
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <span>Experience</span>
+      </nav>
+
+      <SectionHeading
+        no="03"
+        title="Experience"
+        sub="Macro research &rarr; market risk &rarr; urban data science &rarr; risk management. Each stage feeds the next."
+      />
+
+      <div class="timeline">
+        {experience.map((e) => (
+          <div class="t-item">
+            <span class="when">{e.when}</span>
+            <div>
+              <h3>{e.org}</h3>
+              <span class="role">{e.role} &middot; {e.where}</span>
+              <p>{e.note}</p>
+              {e.attachments && e.attachments.length > 0 && (
+                <div class="attach-row">
+                  {e.attachments.map((a) => (
+                    <a class="attach" href={a.href} target="_blank" rel="noopener">{a.label}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style="margin-top:2.75rem">
+        <a class="btn ghost" href="/">&larr; Back to home</a>
+      </p>
+    </div>
+  </section>
+</Base>

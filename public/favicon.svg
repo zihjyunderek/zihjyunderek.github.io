@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0b0f14"/>
+  <!-- graticule -->
+  <path d="M8 22h48M8 42h48M22 8v48M42 8v48" stroke="#1f2630" stroke-width="2"/>
+  <!-- cluster points -->
+  <circle cx="22" cy="22" r="5" fill="#ffb454"/>
+  <circle cx="42" cy="22" r="3.5" fill="#4fd1c5"/>
+  <circle cx="22" cy="42" r="3.5" fill="#4fd1c5"/>
+  <circle cx="42" cy="42" r="5" fill="#ffb454"/>
+</svg>

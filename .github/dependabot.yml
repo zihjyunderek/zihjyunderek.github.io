@@ -1,0 +1,15 @@
+# Automated dependency updates. Monthly cadence keeps PR noise low
+# while still catching security releases within a reasonable window.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      all-dependencies:
+        patterns: ["*"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

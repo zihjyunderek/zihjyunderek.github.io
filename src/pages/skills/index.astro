@@ -1,0 +1,89 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { SITE } from '../../config';
+import { education, certificates, featureImportance } from '../../data/profile';
+
+const title = `Skills – ${SITE.shortName}`;
+const description =
+  'Skills, methods, and qualifications of Zih-Jyun (Derek) Huang: Python, spatial statistics, ML and clustering, data visualization, agentic workflows; M.S. Money and Banking (NCCU), B.A. Economics (NTU).';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Skills', item: new URL('/skills/', SITE.url).href },
+  ],
+};
+---
+
+<Base title={title} description={description} jsonLd={[breadcrumbLd]}>
+  <!-- ============ 04 Skills (detail page) ============ -->
+  <section>
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <span>Skills</span>
+      </nav>
+
+      <SectionHeading
+        no="04"
+        title="Skills"
+        sub="Tools, methods, and qualifications. Depth over breadth."
+      />
+
+      <!-- Education: timeline, same pattern as Experience -->
+      <h3 class="block-title">Education</h3>
+      <div class="timeline">
+        {education.map((e) => (
+          <div class="t-item">
+            <span class="when">{e.when}</span>
+            <div>
+              <h3>{e.school}</h3>
+              <span class="role">{e.degree} &middot; {e.detail}</span>
+              {e.thesis && <p>Thesis: {e.thesis}</p>}
+              {e.attachments && e.attachments.length > 0 && (
+                <div class="attach-row">
+                  {e.attachments.map((a) => (
+                    <a class="attach" href={a.href} target="_blank" rel="noopener">{a.label}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Skill bars, below the education block -->
+      <h3 class="block-title">Skill profile</h3>
+      <div class="fi-list">
+        {featureImportance.map((f) => (
+          <div class="fi-row">
+            <span class="name">{f.name}</span>
+            <span class="bar"><span style={`width:${f.value * 100}%`}></span></span>
+            <span class="val">{f.value.toFixed(2)}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Certificates: open list with license scans -->
+      <h3 class="block-title">Certificates</h3>
+      <ul class="cert-list">
+        {certificates.map((c) => (
+          <li>
+            <span>{c.name}</span>
+            <span class="attach-row" style="margin-top:0">
+              {c.attachments.map((a) => (
+                <a class="attach" href={a.href} target="_blank" rel="noopener">{a.label}</a>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p style="margin-top:2.75rem">
+        <a class="btn ghost" href="/">&larr; Back to home</a>
+      </p>
+    </div>
+  </section>
+</Base>
