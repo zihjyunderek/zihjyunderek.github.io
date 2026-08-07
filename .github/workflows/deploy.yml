@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install, build, and upload site
-        uses: withastro/action@v3
+        uses: withastro/action@v6
 
   deploy:
     needs: build
