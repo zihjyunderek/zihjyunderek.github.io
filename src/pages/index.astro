@@ -1,0 +1,202 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../config';
+import { experience, featureImportance, headlineStats } from '../data/profile';
+
+const allProjects = await getCollection('projects');
+const totalProjects = allProjects.length;
+
+// Home shows six cards: featured first, then filled by sort order.
+const sorted = [...allProjects].sort((a, b) => a.data.order - b.data.order);
+const featured = [
+  ...sorted.filter((p) => p.data.featured),
+  ...sorted.filter((p) => !p.data.featured),
+].slice(0, 6);
+
+// Home page shows only a teaser of experience; full list lives at /experience/.
+const recentExperience = experience.slice(0, 3);
+const totalExperience = experience.length;
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  alternateName: [SITE.alternateName, SITE.shortName],
+  jobTitle: SITE.jobTitle,
+  ...(SITE.org ? { worksFor: { '@type': 'Organization', name: SITE.org } } : {}),
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'National Chengchi University' },
+    { '@type': 'CollegeOrUniversity', name: 'National Taiwan University' },
+  ],
+  knowsAbout: [
+    'Spatial statistics',
+    'Urban analytics',
+    'Quantitative risk management',
+    'Value at Risk',
+    'Machine learning',
+  ],
+  email: `mailto:${SITE.email}`,
+  url: SITE.url,
+  sameAs: [SITE.github, SITE.linkedin].filter(Boolean),
+};
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.shortName,
+  url: SITE.url,
+};
+---
+
+<Base jsonLd={[personLd, websiteLd]}>
+
+  <!-- ============ 01 Hero ============ -->
+  <section class="hero" id="profile">
+    <div class="wrap hero-grid">
+
+      <!-- left: identity -->
+      <div class="hero-text">
+        <p class="hero-meta">
+          <span class="coord">{SITE.locations.base.coords}</span>
+          {SITE.locations.base.code}
+        </p>
+        
+        <h1>
+          Zih-Jyun<br />
+          <em style="font-style:italic;color:var(--ink-dim)">Derek</em> Huang 
+        </h1>
+
+        <p class="hero-subtitle">
+          {SITE.jobTitle}
+        </p>
+        <p class="hero-desc">
+          M.S. Money and Banking, National Chengchi University (NCCU) <br />
+          B.A. Economics, National Taiwan University (NTU) <br />
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn" href="/projects/">Projects ({totalProjects})</a>
+          <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV</a>
+          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </div>
+
+        <div class="stat-strip">
+          {headlineStats.map((s) => (
+            <span class="stat">
+              <span class="v">{s.value}</span>
+              <span class="l">{s.label}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- right: photo -->
+      <div class="hero-photo-wrap">
+        <img
+          class="hero-photo"
+          src="/images/head.jpg"
+          alt="Derek Huang at Top of the Rock, New York"
+          width="480"
+          height="480"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 02 Projects ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <SectionHeading
+        no="02"
+        title="Selected Projects"
+        sub="Portfolio across spatial statistics, urban analytics, and quantitative finance."
+      />
+      <div class="project-grid">
+        {featured.map((p) => <ProjectCard project={p} />)}
+      </div>
+      <p style="margin-top:1.75rem">
+        <a class="btn ghost" href="/projects/">View all {totalProjects} projects &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 03 Experience (teaser, full list at /experience/) ============ -->
+  <section id="experience">
+    <div class="wrap">
+      <SectionHeading
+        no="03"
+        title="Experience"
+        sub="Macro research &rarr; market risk &rarr; urban data science &rarr; risk management. Each stage feeds the next."
+      />
+      <div class="timeline">
+        {recentExperience.map((e) => (
+          <div class="t-item">
+            <span class="when">{e.when}</span>
+            <div>
+              <h3>{e.org}</h3>
+              <span class="role">{e.role} &middot; {e.where}</span>
+              <p>{e.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:1.75rem">
+        <a class="btn ghost" href="/experience/">View full experience ({totalExperience}) &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 04 Skills and credentials (teaser, full list at /skills/) ============ -->
+  <section id="stack">
+    <div class="wrap">
+      <SectionHeading
+        no="04"
+        title="Skills"
+        sub="Tools, methods, and qualifications. Depth over breadth."
+      />
+
+      <div class="fi-list">
+        {featureImportance.map((f) => (
+          <div class="fi-row">
+            <span class="name">{f.name}</span>
+            <span class="bar"><span style={`width:${f.value * 100}%`}></span></span>
+            <span class="val">{f.value.toFixed(2)}</span>
+          </div>
+        ))}
+      </div>
+
+      <p style="margin-top:1.75rem">
+        <a class="btn ghost" href="/skills/">View all skills &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 05 Contact ============ -->
+  <section id="contact">
+    <div class="wrap">
+      <SectionHeading no="05" title="Contact" />
+      <div class="contact-box">
+        <h2>Taipei and New York. One analyst.</h2>
+        <p>
+          Open to conversations on any related collaborations.
+        </p>
+        <div class="hero-cta" style="justify-content:center">
+          <a class="btn" href={`mailto:${SITE.email}`}>Email</a>
+          <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV</a>
+          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+          {SITE.linkedin && (
+            <a class="btn ghost" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>

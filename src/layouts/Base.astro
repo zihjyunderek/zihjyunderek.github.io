@@ -1,0 +1,89 @@
+---
+/**
+ * Base layout — wraps every page.
+ * Owns the entire SEO surface: <title>, meta description, canonical URL,
+ * Open Graph / Twitter cards, and JSON-LD structured data.
+ */
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** og:type — 'website' for index pages, 'article' for project pages */
+  ogType?: string;
+  /** Extra JSON-LD objects injected by the page (Person, SoftwareSourceCode, ...) */
+  jsonLd?: object[];
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  ogType = 'website',
+  jsonLd = [],
+} = Astro.props;
+
+/* Canonical URL is derived from astro.config.mjs `site` + current path,
+   so every page self-declares its authoritative address for crawlers. */
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og-default.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.name} />
+    <meta name="keywords" content={SITE.keywords.join(', ')} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Source Serif 4: the single text face (JetBrains Mono for data is bundled locally) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.shortName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`Portfolio of ${SITE.name}`} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    {jsonLd.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

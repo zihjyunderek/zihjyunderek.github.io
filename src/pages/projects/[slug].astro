@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { SITE, DOMAINS } from '../../config';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, tagline, domain, stack, stats, repo, status } = project.data;
+
+const pageTitle = `${title} – ${SITE.shortName}`;
+const pageUrl = new URL(`/projects/${project.id}/`, SITE.url).href;
+
+const projectLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: title,
+  description: tagline,
+  url: pageUrl,
+  ...(repo ? { codeRepository: repo } : {}),
+  programmingLanguage: 'Python',
+  author: { '@type': 'Person', name: SITE.name, url: SITE.url },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Projects', item: new URL('/projects/', SITE.url).href },
+    { '@type': 'ListItem', position: 3, name: title, item: pageUrl },
+  ],
+};
+
+const badgeLabel =
+  status === 'private' ? 'Private · de-identified' :
+  status === 'research' ? 'Research' : 'Open source';
+---
+
+<Base title={pageTitle} description={tagline} ogType="article" jsonLd={[projectLd, breadcrumbLd]}>
+  <article>
+    <header class="proj-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> / <a href="/projects/">Projects</a> /
+          <span>{title}</span>
+        </nav>
+        <span class="kicker">{DOMAINS[domain]}</span>
+        <h1>{title}</h1>
+        <p class="tagline">{tagline}</p>
+
+        <div class="chip-row">
+          <span class={`badge ${status}`}>{badgeLabel}</span>
+          {stack.map((t) => <span class="chip">{t}</span>)}
+        </div>
+
+        <div class="proj-stats">
+          {stats.map((s) => (
+            <span>
+              <span class="v">{s.value}</span>
+              <span class="l">{s.label}</span>
+            </span>
+          ))}
+        </div>
+
+        {repo && (
+          <p>
+            <a class="btn" href={repo} target="_blank" rel="noopener noreferrer">
+              View source on GitHub ↗
+            </a>
+          </p>
+        )}
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="prose">
+        <Content />
+        <p style="margin-top:3rem">
+          <a class="btn ghost" href="/projects/">← Back to all projects</a>
+        </p>
+      </div>
+    </div>
+  </article>
+</Base>

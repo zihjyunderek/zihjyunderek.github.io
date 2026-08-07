@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b0f14"/>
+  <g stroke="#161c25" stroke-width="1">
+    <path d="M0 150h1200M0 315h1200M0 480h1200"/>
+    <path d="M200 0v630M450 0v630M750 0v630M1000 0v630"/>
+  </g>
+  <g fill="#ffb454">
+    <circle cx="200" cy="150" r="9"/><circle cx="1000" cy="480" r="9"/>
+  </g>
+  <g fill="#4fd1c5">
+    <circle cx="450" cy="480" r="6"/><circle cx="750" cy="150" r="6"/><circle cx="450" cy="150" r="4"/>
+  </g>
+  <text x="90" y="300" font-family="'JetBrains Mono',monospace" font-size="22" fill="#4fd1c5" letter-spacing="4">25.03°N 121.56°E  TPE ⇄ NYC  40.74°N 73.99°W</text>
+  <text x="86" y="380" font-family="'Space Grotesk',sans-serif" font-size="78" font-weight="700" fill="#e8edf2">Derek Huang</text>
+  <text x="90" y="445" font-family="'Space Grotesk',sans-serif" font-size="30" fill="#97a3b1">Spatial Statistics · Urban Analytics · Quant Finance</text>
+  <text x="90" y="540" font-family="'JetBrains Mono',monospace" font-size="20" fill="#5b6673">Data Science Analyst · Gensler Cities Research</text>
+</svg>

@@ -1,0 +1,39 @@
+# .gitignore - retention policy: Only public.
+# Everything tracked in this repo is publishable as-is. This file only
+# excludes generated artifacts, local tooling, and secrets - never content.
+
+# Build output and generated files
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Python bytecode from scripts/build_cv.py
+__pycache__/
+*.py[cod]
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.local
+*.pem
+*.key
+
+# Local agent context (per-machine, not part of the published source)
+CLAUDE.md
+
+# Logs and caches
+*.log
+.cache/
+.eslintcache
+
+# Editor and OS cruft
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,20 @@
+---
+/**
+ * Section heading.
+ * `no` is a structural / ordering label (e.g. "02") kept in the CODE for
+ * organization and consistency with the repo's macro→micro numbering — it is
+ * intentionally NOT shown in the UI. It is emitted only as a data-* attribute.
+ */
+interface Props {
+  no?: string;
+  title: string;
+  sub?: string;
+}
+const { no, title, sub } = Astro.props;
+---
+
+<div class="sec-wrap" data-section={no}>
+  <h2 set:html={title}></h2>
+  <span class="rule" aria-hidden="true"></span>
+</div>
+{sub && <p class="sec-sub" set:html={sub}></p>}
