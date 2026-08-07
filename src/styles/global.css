@@ -85,6 +85,13 @@ main { display: block; }
 section { padding-block: clamp(3.5rem, 9vh, 5.5rem); }
 section:nth-child(even) { background: var(--bg-card); }
 
+/* phones: tighter vertical rhythm, and anchor targets clear the sticky
+   header (which can wrap to two rows at this width) */
+@media (max-width: 640px) {
+  section { padding-block: 2.75rem; }
+  [id] { scroll-margin-top: 6rem; }
+}
+
 /* ---- typography ---- */
 h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
 
@@ -134,6 +141,23 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
 .site-nav a { color: var(--ink-dim); }
 .site-nav a:hover,
 .site-nav a[aria-current='page'] { color: var(--accent); text-decoration: none; }
+
+/* phones: the five links no longer fit one row beside the brand, so let
+   the header wrap instead of overflowing the viewport. min-height keeps
+   the single-row look identical wherever it still fits; padding-block on
+   the links grows their touch targets without changing the desktop bar. */
+@media (max-width: 640px) {
+  .site-header .wrap {
+    height: auto;
+    min-height: 58px;
+    flex-wrap: wrap;
+    padding-block: 0.5rem;
+    row-gap: 0.25rem;
+  }
+  .site-nav { flex-wrap: wrap; row-gap: 0.25rem; }
+  .brand,
+  .site-nav a { padding-block: 0.3rem; }
+}
 
 /* ==========================================================================
    Section heading
@@ -193,6 +217,13 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
 @media (max-width: 820px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-photo-wrap { order: -1; max-width: 280px; }
+}
+/* phones: trim the hero's whitespace so identity and CTAs reach the
+   first screen; column gaps tightened so stats sit two per row */
+@media (max-width: 640px) {
+  .hero { padding-block: 2.75rem 3.25rem; }
+  .hero-grid { gap: 2rem; }
+  .stat-strip { gap: 0.5rem 1.75rem; margin-top: 2rem; }
 }
 
 /* left column */
@@ -402,6 +433,11 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
 .filter-bar button:hover { border-color: var(--accent); color: var(--accent); }
 .filter-bar button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
+/* phones: comfortable touch targets (~44px) for the filter buttons */
+@media (max-width: 640px) {
+  .filter-bar button { padding: 0.55rem 0.9rem; }
+}
+
 /* ==========================================================================
    Experience timeline
    ========================================================================== */
@@ -438,7 +474,8 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
 .t-item p { margin: 0.45rem 0 0; color: var(--ink-dim); font-size: 0.88rem; line-height: 1.65; text-align: justify; hyphens: auto; }
 
 @media (max-width: 640px) {
-  .t-item { grid-template-columns: 1fr; gap: 0.25rem; }
+  .t-item { grid-template-columns: 1fr; gap: 0.25rem; padding-left: 1.2rem; }
+  .t-item .when { padding-top: 0; }
 }
 
 /* ==========================================================================
@@ -499,6 +536,11 @@ a.attach {
 }
 a.attach:hover { background: var(--accent); color: #fff; text-decoration: none; }
 
+/* phones: larger touch targets for attachment links */
+@media (max-width: 640px) {
+  a.attach { padding: 0.3rem 0.7rem; }
+}
+
 /* ==========================================================================
    Contact
    ========================================================================== */
@@ -549,6 +591,12 @@ a.attach:hover { background: var(--accent); color: #fff; text-decoration: none; 
   color: var(--ink-faint);
 }
 
+/* phones: tighter head spacing; stats keep two per row */
+@media (max-width: 640px) {
+  .proj-head { padding-block: 2.25rem 0; }
+  .proj-stats { gap: 1rem 2rem; }
+}
+
 /* prose */
 .prose { padding-bottom: 4rem; }
 .prose p, .prose li { text-align: justify; hyphens: auto; }
@@ -578,6 +626,14 @@ a.attach:hover { background: var(--accent); color: #fff; text-decoration: none; 
 .prose table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
 .prose th, .prose td { border: 1px solid var(--line); padding: 0.5rem 0.75rem; text-align: left; }
 .prose th { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--accent); background: var(--bg-surface); }
+
+/* phones: wide tables scroll inside the article instead of stretching
+   the page; long tokens (URLs, identifiers) break instead of overflowing
+   the justified measure */
+@media (max-width: 640px) {
+  .prose { overflow-wrap: break-word; }
+  .prose table { display: block; overflow-x: auto; }
+}
 
 /* ==========================================================================
    Footer
