@@ -1,10 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0b0f14"/>
-  <!-- graticule -->
-  <path d="M8 22h48M8 42h48M22 8v48M42 8v48" stroke="#1f2630" stroke-width="2"/>
-  <!-- cluster points -->
-  <circle cx="22" cy="22" r="5" fill="#ffb454"/>
-  <circle cx="42" cy="22" r="3.5" fill="#4fd1c5"/>
-  <circle cx="22" cy="42" r="3.5" fill="#4fd1c5"/>
-  <circle cx="42" cy="42" r="5" fill="#ffb454"/>
+  <!-- Site design system: single accent (deep navy), warm parchment ink.
+       Motif: one weighted node on a crosshair, the geographic reading of
+       the portfolio. Navy field and a dominant node so the mark still
+       resolves at 16px in a browser tab. -->
+  <rect width="64" height="64" rx="13" fill="#1D3557"/>
+  <g stroke="#F7F6F3" stroke-opacity="0.33" stroke-width="2.6">
+    <path d="M6 26h52M26 6v52"/>
+  </g>
+  <circle cx="26" cy="26" r="11" fill="#F7F6F3"/>
+  <circle cx="45" cy="45" r="4.5" fill="#F7F6F3" fill-opacity="0.59"/>
 </svg>

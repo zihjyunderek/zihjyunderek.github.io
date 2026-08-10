@@ -1,17 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0b0f14"/>
-  <g stroke="#161c25" stroke-width="1">
-    <path d="M0 150h1200M0 315h1200M0 480h1200"/>
-    <path d="M200 0v630M450 0v630M750 0v630M1000 0v630"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-kerning="normal">
+  <!-- Design reference for og-default.png, which is the file social
+       platforms actually fetch; nothing in the site links to this SVG.
+       Every colour and metric is copied from src/styles/global.css.
+       Edit both files together, or neither. -->
+  <defs>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="14" r="1.4" fill="#E9E7E1"/>
+    </pattern>
+    <clipPath id="photoClip">
+      <rect x="820" y="116" width="300" height="300" rx="4"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="#F7F6F3"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- right column: hero photo with its offset corner accent -->
+  <image href="/images/head.jpg" x="820" y="116" width="300" height="300"
+         preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <rect x="820" y="116" width="300" height="300" rx="4" fill="none" stroke="#CAC8C0"/>
+  <path d="M1130 261v165H965" fill="none" stroke="#1D3557" stroke-opacity="0.38" stroke-width="2"/>
+
+  <!-- left column: identity -->
+  <text x="80" y="112" font-family="'JetBrains Mono',monospace" font-size="19"
+        font-weight="600" letter-spacing="1.9" fill="#1D3557">25.03°N 121.57°E</text>
+  <text x="317" y="112" font-family="'JetBrains Mono',monospace" font-size="19"
+        letter-spacing="1.9" fill="#A8A39A">TPE</text>
+
+  <text font-family="'Source Serif 4',Georgia,serif" font-size="88" letter-spacing="-1.8">
+    <tspan x="80" y="215" font-weight="600" fill="#1C1917">Zih-Jyun</tspan>
+    <tspan x="80" y="310" font-style="italic" fill="#6B6560">Derek</tspan><tspan font-weight="600" fill="#1C1917"> Huang</tspan>
+  </text>
+
+  <text x="80" y="391" font-family="'Source Serif 4',Georgia,serif" font-size="30"
+        font-weight="600" fill="#6B6560">Data Analyst</text>
+  <text x="80" y="433" font-family="'Source Serif 4',Georgia,serif" font-size="25"
+        fill="#6B6560">Spatial statistics, urban analytics, quantitative risk</text>
+
+  <!-- bottom band: stat strip over a hairline -->
+  <path d="M80 500h1040" stroke="#E5E3DC"/>
+  <g font-family="'JetBrains Mono',monospace" font-size="21" font-weight="600" fill="#1D3557">
+    <text x="80" y="546">16+</text>
+    <text x="207" y="546">31</text>
+    <text x="381" y="546">137</text>
+    <text x="524" y="546">7</text>
+    <text x="722" y="546">G7</text>
   </g>
-  <g fill="#ffb454">
-    <circle cx="200" cy="150" r="9"/><circle cx="1000" cy="480" r="9"/>
+  <g font-family="'Source Serif 4',Georgia,serif" font-size="15" fill="#A8A39A">
+    <text x="80" y="574">repositories</text>
+    <text x="207" y="574">US cities modeled</text>
+    <text x="381" y="574">urban metrics</text>
+    <text x="524" y="574">clustering algorithms</text>
+    <text x="722" y="574">FX pairs (VaR)</text>
   </g>
-  <g fill="#4fd1c5">
-    <circle cx="450" cy="480" r="6"/><circle cx="750" cy="150" r="6"/><circle cx="450" cy="150" r="4"/>
-  </g>
-  <text x="90" y="300" font-family="'JetBrains Mono',monospace" font-size="22" fill="#4fd1c5" letter-spacing="4">25.03°N 121.56°E  TPE ⇄ NYC  40.74°N 73.99°W</text>
-  <text x="86" y="380" font-family="'Space Grotesk',sans-serif" font-size="78" font-weight="700" fill="#e8edf2">Derek Huang</text>
-  <text x="90" y="445" font-family="'Space Grotesk',sans-serif" font-size="30" fill="#97a3b1">Spatial Statistics · Urban Analytics · Quant Finance</text>
-  <text x="90" y="540" font-family="'JetBrains Mono',monospace" font-size="20" fill="#5b6673">Data Science Analyst · Gensler Cities Research</text>
+  <text x="1120" y="550" text-anchor="end" font-family="'JetBrains Mono',monospace"
+        font-size="17" letter-spacing="0.7" fill="#A8A39A">zihjyunderek.github.io</text>
 </svg>
