@@ -44,6 +44,16 @@
 
 > 這個檔案**永久保留**。Google 會定期回頭檢查，刪掉會掉驗證狀態。
 
+**如果第 4 步開起來是 404**，先不要動 Google，去 repo 的 Actions 頁看那次 run 的狀態：
+
+| 狀態 | 意思 | 處理 |
+| --- | --- | --- |
+| Success（綠勾） | 已上線，是邊緣快取 | 網址後加 `?x=1` 重試，或等 10 分鐘 |
+| Cancelled（灰） | build 成功但 deploy 被取消，網站仍停在舊版 | 進該次 run → 右上 **Re-run all jobs** |
+| Failure（紅叉） | build 失敗 | 點進 build job 看錯誤，本機跑 `npm ci && npm run build` 重現 |
+
+Cancelled 的典型訊息是 `Canceling since a higher priority waiting request for pages exists`，來自 `deploy.yml` 的 `concurrency.cancel-in-progress`。已設為 `false`，不應再發生。
+
 ### Step 3：提交 sitemap
 
 Search Console 左側 → **索引 → Sitemap** → 輸入 `sitemap-index.xml` → 提交。

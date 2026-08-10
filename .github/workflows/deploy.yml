@@ -17,10 +17,14 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment; cancel in-progress runs for the same ref.
+# Allow one concurrent deployment. Never cancel an in-progress run: the
+# deploy job holds the `pages` lock, so `cancel-in-progress: true` lets a
+# newly queued request kill a deploy that already has a built artifact,
+# and the site silently stays on the previous build. This matches GitHub's
+# own Pages starter workflow.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
