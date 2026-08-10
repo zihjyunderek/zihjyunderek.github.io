@@ -60,7 +60,21 @@ Search Console 左側 → **索引 → Sitemap** → 輸入 `sitemap-index.xml` 
 
 狀態顯示「成功」即可。18 個頁面（首頁、4 個列表頁、13 個專案頁）會被自動帶入，之後新增專案不用再提交一次。
 
+**如果狀態是「無法擷取」**，先看另外兩欄再決定要不要動手：
+
+| 類型 | 上次讀取時間 | 判讀 | 處理 |
+| --- | --- | --- | --- |
+| 未知 | 空白 | Google 還沒真的讀過，不是抓失敗 | 等 1–2 天，不要刪掉重送 |
+| 未知 | 有時間 | 真的抓失敗 | 先自己開 sitemap 網址確認回 200 |
+| Sitemap 索引 | 有時間 | 已成功讀取 | 無事 |
+
+新資源剛驗證完就送 sitemap，幾乎都會先停在第一種狀態。反覆刪除重送不會加速，只會讓紀錄變亂。超過 3 天仍未讀取才刪掉重送。
+
+順手可以多送一筆 `sitemap-0.xml`（實際含網址的那份），等於給 Google 第二條路徑，無副作用。
+
 ### Step 4：手動要求索引首頁
+
+**這一步和 Step 3 完全獨立，不必等 sitemap 讀取成功。** Google 官方文件明講，網址審查的即時測試「不會檢查該網址是否存在於任何 sitemap 或任何引導連結中」。只要資源驗證通過就能用。
 
 上方搜尋列貼 `https://zihjyunderek.github.io/` → 進入網址審查 → **要求建立索引**。
 
@@ -70,7 +84,7 @@ Search Console 左側 → **索引 → Sitemap** → 輸入 `sitemap-index.xml` 
 2. `/projects/`
 3. 最想被搜到的 2–3 個專案頁（例如 `/projects/decoding-the-city-mgwr/`、`/projects/implied-vol-var/`）
 
-其餘交給 sitemap 自然爬取，不用一頁一頁送。
+> 這個站只有 18 頁，而且每一頁都能從首頁點得到。依 Google 的說法，500 頁以下且能從首頁走到的網站「其實不需要 sitemap」。送出首頁之後，爬蟲會沿著導覽列和專案連結自己走完其餘 17 頁。sitemap 是加速用的保險，不是前提。
 
 ### Step 5：Bing Webmaster Tools
 
@@ -80,19 +94,25 @@ Search Console 左側 → **索引 → Sitemap** → 輸入 `sitemap-index.xml` 
 
 Bing 的索引同時供給 DuckDuckGo、Yahoo 及部分 AI 搜尋產品，五分鐘的投報率很高。
 
-### Step 6：外部連結（新站最關鍵的一步）
+### Step 6：外部連結
 
-`github.io` 子網域沒有繼承任何權重。Google 判斷這站值不值得排，主要看**有多少地方連過來**。這一步比前五步加起來更影響排名。
+「外部連結」不是 SEO 工具裡的某個設定，也不是要改網站程式碼。它的字面意思就是：**在別人的網站上，放一條指向 `zihjyunderek.github.io` 的連結**。做法是去那些平台的個人資料頁，把網址填進「Website」之類的欄位，或在文章正文裡貼一行連結。全部都在站外操作。
 
-| 位置 | 動作 |
-| --- | --- |
-| GitHub 個人 profile | Edit profile → Website 欄位填網址 |
-| 每個公開 repo | About 齒輪 → Website 欄位填網址 |
-| GitHub profile README | 正文放一行連結 |
-| LinkedIn | 個人檔案 → 聯絡資訊 → 網站 |
-| ORCID / Google Scholar | 個人頁加連結 |
-| NCCU 系所頁、論文頁 | 可放的話就放 |
-| Email 簽名檔 | 加一行 |
+| 位置 | 怎麼做 | 連結類型 |
+| --- | --- | --- |
+| GitHub 個人 profile | 個人頁 → Edit profile → Website 欄位貼網址 | nofollow |
+| 每個公開 repo | repo 首頁右側 About 的齒輪 → Website 欄位貼網址 | nofollow |
+| GitHub profile README | `zihjyunderek/zihjyunderek` repo 的 `README.md` 正文加一行 Markdown 連結 | nofollow |
+| LinkedIn | 個人檔案 → 編輯 → 聯絡資訊 → 網站 | nofollow |
+| ORCID / Google Scholar | 個人頁的 Websites 欄位 | 視平台而定 |
+| NCCU 系所頁、論文頁 | 能請系辦加就加 | 多為 dofollow，價值最高 |
+| Email 簽名檔 | 加一行網址 | 不是連結，但帶真人流量 |
+
+**誠實的期望值**：GitHub 與 LinkedIn 的連結全部帶 `nofollow`，不會直接傳遞排名權重。它們的價值在於「被爬蟲發現」和「真人點進來」，不在於衝排名。
+
+所以不要把外部連結當成排名的主要槓桿。對「Zih-Jyun Huang」「黃子竣」這種競爭極低的姓名查詢，真正的門檻是**有沒有被收錄**（Step 4），不是權重高低。頁面本身已經把姓名寫在 `<title>`、`<h1>` 和 JSON-LD 的 `alternateName` 裡，收錄之後自然會排在前面。
+
+外部連結仍然值得花二十分鐘做完，因為它是少數在你不在時還能持續作用的事情。但它是輔助，不是關鍵。
 
 ## 時程預期
 
@@ -131,6 +151,28 @@ Bing 的索引同時供給 DuckDuckGo、Yahoo 及部分 AI 搜尋產品，五分
 | 瀏覽器 favicon | `Ctrl+Shift+R` 常常不夠。用無痕視窗確認，或清除「快取圖片和檔案」 |
 
 > Discord 的文字與圖片是**兩套獨立快取**，會出現「標題已更新但圖還是舊的」，屬正常現象。
+
+## 服役期間（2026/08 – 2026/12）
+
+網站是純靜態、部署在 GitHub Pages，沒有任何會過期的東西。人不在也不會壞。但要區分兩件事：
+
+| | 會自己發生 | 需要人動手 |
+| --- | --- | --- |
+| 被 Google 收錄 | 是，要求索引送出後自動爬取 | 否 |
+| 爬完其餘 17 頁 | 是，沿站內連結自己走 | 否 |
+| 外部連結累積 | 否 | 是，Step 6 |
+
+**入營前唯一非做不可的是 Step 4（要求索引首頁）**，五分鐘，而且不必等 sitemap。Step 5 和 Step 6 有時間就做，做了更好。
+
+離營期間不會發生的壞事：
+
+- 驗證不會失效，只要 `public/google*.html` 還在 repo 裡
+- 沒有 push 就不會觸發部署，網站維持在最後一次成功的版本
+- 就算之後某次 build 失敗，Pages 也只是不更新，舊版仍在線
+
+唯一要避免的：**不要開啟 Dependabot PR 的 auto-merge**。人不在時自動合併相依套件更新，build 掛掉你不會知道。
+
+回來後第一件事：打開 Search Console 的「成效」與「索引 → 網頁」，看四個月累積了多少曝光與收錄數，再決定要不要補內容。
 
 ## 檢查清單
 
