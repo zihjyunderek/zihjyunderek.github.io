@@ -245,6 +245,19 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
   color: var(--ink);
 }
 
+/* Legal Chinese name. It is the highest-value name query, so it is rendered
+   inside the h1 instead of living only in <title>, the footer, and JSON-LD.
+   Sized well down so the English name still leads the hero. */
+.hero h1 .name-zh {
+  display: block;
+  font-size: 0.34em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  color: var(--ink-dim);
+  margin-top: 0.6rem;
+}
+
 .hero-subtitle {
   font-size: clamp(0.92rem, 1.8vw, 1.05rem);
   color: var(--ink-dim);

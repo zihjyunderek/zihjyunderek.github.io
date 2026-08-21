@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { SITE, DOMAINS } from '../../config';
+import { SITE, DOMAINS, PERSON_ID } from '../../config';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -26,7 +26,7 @@ const projectLd = {
   url: pageUrl,
   ...(repo ? { codeRepository: repo } : {}),
   programmingLanguage: 'Python',
-  author: { '@type': 'Person', name: SITE.name, url: SITE.url },
+  author: { '@id': PERSON_ID, '@type': 'Person', name: SITE.name, url: `${SITE.url}/` },
 };
 
 const breadcrumbLd = {

@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { SITE } from '../config';
+import { SITE, PERSON_ID, WEBSITE_ID } from '../config';
 import { experience, featureImportance, headlineStats } from '../data/profile';
 
 const allProjects = await getCollection('projects');
@@ -20,12 +20,18 @@ const featured = [
 const recentExperience = experience.slice(0, 3);
 const totalExperience = experience.length;
 
+/* One Person node, addressed by a stable @id, is what a crawler needs to
+   treat "Zih-Jyun Huang", "Derek Huang", and the Chinese legal name as the
+   same entity. WebSite and ProfilePage point at it instead of repeating it. */
 const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': PERSON_ID,
   name: SITE.name,
   alternateName: [SITE.alternateName, SITE.shortName],
   jobTitle: SITE.jobTitle,
+  description: SITE.description,
+  image: new URL('/images/head.jpg', SITE.url).href,
   ...(SITE.org ? { worksFor: { '@type': 'Organization', name: SITE.org } } : {}),
   alumniOf: [
     { '@type': 'CollegeOrUniversity', name: 'National Chengchi University' },
@@ -38,20 +44,45 @@ const personLd = {
     'Value at Risk',
     'Machine learning',
   ],
+  knowsLanguage: ['zh-Hant', 'en'],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Taipei',
+    addressCountry: 'TW',
+  },
   email: `mailto:${SITE.email}`,
-  url: SITE.url,
+  url: `${SITE.url}/`,
   sameAs: [SITE.github, SITE.linkedin].filter(Boolean),
 };
 
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': WEBSITE_ID,
   name: SITE.shortName,
-  url: SITE.url,
+  alternateName: [SITE.name, SITE.alternateName],
+  url: `${SITE.url}/`,
+  inLanguage: 'en',
+  author: { '@id': PERSON_ID },
+  publisher: { '@id': PERSON_ID },
+};
+
+/* ProfilePage is the type Google documents for a page that is about one
+   person. It names the Person as the page's main entity, so the home page
+   itself is read as the profile rather than as a generic landing page. */
+const profilePageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${SITE.url}/#profile`,
+  url: `${SITE.url}/`,
+  name: SITE.title,
+  inLanguage: 'en',
+  isPartOf: { '@id': WEBSITE_ID },
+  mainEntity: { '@id': PERSON_ID },
 };
 ---
 
-<Base jsonLd={[personLd, websiteLd]}>
+<Base jsonLd={[personLd, websiteLd, profilePageLd]}>
 
   <!-- ============ 01 Hero ============ -->
   <section class="hero" id="profile">
@@ -66,7 +97,8 @@ const websiteLd = {
         
         <h1>
           Zih-Jyun<br />
-          <em style="font-style:italic;color:var(--ink-dim)">Derek</em> Huang 
+          <em style="font-style:italic;color:var(--ink-dim)">Derek</em> Huang
+          <span class="name-zh" lang="zh-Hant">{SITE.alternateName}</span>
         </h1>
 
         <p class="hero-subtitle">

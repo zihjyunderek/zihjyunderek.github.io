@@ -51,6 +51,14 @@ export const SITE = {
   ],
 } as const;
 
+/**
+ * Stable JSON-LD node identifiers. Every structured-data block on the
+ * site points at these, so a crawler merges the Person and WebSite nodes
+ * it meets on different pages into one entity instead of many look-alikes.
+ */
+export const PERSON_ID = `${SITE.url}/#person`;
+export const WEBSITE_ID = `${SITE.url}/#website`;
+
 /** Display labels for the four project domains. */
 export const DOMAINS: Record<string, string> = {
   spatial: 'Geospatial Statistics',

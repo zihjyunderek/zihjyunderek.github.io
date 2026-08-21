@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
-import { SITE, DOMAINS } from '../../config';
+import { SITE, DOMAINS, PERSON_ID } from '../../config';
 
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order
@@ -19,7 +19,7 @@ const collectionLd = {
   name: title,
   description,
   url: new URL('/projects/', SITE.url).href,
-  author: { '@type': 'Person', name: SITE.name, url: SITE.url },
+  author: { '@id': PERSON_ID, '@type': 'Person', name: SITE.name, url: `${SITE.url}/` },
   hasPart: projects.map((p) => ({
     '@type': 'CreativeWork',
     name: p.data.title,
