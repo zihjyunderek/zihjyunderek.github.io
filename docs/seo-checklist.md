@@ -174,6 +174,64 @@ Bing 的索引同時供給 DuckDuckGo、Yahoo 及部分 AI 搜尋產品，五分
 
 回來後第一件事：打開 Search Console 的「成效」與「索引 → 網頁」，看四個月累積了多少曝光與收錄數，再決定要不要補內容。
 
+## 2026-08-21 稽核（離營放假後的第一次驗收）
+
+### 線上實測
+
+| 檢查項 | 實測結果 | 判定 |
+| --- | --- | --- |
+| `/robots.txt` | 200，`Allow: /`，已宣告 sitemap | 正常 |
+| `/sitemap-index.xml` | 200，指向 `sitemap-0.xml` | 正常 |
+| `/sitemap-0.xml` | 200，18 筆 `<loc>` 全部正確 | 正常 |
+| 各頁 canonical | 自我指向，無交叉錯置 | 正常 |
+| `/projects/` 站內連結 | 13 個專案頁全在靜態 HTML 裡，不靠 JS | 正常 |
+| GitHub Actions | 最後一次成功部署 `bc7a232`，線上版本即為 main | 正常 |
+
+結論：**sitemap 不是抓不到，是 Google 還沒回來讀。** 伺服器端沒有任何一項需要修。
+
+### GSC 數字判讀
+
+| 指標 | 數值 | 判讀 |
+| --- | --- | --- |
+| 已建立索引 | 7 | Google 只認識 18 頁裡的 7 頁 |
+| 未建立索引 | 0 | 沒有任何一頁被判定有問題，剩下 11 頁是「尚未被發現」 |
+| Sitemap 狀態 | 無法擷取／類型未知／上次讀取時間空白 | 對照 Step 3 的表，屬第一種：還沒真的讀過 |
+| 曝光 | 三個月每日約 2–4 次 | 新站加零外部連結的正常值 |
+| 點擊 | 0 | 曝光基數太小，還談不上點閱率問題 |
+
+Sitemap 送出日為 2026/8/10，已超過本文件自訂的 3 天門檻，因此這次改為刪除後重送。
+
+### 這次動到的程式碼
+
+技術面本來就沒有缺口，這批改動全部是**實體訊號（entity signal）**與**慣例路徑**的補強，不是修 bug。
+
+| 改動 | 檔案 | 為什麼 |
+| --- | --- | --- |
+| Person / WebSite / ProfilePage 以固定 `@id` 串成一張圖 | `src/config.ts`、`src/pages/index.astro` | 讓爬蟲把「Zih-Jyun Huang」「Derek Huang」「黃子竣」收斂成同一個實體，而不是三個長得像的節點 |
+| Person 補 `image`、`description`、`address`、`knowsLanguage` | `src/pages/index.astro` | 知識面板取用的欄位，缺一項就少一個佐證 |
+| 專案頁的 `author` 指回同一個 `@id` | `src/pages/projects/*.astro` | 13 個專案頁的作者訊號回流到首頁那個 Person |
+| 中文本名進 `<h1>` | `src/pages/index.astro`、`src/styles/global.css` | 改動前「黃子竣」只出現在 footer 一處可見文字。CLAUDE.md 早就寫「hero、footer、title、JSON-LD 都要有」，實作漏了 hero |
+| 新增 `/sitemap.xml` | `src/pages/sitemap.xml.ts`、`astro.config.mjs` | 慣例路徑，之前是 404。不讀 robots.txt 的爬蟲與檢測工具只探這個網址 |
+| 404 頁加 `noindex` | `src/layouts/Base.astro`、`src/pages/404.astro` | GitHub Pages 本來就回 HTTP 404，這是給不看狀態碼的爬蟲的保險 |
+
+### 評估過但刻意不做
+
+| 沒做 | 理由 |
+| --- | --- |
+| sitemap 加 `lastmod` | 靜態站唯一能填的是 build 時間，18 頁會全部相同且每次部署都變。Google 判定 `lastmod` 不可信時就整個忽略，填了反而是雜訊 |
+| 改首頁 `<title>` 加職稱 | 姓名查詢的競爭度本來就接近零，`<title>` 已含中英文全名。改文案的風險大於收益 |
+| 把 CV PDF 塞進 sitemap | PDF 已從首頁與 `/contact/` 連得到，爬得到。刻意推 PDF 反而可能讓它排在 HTML 頁前面，那是比較差的著陸體驗 |
+| `meta keywords` 擴充 | 見上文「不要做的事」，Google 自 2009 年起完全忽略 |
+
+### 回營前的動作順序
+
+1. GSC → Sitemap → 把 `/sitemap-0.xml` 與 `/sitemap-index.xml` 兩筆**刪除**，重新送出 `sitemap-index.xml`（順手可再送 `sitemap.xml`）
+2. GSC → 網址審查 → 對尚未收錄的 11 頁**要求建立索引**，每日配額 10 筆，兩天送完
+3. Step 6 的外部連結：GitHub profile、各 repo About、LinkedIn，二十分鐘做完
+4. 兩週後回頭看「索引 → 網頁」的已建立索引數是否往 18 靠
+
+第 1 步和第 2 步互相獨立，不必等 sitemap 讀取成功才做第 2 步。
+
 ## 檢查清單
 
 - [ ] Search Console 建立 URL prefix 資源
