@@ -1,8 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
 ---
 
-<Base title="404 · Page Not Found" description="Page not found." noindex>
+<Base
+  title={`404 Page Not Found – ${SITE.shortName}`}
+  description="Page not found."
+  noindex
+>
   <div class="wrap lost">
     <div class="code">404</div>
     <h1>Page not found</h1>
