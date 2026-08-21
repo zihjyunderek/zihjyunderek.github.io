@@ -17,6 +17,8 @@ interface Props {
   ogType?: string;
   /** Extra JSON-LD objects injected by the page (Person, SoftwareSourceCode, ...) */
   jsonLd?: object[];
+  /** true on pages that must never enter an index (404) */
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   description = SITE.description,
   ogType = 'website',
   jsonLd = [],
+  noindex = false,
 } = Astro.props;
 
 /* Canonical URL is derived from astro.config.mjs `site` + current path,
@@ -44,6 +47,7 @@ const ogImage = new URL('/og-default.png', Astro.site);
     <meta name="description" content={description} />
     <meta name="author" content={SITE.name} />
     <meta name="keywords" content={SITE.keywords.join(', ')} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

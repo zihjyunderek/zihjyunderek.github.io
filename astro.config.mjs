@@ -6,5 +6,10 @@ import sitemap from '@astrojs/sitemap';
 // GitHub Pages user site => repo must be named `zihjyunderek.github.io`.
 export default defineConfig({
   site: 'https://zihjyunderek.github.io',
-  integrations: [sitemap()],
+  integrations: [
+    // `/sitemap.xml` is a hand-written mirror of the generated index, kept
+    // for crawlers that only probe the conventional path. Exclude it so the
+    // sitemap does not list a sitemap as a page.
+    sitemap({ filter: (page) => !page.endsWith('/sitemap.xml') }),
+  ],
 });
