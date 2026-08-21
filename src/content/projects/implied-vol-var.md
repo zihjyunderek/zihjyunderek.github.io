@@ -13,7 +13,7 @@ repo: "https://github.com/zihjyunderek/G7_VaR"
 status: research
 ---
 
-My master's thesis at NCCU Money and Banking (M.S., 2026): *Forecasting FX Spot Value-at-Risk (VaR) Using Implied Volatility: Evidence from G7 Currency Pairs* (運用選擇權隱含波動率預測現貨風險值 (VaR)：以 G7 貨幣對為例). It bridges the two halves of my background: market-risk practice from CTBC and Foxconn treasury internships, and the statistical modeling I use daily. The question is deceptively simple: **can the market's own forward-looking view of volatility predict tomorrow's downside risk better than history can?**
+My master's thesis at NCCU Money and Banking (M.S., 2026): *Forecasting FX Spot Value-at-Risk (VaR) Using Implied Volatility: Evidence from G7 Currency Pairs*. It bridges the two halves of my background: market-risk practice from CTBC and Foxconn treasury internships, and the statistical modeling I use daily. The question is deceptively simple: **can the market's own forward-looking view of volatility predict tomorrow's downside risk better than history can?**
 
 ## The idea
 

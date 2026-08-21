@@ -6,7 +6,11 @@
 export const SITE = {
   url: 'https://zihjyunderek.github.io',
   name: 'Zih-Jyun Huang (Derek)',
-  /** Legal Chinese name. Rendered in the hero, footer, title, and JSON-LD. */
+  /**
+   * Legal Chinese name. Never rendered: the site is English-only in visible
+   * text. It lives in <title>, the meta description, keywords, and JSON-LD
+   * `alternateName`, which is where the 黃子竣 query is answered.
+   */
   alternateName: '黃子竣',
   shortName: 'Derek Huang',
   jobTitle: 'Data Analyst',

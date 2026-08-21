@@ -210,9 +210,23 @@ Sitemap 送出日為 2026/8/10，已超過本文件自訂的 3 天門檻，因�
 | Person / WebSite / ProfilePage 以固定 `@id` 串成一張圖 | `src/config.ts`、`src/pages/index.astro` | 讓爬蟲把「Zih-Jyun Huang」「Derek Huang」「黃子竣」收斂成同一個實體，而不是三個長得像的節點 |
 | Person 補 `image`、`description`、`address`、`knowsLanguage` | `src/pages/index.astro` | 知識面板取用的欄位，缺一項就少一個佐證 |
 | 專案頁的 `author` 指回同一個 `@id` | `src/pages/projects/*.astro` | 13 個專案頁的作者訊號回流到首頁那個 Person |
-| 中文本名進 `<h1>` | `src/pages/index.astro`、`src/styles/global.css` | 改動前「黃子竣」只出現在 footer 一處可見文字。CLAUDE.md 早就寫「hero、footer、title、JSON-LD 都要有」，實作漏了 hero |
+| 頁面可見文字改為純英文 | `src/pages/index.astro`、`src/components/Footer.astro`、`src/content/projects/implied-vol-var.md`、`src/styles/global.css` | 中文名一度加進 hero，實機看過後判定破壞英文版面，連同 footer 版權列與論文中文標題一併移除 |
 | 新增 `/sitemap.xml` | `src/pages/sitemap.xml.ts`、`astro.config.mjs` | 慣例路徑，之前是 404。不讀 robots.txt 的爬蟲與檢測工具只探這個網址 |
 | 404 頁加 `noindex` | `src/layouts/Base.astro`、`src/pages/404.astro` | GitHub Pages 本來就回 HTTP 404，這是給不看狀態碼的爬蟲的保險 |
+
+### 中文字的界線
+
+實機檢視後定案：**瀏覽器畫得出來的地方一律英文，畫不出來的地方保留中文名。**
+
+| 位置 | 會不會渲染 | 中文名 |
+| --- | --- | --- |
+| hero、footer、專案內文 | 會 | 移除 |
+| `<title>` | 只出現在分頁標籤與搜尋結果標題 | 保留 |
+| meta description、`keywords` | 不渲染 | 保留 |
+| JSON-LD `alternateName` | 不渲染 | 保留 |
+
+`SITE.title` 含中文名，`SITE.name` 不含。任何要印在頁面上的地方一律用 `SITE.name`。
+這條規則已寫進 CLAUDE.md，避免之後又被「補」回去。
 
 ### 評估過但刻意不做
 
