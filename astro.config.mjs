@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap';
 // GitHub Pages user site => repo must be named `zihjyunderek.github.io`.
 export default defineConfig({
   site: 'https://zihjyunderek.github.io',
+  // Astro 7 defaults to 'jsx' whitespace rules, which drop the space between
+  // inline elements (nav links, breadcrumb, footer, stat value and label).
+  // `true` keeps the HTML-aware compression these templates are written for.
+  compressHTML: true,
   integrations: [
     // `/sitemap.xml` is a hand-written mirror of the generated index, kept
     // for crawlers that only probe the conventional path. Exclude it so the

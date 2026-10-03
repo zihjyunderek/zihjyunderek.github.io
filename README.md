@@ -102,7 +102,7 @@ After first deploy: verify the domain in [Google Search Console](https://search.
 
 - Dependabot opens monthly update PRs for npm packages and GitHub Actions (`.github/dependabot.yml`).
 - Dependencies are pinned via `package-lock.json`; CI installs with `npm ci`.
-- `package.json` is `private` (never publishable to npm) and declares `engines.node >= 20`.
+- `package.json` is `private` (never publishable to npm) and declares `engines.node >= 22.12.0`, the Astro 7 minimum. CI pins Node 24 in `.github/workflows/deploy.yml`; raise both together.
 
 ---
 

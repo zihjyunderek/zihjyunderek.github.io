@@ -110,8 +110,8 @@ h1, h2, h3 { line-height: 1.15; font-weight: 600; letter-spacing: -0.01em; }
   top: 0;
   z-index: 50;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 .site-header .wrap {

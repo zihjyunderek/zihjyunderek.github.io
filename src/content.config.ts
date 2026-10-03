@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 /**
  * Projects live in `src/content/projects/*.md`.
@@ -29,7 +30,7 @@ const projects = defineCollection({
       .max(4),
     featured: z.boolean().default(false),
     order: z.number().default(99),
-    repo: z.string().url().optional(),
+    repo: z.url().optional(),
     status: z.enum(['public', 'private', 'research']).default('public'),
   }),
 });

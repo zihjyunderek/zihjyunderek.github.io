@@ -31,9 +31,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Install, build, and upload site
-        uses: withastro/action@v3
+        uses: withastro/action@v6
+        with:
+          # Astro 7 refuses to run below Node 22.12 (`engines` in
+          # package.json). Raise this together with that floor.
+          node-version: 24
 
   deploy:
     needs: build
@@ -44,4 +48,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

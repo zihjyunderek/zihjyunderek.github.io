@@ -6,7 +6,7 @@
 
 ## 一次性安裝（只做一次）
 
-安裝 [Node.js LTS 版](https://nodejs.org/)（建議 v22）。安裝完成後，雙擊 `scripts/dev.bat`，第一次會自動執行 `npm install` 安裝相依套件（1–2 分鐘），之後不會再裝。
+安裝 [Node.js LTS 版](https://nodejs.org/)（建議 v24，與 GitHub Actions 相同；Astro 7 最低需要 v22.12）。安裝完成後，雙擊 `scripts/dev.bat`，第一次會自動執行 `npm install` 安裝相依套件（1–2 分鐘），之後不會再裝。
 
 ## 日常工作流程
 
@@ -51,6 +51,10 @@ repo 內**所有被 git 追蹤的檔案都是可公開的**，沒有 private/pub
 **Port 4321 被占用** — 前一個伺服器沒關。關掉舊的視窗，或改用 `npm run dev -- --port 4322`。
 
 **畫面怪怪的/套件壞掉** — 刪掉 `node_modules` 資料夾後重新雙擊 `scripts/dev.bat`（會自動重裝）。
+
+**`git pull` 拿到 Dependabot 的套件更新後** — 執行一次 `npm ci`，本機才會換成新版套件。`dev.bat` 與 `preview.bat` 只在 `node_modules` 不存在時安裝，不會自動更新；沒同步的話，本機 preview 跑的是舊版 Astro，結果不等於線上版。用 `npm ci` 而不是 `npm install`，才不會改動 `package-lock.json`。
+
+**出現 `Node.js vXX is not supported by Astro!`** — 本機或 CI 的 Node 版本低於 Astro 的最低需求（Astro 7 為 v22.12）。本機請安裝 v24 LTS 後重開終端機；CI 的版本在 `.github/workflows/deploy.yml` 的 `node-version`。
 
 **改了 `src/content/` 的 frontmatter 後 build 失敗** — 這是設計好的保護：欄位有 schema 驗證（`src/content.config.ts`），錯誤訊息會指出哪個檔案哪個欄位打錯。
 
