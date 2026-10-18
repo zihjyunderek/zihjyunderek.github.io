@@ -53,10 +53,10 @@ export const experience: ExperienceEntry[] = [
   },
   {
     org: 'Republic of China Army',
-    role: 'Compulsory Military Service',
+    role: 'Compulsory Military Service, 206th Infantry Brigade',
     when: '2026/08 – 2026/12',
-    where: 'Taiwan',
-    note: 'Statutory conscription of the Republic of China (Taiwan). Email remains the best way to reach me during service.',
+    where: 'Guanxi, Hsinchu',
+    note: 'Statutory military service of the Republic of China (Taiwan): basic training, then assignment to the 206th Infantry Brigade in Guanxi, Hsinchu. Email remains the best way to reach me during service.',
   },
   {
     org: 'Gensler Research Institute',
@@ -153,7 +153,7 @@ export const certificates: Certificate[] = [
 export const status = [
   {
     label: 'Now',
-    text: 'Military service, Taiwan',
+    text: 'Military service, 206th Infantry Brigade',
     when: '2026/08 – 2026/12',
   },
   {
