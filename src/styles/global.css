@@ -4,8 +4,9 @@
    graph-paper canvas, navy accent, timeline markers, and solid buttons.
 
    Grid: every page uses the same two-column rail. The narrow left column
-   holds section names (and the portrait on the home page); the right
-   column holds content, sized to keep lines near 75 characters.
+   holds section names (the portrait on the home page, the contents on a
+   project page); the right column holds content, sized to keep lines
+   near 75 characters.
 
    Type scale (strict): anything to the left of, or above, an element in
    the hierarchy is set at least as large. Rail section name > item title
@@ -45,11 +46,13 @@
   --fs-body:    1rem;                            /* reading text */
   --fs-meta:    0.875rem;                        /* roles, stacks, captions */
   --fs-data:    0.8125rem;                       /* mono dates and figures */
+  --baseline-ratio: 0.92;  /* Source Serif 4: baseline depth / font size, at line-height 1.2 */
 
   /* layout */
   --max-w:  68rem;
   --pad:    clamp(1.25rem, 4vw, 2.5rem);
-  --rail:   18.75rem;                   /* = the square portrait's side */
+  --rail:   15rem;                      /* = the portrait's width */
+  --portrait-h: calc(var(--rail) * 5 / 4);   /* 4:5 portrait */
   --gutter: clamp(1.5rem, 4vw, 3.5rem);
   --block:  clamp(4rem, 9vw, 6rem);
 }
@@ -57,6 +60,9 @@
 /* ---- reset ---- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   margin: 0;
@@ -182,7 +188,8 @@ main { display: block; padding-bottom: var(--block); }
    ========================================================================== */
 .intro { padding-top: clamp(3.5rem, 9vw, 6rem); align-items: start; }
 
-/* The portrait keeps its original square ratio and sets the rail width.
+/* The portrait is a 4:5 crop of the square photo, centered on the
+   subject (the scenery at the sides is trimmed), and sets the rail width.
    The text column is at least as tall as the photo, with the name block
    pinned to the top and the status and buttons pinned to the bottom, so
    both columns start and end on the same line. */
@@ -190,8 +197,9 @@ main { display: block; padding-bottom: var(--block); }
 .portrait {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 50%;
   border: 1px solid var(--rule-2);
   border-radius: 4px;
 }
@@ -209,7 +217,7 @@ main { display: block; padding-bottom: var(--block); }
   pointer-events: none;
 }
 .intro .rail-main {
-  min-height: var(--rail);
+  min-height: var(--portrait-h);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -240,11 +248,15 @@ main { display: block; padding-bottom: var(--block); }
 .status dd { margin: 0; color: var(--ink); }
 .status dd.num { color: var(--ink-3); white-space: nowrap; text-align: right; }
 /* too narrow for one row: label and dates on top, the text below it at
-   full width, so the text itself still fits on one line */
-@container (max-width: 33rem) {
+   full width; narrower still, the details drop out, so the text itself
+   always stays on one line */
+@container (max-width: 41rem) {
   .status > div { grid-template-columns: auto minmax(0, 1fr); }
   .status > div + div { margin-top: 0.5rem; }
   .status dd:not(.num) { grid-column: 1 / -1; grid-row: 2; }
+}
+@container (max-width: 27.5rem) {
+  .status .detail { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -270,16 +282,23 @@ main { display: block; padding-bottom: var(--block); }
 
 /* dated entries: a timeline with navy markers (from the first version);
    organization on the left, dates right-aligned, as on the CV */
-.timeline { border-left: 2px solid var(--rule); margin-left: 0.3rem; }
+.timeline {
+  --line: 2px;    /* the rule */
+  --dot: 10px;    /* the marker, border included */
+  border-left: var(--line) solid var(--rule);
+  margin-left: 0.3rem;
+}
 .entry { position: relative; padding: 0 0 2.25rem 1.75rem; }
 .entry:last-child { padding-bottom: 0.25rem; }
+/* the marker is centered on the rule: the rule sits just left of the
+   entry's edge, so its center is half a line width to the left */
 .entry::before {
   content: '';
   position: absolute;
-  left: -7px;
-  top: 0.45rem;
-  width: 8px;
-  height: 8px;
+  left: calc(var(--line) / -2 - var(--dot) / 2);
+  top: 0.4rem;
+  width: var(--dot);
+  height: var(--dot);
   border-radius: 50%;
   background: var(--bg-raised);
   border: 2px solid var(--accent);
@@ -370,5 +389,38 @@ main { display: block; padding-bottom: var(--block); }
 .lost { padding-top: clamp(4rem, 15vh, 8rem); }
 .lost p { color: var(--ink-2); margin-top: 1rem; }
 
-/* project page body sits under the header block */
-.prose.body { margin-top: 3rem; }
+/* project page: the breadcrumb on its own row, then the contents in the
+   rail beside the title, pinned while the body scrolls past */
+.project-page { padding-top: clamp(2.5rem, 6vw, 4rem); }
+.project-page .breadcrumb { grid-row: 1; }
+.project-page .page-head { grid-row: 2; padding-top: 0; }
+.project-page .toc-col { grid-column: 1; grid-row: 2 / span 2; }
+.project-page .body { grid-row: 3; margin-top: 3rem; }
+.toc { position: sticky; top: 2rem; }
+/* "Contents" sits on the title's baseline: both lines are 1.2 em, so the
+   offset is the size difference times the font's baseline ratio */
+.toc-title {
+  padding-top: calc((var(--fs-page) - var(--fs-section)) * var(--baseline-ratio));
+  font-size: var(--fs-section);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.toc ol { list-style: none; margin: 1rem 0 0; padding: 0; border-left: 1px solid var(--rule-2); }
+.toc li + li { margin-top: 0.35rem; }
+.toc a {
+  display: block;
+  padding: 0.15rem 0 0.15rem 1rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: var(--fs-item);   /* labels a section heading: as large as it */
+  color: var(--ink-2);
+  line-height: 1.5;
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); border-left-color: var(--accent); }
+.prose h2[id], .prose.body { scroll-margin-top: 2rem; }
+@media (max-width: 760px) {
+  .project-page .toc-col { display: none; }
+}

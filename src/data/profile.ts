@@ -149,16 +149,26 @@ export const certificates: Certificate[] = [
 /**
  * The two lines under the introduction on the home page: what I am doing
  * now and what comes next. Update when either changes.
+ * Parts are joined with commas and each line stays on one line: a
+ * `{ detail }` part is shown only where the line has room for it.
  */
-export const status = [
+export type StatusPart = string | { detail: string };
+
+export interface StatusLine {
+  label: string;
+  parts: StatusPart[];
+  when: string;
+}
+
+export const status: StatusLine[] = [
   {
     label: 'Now',
-    text: 'Military service, 206th Infantry Brigade',
+    parts: ['Military service', '206th Infantry Brigade', { detail: 'Guanxi, Hsinchu' }],
     when: '2026/08 – 2026/12',
   },
   {
     label: 'Next',
-    text: 'Management Associate, CTBC Bank',
+    parts: ['Management Associate', { detail: 'Risk Management' }, 'CTBC Bank'],
     when: 'from 2027/02',
   },
 ];

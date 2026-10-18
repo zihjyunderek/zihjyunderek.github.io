@@ -113,7 +113,13 @@ const profilePageLd = {
           {status.map((s) => (
             <div>
               <dt>{s.label}</dt>
-              <dd>{s.text}</dd>
+              <dd>
+                {s.parts.map((p, i) =>
+                  typeof p === 'string'
+                    ? `${i ? ', ' : ''}${p}`
+                    : <span class="detail">, {p.detail}</span>
+                )}
+              </dd>
               <dd class="num">{s.when}</dd>
             </div>
           ))}

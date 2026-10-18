@@ -4,7 +4,7 @@ Personal portfolio of **Zih-Jyun (Derek) Huang** (黃子竣). Spatial statistics
 
 **Live:** https://zihjyunderek.github.io
 
-Built with [Astro](https://astro.build): fully static, SEO-first, zero client JS. Design ("Curriculum"): a CV read on screen. Every page uses one two-column rail, section names on the left and a reading column on the right, on a graph-paper canvas with navy timeline markers and solid buttons; two self-hosted typefaces (Source Serif 4 for text, JetBrains Mono for data); a single deep-navy accent. No cards, chips, or skill bars.
+Built with [Astro](https://astro.build): fully static, SEO-first, zero client JS. Design ("Curriculum"): a CV read on screen. Every page uses one two-column rail, section names (or a project's contents) on the left and a reading column on the right, on a graph-paper canvas with navy timeline markers and solid buttons; two self-hosted typefaces (Source Serif 4 for text, JetBrains Mono for data); a single deep-navy accent. No cards, chips, or skill bars.
 
 ## Retention policy: Only public
 

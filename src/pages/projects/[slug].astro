@@ -12,7 +12,9 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { Content } = await render(project);
+const { Content, headings } = await render(project);
+// contents in the rail: the opening paragraphs, then each section
+const sections = headings.filter((h) => h.depth === 2);
 const { title, tagline, domain, stack, stats, repo, status } = project.data;
 
 const pageTitle = `${title} – ${SITE.shortName}`;
@@ -45,35 +47,44 @@ const statusLabel =
 ---
 
 <Base title={pageTitle} description={tagline} ogType="article" jsonLd={[projectLd, breadcrumbLd]}>
-  <article>
-    <header class="wrap rail page-head">
-      <div class="rail-main">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a> / <a href="/projects/">Projects</a> / <span>{title}</span>
+  <article class="wrap rail project-page">
+    <nav class="rail-main breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/projects/">Projects</a> / <span>{title}</span>
+    </nav>
+
+    <aside class="rail-side toc-col">
+      {sections.length > 0 && (
+        <nav class="toc" aria-label="Contents">
+          <p class="toc-title">Contents</p>
+          <ol>
+            <li><a href="#overview">Overview</a></li>
+            {sections.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
         </nav>
-        <h1>{title}</h1>
-        <p class="lead justify">{tagline}</p>
-        <p class="facts-line">
-          <span class="area">{DOMAINS[domain]}</span>. {statusLabel}. {stack.join(', ')}
-        </p>
-        <div class="figures">
-          {stats.map((s) => (
-            <span><span class="v">{s.value}</span><span class="l">{s.label}</span></span>
-          ))}
-        </div>
-        {repo && (
-          <div class="actions">
-            <a class="btn" href={repo} target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
-          </div>
-        )}
+      )}
+    </aside>
+
+    <header class="rail-main page-head">
+      <h1>{title}</h1>
+      <p class="lead justify">{tagline}</p>
+      <p class="facts-line">
+        <span class="area">{DOMAINS[domain]}</span>. {statusLabel}. {stack.join(', ')}
+      </p>
+      <div class="figures">
+        {stats.map((s) => (
+          <span><span class="v">{s.value}</span><span class="l">{s.label}</span></span>
+        ))}
       </div>
+      {repo && (
+        <div class="actions">
+          <a class="btn" href={repo} target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+        </div>
+      )}
     </header>
 
-    <div class="wrap rail">
-      <div class="rail-main prose body">
-        <Content />
-        <div class="actions"><a class="btn ghost" href="/projects/">All projects</a></div>
-      </div>
+    <div class="rail-main prose body" id="overview">
+      <Content />
+      <div class="actions"><a class="btn ghost" href="/projects/">All projects</a></div>
     </div>
   </article>
 </Base>
