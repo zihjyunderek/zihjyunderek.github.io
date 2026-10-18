@@ -120,20 +120,29 @@ EDUCATION = [
     },
 ]
 
+# One entry per institution. The two CTBC internship terms are merged here
+# so the bullets can tell one story; the site's Experience page keeps each
+# term separate with its own dates. Military service and the incoming
+# Management Associate role are deliberately not CV entries.
 EXPERIENCE = [
     {
         "org": "CTBC Bank",
-        "role": "Incoming Management Associate, Risk Management",
+        "role": "Intern, Market Risk Management (MRMD), summer and semester terms",
         "meta": "Taipei, Taiwan",
-        "when": "2027/02 (expected)",
-        "bullets": [],
-    },
-    {
-        "org": "Republic of China Army",
-        "role": "Compulsory Military Service",
-        "meta": "Taiwan",
-        "when": "2026/08 – 2026/12",
-        "bullets": [],
+        "when": "2025/07 – 2026/02",
+        "bullets": [
+            "Forecast Value-at-Risk for major FX pairs from option-implied "
+            "volatility with quantile regression and machine learning; the "
+            "project became the basis of my master's thesis.",
+            "Designed dealer risk-management mechanisms for stablecoin "
+            "business under the Basel SCO60 treatment of cryptoasset "
+            "exposures.",
+            "Compared stablecoin regimes (US GENIUS Act, Hong Kong Stablecoins "
+            "Ordinance, EU MiCA): jurisdictional scope, issuer obligations for "
+            "USDC and USDT, and the USDC de-peg during the SVB failure.",
+            "Applied machine learning to market-risk analytics; trained in "
+            "treasury structure, cross-border liquidity, and derivatives.",
+        ],
     },
     {
         "org": "Gensler Research Institute",
@@ -141,20 +150,18 @@ EXPERIENCE = [
         "meta": "New York, United States (remote)",
         "when": "2025/02 – 2026/08",
         "bullets": [
-            "Built geospatial regression models (MGWR, PyGRF) linking 137 "
-            "urban indicators to city satisfaction across 31 major US cities.",
-            "Flagship study: Decoding the City, Unveiling NYC's Geographical "
-            "Phenomena with MGWR.",
-        ],
-    },
-    {
-        "org": "CTBC Bank",
-        "role": "Intern, Market Risk Management (MRMD)",
-        "meta": "Taipei, Taiwan",
-        "when": "2025/10 – 2026/02",
-        "bullets": [
-            "Designed dealer risk-management mechanisms for stablecoins under "
-            "Basel SCO60 capital standards.",
+            "Built the City Design Index models (MGWR, PyGRF) linking 137 "
+            "urban indicators to city satisfaction across 31 US cities; "
+            "flagship study: Decoding the City (New York).",
+            "Clustered census tracts into urban archetypes from 137 "
+            "isochrone-based metrics, comparing seven algorithms across three "
+            "methodological families.",
+            "Built the City Satisfaction Score pipeline and interactive "
+            "Leaflet and Plotly dashboards for stakeholder review; moved "
+            "city-scale runs onto cloud virtual machines.",
+            "Wrote the methodology paper in submission and public versions, "
+            "and co-designed robustness checks that re-estimate results for "
+            "income and education subgroups.",
         ],
     },
     {
@@ -163,18 +170,10 @@ EXPERIENCE = [
         "meta": "New Taipei, Taiwan",
         "when": "2025/08 – 2025/09",
         "bullets": [
-            "Forecast FX around key macro events with the treasury 5+1 "
-            "framework; reconciled trade records for AR/AP positions.",
-        ],
-    },
-    {
-        "org": "CTBC Bank",
-        "role": "Summer Intern, Market Risk Management (MRMD)",
-        "meta": "Taipei, Taiwan",
-        "when": "2025/07 – 2025/08",
-        "bullets": [
-            "Forecast VaR for major FX pairs using quantile regression and "
-            "implied volatility.",
+            "Forecast FX rates around key macro events with the treasury's "
+            "5+1 framework.",
+            "Reconciled trade records and analyzed internal ledgers to "
+            "support AR/AP position management.",
         ],
     },
     {
@@ -183,8 +182,10 @@ EXPERIENCE = [
         "meta": "Taipei, Taiwan",
         "when": "2023/06 – 2023/12",
         "bullets": [
-            "Analyzed China's macroeconomy, wrote for the Trade Insight "
-            "bi-weekly, and built an internal economic database.",
+            "Analyzed China's macroeconomy for the First Division's research.",
+            "Wrote for Trade Insight, the International Trade "
+            "Administration's bi-weekly publication.",
+            "Built an internal economic database.",
         ],
     },
 ]
