@@ -257,3 +257,54 @@ Sitemap 送出日為 2026/8/10，已超過本文件自訂的 3 天門檻，因�
 - [ ] GitHub profile、各 repo About、LinkedIn 都已填網址
 - [ ] `site:zihjyunderek.github.io` 搜得到結果
 - [ ] opengraph.xyz 顯示新版縮圖
+
+## 2026-10-18 改版與稽核（下部隊後第一次）
+
+### 線上實測（改版前的線上版本 `dc5af2c`）
+
+| 檢查項 | 實測結果 | 判定 |
+| --- | --- | --- |
+| `/robots.txt`、`/sitemap-index.xml`、`/sitemap-0.xml`、`/sitemap.xml` | 全部 200 | 正常 |
+| `sitemap-0.xml` | 18 筆 `<loc>`，與站上頁面一致 | 正常 |
+| 首頁 canonical | 自我指向 `https://zihjyunderek.github.io/` | 正常 |
+| 不帶斜線的內頁（`/projects/implied-vol-var`） | GitHub Pages 自動轉址到帶斜線版本 | 正常 |
+| 不存在的網址 | HTTP 404，且頁面有 `noindex` | 正常 |
+| Google 驗證檔 | 200，仍在 `public/` | 正常 |
+| 字型 | 從 `fonts.googleapis.com` 載入，屬於會阻擋渲染的第三方 CSS | 本次修正 |
+
+### 這次動到、和 SEO 有關的程式碼
+
+| 改動 | 檔案 | 為什麼 |
+| --- | --- | --- |
+| Source Serif 4 改為從 npm 自架（`@fontsource-variable/source-serif-4`） | `package.json`、`src/layouts/Base.astro` | 拿掉會阻擋渲染的第三方字型 CSS，首屏少一次跨網域請求；Core Web Vitals 的 LCP 直接受惠 |
+| 首頁照片加 `fetchpriority="high"`，並補上 `height: auto` | `src/pages/index.astro`、`global.css` | 照片是首屏最大的元素，優先載入 |
+| 頁首品牌文字由 "Home" 改為姓名 | `src/components/Header.astro` | 每一頁都多一次姓名出現在可見文字與站內連結文字中，實體訊號更一致 |
+| 加 `theme-color` | `src/layouts/Base.astro` | 行動版瀏覽器網址列配色，與版面一致 |
+| 專案列表改為依領域分組的靜態清單，移除篩選用的 JS | `src/pages/projects/index.astro` | 所有專案連結都在 HTML 裡、不靠腳本切換顯示；全站變成零 client JS |
+| `/skills/` 的 meta description 改寫 | `src/pages/skills/index.astro` | 技能列表改成方法分組後，描述跟著對齊頁面實際內容（MGWR、GWPCA、VaR、quantile regression） |
+| 新增服役單位（步兵第 206 旅，新竹關西） | `src/data/profile.ts`、`scripts/build_cv.py`、CV PDF | 內容更新；首頁「Now / Next」兩行也帶出目前狀態 |
+
+其餘頁面的 `<title>`、meta description，以及 JSON-LD（Person、WebSite、ProfilePage、SoftwareSourceCode、BreadcrumbList）、sitemap 設定都沒有改動，避免把排名訊號的變動和版面改版混在一起。
+
+### Search Console 數字（2026-10-18 查看）
+
+| 指標 | 數值 | 判讀 |
+| --- | --- | --- |
+| 已建立索引 | 16 / 18 | 8/21 時只有 7 頁；沒有任何一頁被判定有問題 |
+| 未收錄的 2 頁 | `/projects/spatial-factor-analysis/`、`/projects/python-notebook-toolkit/` | 網址審查顯示「Google 無法辨識的網址」，代表還沒被發現，不是被拒 |
+| 最後檢索日期 | 8/11、8/21 兩批 | 之後兩個月 Googlebot 沒有回來重爬，屬新站、零外部連結的正常頻率 |
+| 成效（8/8 起） | 曝光 147、點擊 4、CTR 2.7%、平均排名 19.8 | 點擊全部落在首頁，多半是姓名查詢（低量查詢會被 GSC 匿名化） |
+| 熱門查詢 | pygrf 7、rpy2 3、gwpca 2、spatial exclusion、mgwr software 各 1 | 技術詞已開始帶曝光，專案頁是長尾流量的入口 |
+| Sitemap | `/sitemap.xml`、`/sitemap-index.xml` 仍顯示「無法擷取」 | 網址審查的即時測試顯示 Googlebot 可以正常抓取 `sitemap-index.xml`，所以是 Sitemap 報表本身遲遲沒有重讀，不是網站問題 |
+| 網站使用體驗核心指標 | 無資料 | 流量低於 CrUX 門檻，屬正常 |
+
+### 這次在 Search Console 做的動作
+
+1. 兩個未收錄的專案頁各送出一次「要求建立索引」
+2. 另外直接提交 `sitemap-0.xml`（實際列出 18 個網址的那份），給 Google 一條不經過 sitemap index 的路徑。剛提交時顯示「無法擷取」是初始狀態，等幾天再看
+
+### 改版上線後要做的事
+
+1. push 之後等 GitHub Actions 綠勾，對首頁 `/` 送一次「要求建立索引」，讓新版首頁（短版自介、服役單位）較快更新到搜尋結果
+2. 一到兩週後回來看：已建立索引是否到 18、`sitemap-0.xml` 是否轉為「成功」
+3. 若 `sitemap-0.xml` 讀取成功，可以刪掉狀態一直停在「無法擷取」的 `/sitemap.xml` 那筆，只保留一份，避免報表雜訊
