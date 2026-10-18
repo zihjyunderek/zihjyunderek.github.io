@@ -6,11 +6,10 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap">
     <span>&copy; {year} {SITE.name}</span>
-    <span>Built with Astro</span>
-    <span>
+    <span class="link-row">
+      <a href={`mailto:${SITE.email}`}>Email</a>
       <a href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-      {SITE.linkedin && <> / <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></>}
-      / <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      {SITE.linkedin && <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
     </span>
   </div>
 </footer>

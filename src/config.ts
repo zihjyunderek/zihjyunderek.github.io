@@ -22,9 +22,6 @@ export const SITE = {
   email: 'derek4953098@gmail.com',
   github: 'https://github.com/zihjyunderek',
   linkedin: 'https://www.linkedin.com/in/derekhuang0426/',
-  locations: {
-    base: { city: 'Xinyi, Taipei', code: 'TPE', coords: '25.03°N 121.57°E' },
-  },
   /**
    * SEO keywords, ordered name → method → affiliation.
    * Bilingual on purpose: the Chinese legal name is the highest-value
@@ -63,10 +60,10 @@ export const SITE = {
 export const PERSON_ID = `${SITE.url}/#person`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
 
-/** Display labels for the four project domains. */
+/** Display labels for the four project areas (sentence case, per site rules). */
 export const DOMAINS: Record<string, string> = {
-  spatial: 'Geospatial Statistics',
-  urban: 'Urban Analytics',
-  finance: 'Quantitative Finance',
-  engineering: 'Engineering and Agentic Systems',
+  spatial: 'Geospatial statistics',
+  urban: 'Urban analytics',
+  finance: 'Quantitative finance',
+  engineering: 'Engineering and agentic systems',
 };

@@ -10,8 +10,8 @@ import { z } from 'astro/zod';
  *  - title     : project name shown everywhere
  *  - tagline   : one-line summary (also used as the page meta description)
  *  - domain    : spatial | urban | finance | engineering
- *  - stack     : tech list, rendered as chips
- *  - stats     : 2–4 headline numbers, rendered like a model card
+ *  - stack     : tech list, rendered as a comma-separated line
+ *  - stats     : 1–4 key figures, listed in the project page's facts column
  *  - featured  : true => pinned first on the home page (home always shows 6)
  *  - order     : sort key within the projects index (low = first)
  *  - repo      : GitHub URL (private links allowed); omit to hide the button

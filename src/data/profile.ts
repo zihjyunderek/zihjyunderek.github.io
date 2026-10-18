@@ -1,5 +1,5 @@
 /**
- * Profile data: experience, education, skills, certificates.
+ * Profile data: status, experience, education, skills, certificates.
  * Update THIS file when your CV changes; pages render from it automatically.
  * The one-page CV is generated from `scripts/build_cv.py`, which mirrors
  * this file; change both together.
@@ -147,25 +147,46 @@ export const certificates: Certificate[] = [
 ];
 
 /**
- * Rendered as a "feature importance" chart:
- * what best predicts my output, normalized to [0, 1].
+ * The two lines under the introduction on the home page: what I am doing
+ * now and what comes next. Update when either changes.
  */
-export const featureImportance = [
-  { name: 'Python', value: 0.95 },
-  { name: 'Spatial statistics', value: 0.9 },
-  { name: 'ML and clustering', value: 0.85 },
-  { name: 'Data visualization', value: 0.8 },
-  { name: 'Agentic workflows', value: 0.75 },
-  { name: 'Project management', value: 0.7 },
-  { name: 'R, Stata, EViews', value: 0.65 },
-  { name: 'Power BI, LaTeX', value: 0.6 },
+export const status = [
+  {
+    label: 'Now',
+    text: 'Military service, Taiwan',
+    when: '2026/08 – 2026/12',
+  },
+  {
+    label: 'Next',
+    text: 'Management Associate, CTBC Bank',
+    when: 'from 2027/02',
+  },
 ];
 
-/** Headline numbers under the hero. */
-export const headlineStats = [
-  { value: '16+', label: 'repositories' },
-  { value: '31', label: 'US cities modeled' },
-  { value: '137', label: 'urban metrics' },
-  { value: '7', label: 'clustering algorithms' },
-  { value: 'G7', label: 'FX pairs (VaR)' },
+/**
+ * Skills as plain groups (no self-rated scores). Each group is one line on
+ * the home page and the skills page; keep items to what the projects and
+ * the CV can back up.
+ */
+export const skillGroups = [
+  {
+    name: 'Spatial statistics',
+    items: "MGWR and GWR, GWPCA, spatial factor analysis, geographical random forests (PyGRF), spatial diagnostics such as Moran's I",
+  },
+  {
+    name: 'Risk and econometrics',
+    items: 'Value-at-Risk forecasting and backtesting, quantile regression, GARCH-family models, event studies',
+  },
+  {
+    name: 'Machine learning',
+    items: 'Gradient boosting (CatBoost, LightGBM, XGBoost), random forests, LSTM networks, clustering (K-Medoids, HDBSCAN)',
+  },
+  {
+    name: 'Tools',
+    items: 'Python (pandas, GeoPandas, scikit-learn, Plotly), R, Stata, EViews, Power BI, LaTeX, Docker, Git',
+  },
+  {
+    name: 'Practice',
+    items: 'Data visualization, agentic workflows with AI coding agents, project management',
+  },
 ];

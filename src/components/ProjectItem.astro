@@ -1,0 +1,24 @@
+---
+/**
+ * One project in a list: title, one-line summary, then area and stack.
+ * Rendered inside <ul class="items projects">.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { DOMAINS } from '../config';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  /** Hide the area label when the list is already grouped by area. */
+  showDomain?: boolean;
+}
+const { project, showDomain = true } = Astro.props;
+const { title, tagline, domain, stack } = project.data;
+---
+
+<li class="project">
+  <h3><a href={`/projects/${project.id}/`}>{title}</a></h3>
+  <p class="justify">{tagline}</p>
+  <p class="meta">
+    {showDomain && <><span class="area">{DOMAINS[domain]}</span>. </>}{stack.slice(0, 4).join(', ')}
+  </p>
+</li>

@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
+import Section from '../../components/Section.astro';
 import { SITE } from '../../config';
 
 const title = `Contact – ${SITE.shortName}`;
@@ -18,37 +18,23 @@ const breadcrumbLd = {
 ---
 
 <Base title={title} description={description} jsonLd={[breadcrumbLd]}>
-  <!-- ============ 05 Contact (detail page) ============ -->
-  <section>
-    <div class="wrap">
+  <header class="wrap rail page-head">
+    <div class="rail-main">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> / <span>Contact</span>
       </nav>
-
-      <SectionHeading
-        no="05"
-        title="Contact"
-        sub="Open to conversations on urban analytics, spatial econometrics, quantitative risk, and research collaborations."
-      />
-
-      <div class="contact-box">
-        <h2>Taipei and New York. One analyst.</h2>
-        <p>
-          The fastest way to reach me is email.
-        </p>
-        <div class="hero-cta" style="justify-content:center">
-          <a class="btn" href={`mailto:${SITE.email}`}>Email</a>
-          <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
-          {SITE.linkedin && (
-            <a class="btn ghost" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
-          )}
-        </div>
-      </div>
-
-      <p style="margin-top:2.75rem">
-        <a class="btn ghost" href="/">&larr; Back to home</a>
-      </p>
+      <h1>Contact</h1>
     </div>
-  </section>
+  </header>
+
+  <Section title="Channels">
+    <ul class="contact-list">
+      <li><strong>Email:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      <li><strong>GitHub:</strong> <a href={SITE.github} target="_blank" rel="noopener noreferrer">{SITE.github.replace('https://', '')}</a></li>
+      {SITE.linkedin && (
+        <li><strong>LinkedIn:</strong> <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">{SITE.linkedin.replace('https://www.', '').replace(/\/$/, '')}</a></li>
+      )}
+      <li><strong>CV:</strong> <a href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">One-page CV (PDF)</a></li>
+    </ul>
+  </Section>
 </Base>

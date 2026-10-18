@@ -1,0 +1,18 @@
+---
+/**
+ * One section of a page on the two-column rail: the section name sits in
+ * the narrow left column, the content in the reading column on the right.
+ * Used by the home page and the inner pages so every page shares one grid.
+ */
+interface Props {
+  /** Anchor id, also used by the header's in-page links. */
+  id?: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+---
+
+<section class="wrap rail block" id={id}>
+  <div class="rail-side"><h2>{title}</h2></div>
+  <div class="rail-main"><slot /></div>
+</section>

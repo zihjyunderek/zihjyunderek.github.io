@@ -1,20 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import Section from '../components/Section.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import Entry from '../components/Entry.astro';
 import { SITE, PERSON_ID, WEBSITE_ID } from '../config';
-import { experience, featureImportance, headlineStats } from '../data/profile';
+import { experience, status, skillGroups } from '../data/profile';
 
 const allProjects = await getCollection('projects');
 const totalProjects = allProjects.length;
 
-// Home shows six cards: featured first, then filled by sort order.
+// Home lists the three core projects: featured first, then by sort order.
 const sorted = [...allProjects].sort((a, b) => a.data.order - b.data.order);
 const featured = [
   ...sorted.filter((p) => p.data.featured),
   ...sorted.filter((p) => !p.data.featured),
-].slice(0, 6);
+].slice(0, 3);
 
 // Home page shows only a teaser of experience; full list lives at /experience/.
 const recentExperience = experience.slice(0, 3);
@@ -84,150 +85,82 @@ const profilePageLd = {
 
 <Base jsonLd={[personLd, websiteLd, profilePageLd]}>
 
-  <!-- ============ 01 Hero ============ -->
-  <section class="hero" id="profile">
-    <div class="wrap hero-grid">
-
-      <!-- left: identity -->
-      <div class="hero-text">
-        <p class="hero-meta">
-          <span class="coord">{SITE.locations.base.coords}</span>
-          {SITE.locations.base.code}
+  <!-- Introduction: square portrait in the rail; the text column spans its height -->
+  <section class="wrap rail intro" id="profile">
+    <div class="rail-side">
+      <img
+        class="portrait"
+        src="/images/head.jpg"
+        alt="Derek Huang at Top of the Rock, New York"
+        width="480"
+        height="480"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <div class="rail-main">
+      <div>
+        <h1>{SITE.name}</h1>
+        <p class="title">{SITE.jobTitle}</p>
+        <p class="degrees">
+          M.S. Money and Banking, National Chengchi University (NCCU)<br />
+          B.A. Economics, National Taiwan University (NTU)
         </p>
-        
-        <h1>
-          Zih-Jyun<br />
-          <em style="font-style:italic;color:var(--ink-dim)">Derek</em> Huang
-        </h1>
-
-        <p class="hero-subtitle">
-          {SITE.jobTitle}
-        </p>
-        <p class="hero-desc">
-          M.S. Money and Banking, National Chengchi University (NCCU) <br />
-          B.A. Economics, National Taiwan University (NTU) <br />
-        </p>
-
-        <div class="hero-cta">
+      </div>
+      <div>
+        <dl class="status">
+          {status.map((s) => (
+            <div>
+              <dt>{s.label}</dt>
+              <dd>{s.text}</dd>
+              <dd class="num">{s.when}</dd>
+            </div>
+          ))}
+        </dl>
+        <div class="actions">
           <a class="btn" href="/projects/">Projects ({totalProjects})</a>
           <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV</a>
-          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
-          <a class="btn ghost" href="#contact">Contact</a>
-        </div>
-
-        <div class="stat-strip">
-          {headlineStats.map((s) => (
-            <span class="stat">
-              <span class="v">{s.value}</span>
-              <span class="l">{s.label}</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <!-- right: photo -->
-      <div class="hero-photo-wrap">
-        <img
-          class="hero-photo"
-          src="/images/head.jpg"
-          alt="Derek Huang at Top of the Rock, New York"
-          width="480"
-          height="480"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ 02 Projects ============ -->
-  <section id="projects">
-    <div class="wrap">
-      <SectionHeading
-        no="02"
-        title="Selected Projects"
-        sub="Portfolio across spatial statistics, urban analytics, and quantitative finance."
-      />
-      <div class="project-grid">
-        {featured.map((p) => <ProjectCard project={p} />)}
-      </div>
-      <p style="margin-top:1.75rem">
-        <a class="btn ghost" href="/projects/">View all {totalProjects} projects &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ 03 Experience (teaser, full list at /experience/) ============ -->
-  <section id="experience">
-    <div class="wrap">
-      <SectionHeading
-        no="03"
-        title="Experience"
-        sub="Macro research &rarr; market risk &rarr; urban data science &rarr; risk management. Each stage feeds the next."
-      />
-      <div class="timeline">
-        {recentExperience.map((e) => (
-          <div class="t-item">
-            <span class="when">{e.when}</span>
-            <div>
-              <h3>{e.org}</h3>
-              <span class="role">{e.role} &middot; {e.where}</span>
-              <p>{e.note}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <p style="margin-top:1.75rem">
-        <a class="btn ghost" href="/experience/">View full experience ({totalExperience}) &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ 04 Skills and credentials (teaser, full list at /skills/) ============ -->
-  <section id="stack">
-    <div class="wrap">
-      <SectionHeading
-        no="04"
-        title="Skills"
-        sub="Tools, methods, and qualifications. Depth over breadth."
-      />
-
-      <div class="fi-list">
-        {featureImportance.map((f) => (
-          <div class="fi-row">
-            <span class="name">{f.name}</span>
-            <span class="bar"><span style={`width:${f.value * 100}%`}></span></span>
-            <span class="val">{f.value.toFixed(2)}</span>
-          </div>
-        ))}
-      </div>
-
-      <p style="margin-top:1.75rem">
-        <a class="btn ghost" href="/skills/">View all skills &rarr;</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ 05 Contact ============ -->
-  <section id="contact">
-    <div class="wrap">
-      <SectionHeading no="05" title="Contact" />
-      <div class="contact-box">
-        <h2>Taipei and New York. One analyst.</h2>
-        <p>
-          Open to conversations on any related collaborations.
-        </p>
-        <div class="hero-cta" style="justify-content:center">
-          <a class="btn" href={`mailto:${SITE.email}`}>Email</a>
-          <a class="btn ghost" href="/cv/ZihJyunHuang_CV_en.pdf" target="_blank" rel="noopener">CV</a>
-          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
-          {SITE.linkedin && (
-            <a class="btn ghost" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          )}
+          <a class="btn ghost" href={SITE.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          {SITE.linkedin && <a class="btn ghost" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}
         </div>
       </div>
     </div>
   </section>
+
+  <Section id="projects" title="Selected projects">
+    <ul class="items projects">
+      {featured.map((p) => <ProjectItem project={p} />)}
+    </ul>
+    <div class="actions"><a class="btn ghost" href="/projects/">All {totalProjects} projects</a></div>
+  </Section>
+
+  <Section id="experience" title="Experience">
+    <ul class="items timeline">
+      {recentExperience.map((e) => (
+        <Entry when={e.when} title={e.org} sub={`${e.role}, ${e.where}`} />
+      ))}
+    </ul>
+    <div class="actions"><a class="btn ghost" href="/experience/">Full experience ({totalExperience})</a></div>
+  </Section>
+
+  <Section id="skills" title="Skills">
+    <dl class="pairs">
+      {skillGroups.map((g) => (
+        <div><dt>{g.name}</dt><dd>{g.items}</dd></div>
+      ))}
+    </dl>
+    <div class="actions"><a class="btn ghost" href="/skills/">Education and certificates</a></div>
+  </Section>
+
+  <Section id="contact" title="Contact">
+    <ul class="contact-list">
+      <li><strong>Email:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      <li><strong>GitHub:</strong> <a href={SITE.github} target="_blank" rel="noopener noreferrer">{SITE.github.replace('https://', '')}</a></li>
+      {SITE.linkedin && (
+        <li><strong>LinkedIn:</strong> <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">{SITE.linkedin.replace('https://www.', '').replace(/\/$/, '')}</a></li>
+      )}
+    </ul>
+  </Section>
 
 </Base>

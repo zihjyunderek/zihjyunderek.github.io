@@ -39,53 +39,40 @@ const breadcrumbLd = {
   ],
 };
 
-const badgeLabel =
-  status === 'private' ? 'Private · de-identified' :
+const statusLabel =
+  status === 'private' ? 'Private, results de-identified' :
   status === 'research' ? 'Research' : 'Open source';
 ---
 
 <Base title={pageTitle} description={tagline} ogType="article" jsonLd={[projectLd, breadcrumbLd]}>
   <article>
-    <header class="proj-head">
-      <div class="wrap">
+    <header class="wrap rail page-head">
+      <div class="rail-main">
         <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a> / <a href="/projects/">Projects</a> /
-          <span>{title}</span>
+          <a href="/">Home</a> / <a href="/projects/">Projects</a> / <span>{title}</span>
         </nav>
-        <span class="kicker">{DOMAINS[domain]}</span>
         <h1>{title}</h1>
-        <p class="tagline">{tagline}</p>
-
-        <div class="chip-row">
-          <span class={`badge ${status}`}>{badgeLabel}</span>
-          {stack.map((t) => <span class="chip">{t}</span>)}
-        </div>
-
-        <div class="proj-stats">
+        <p class="lead justify">{tagline}</p>
+        <p class="facts-line">
+          <span class="area">{DOMAINS[domain]}</span>. {statusLabel}. {stack.join(', ')}
+        </p>
+        <div class="figures">
           {stats.map((s) => (
-            <span>
-              <span class="v">{s.value}</span>
-              <span class="l">{s.label}</span>
-            </span>
+            <span><span class="v">{s.value}</span><span class="l">{s.label}</span></span>
           ))}
         </div>
-
         {repo && (
-          <p>
-            <a class="btn" href={repo} target="_blank" rel="noopener noreferrer">
-              View source on GitHub ↗
-            </a>
-          </p>
+          <div class="actions">
+            <a class="btn" href={repo} target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>
+          </div>
         )}
       </div>
     </header>
 
-    <div class="wrap">
-      <div class="prose">
+    <div class="wrap rail">
+      <div class="rail-main prose body">
         <Content />
-        <p style="margin-top:3rem">
-          <a class="btn ghost" href="/projects/">← Back to all projects</a>
-        </p>
+        <div class="actions"><a class="btn ghost" href="/projects/">All projects</a></div>
       </div>
     </div>
   </article>

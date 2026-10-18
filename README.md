@@ -4,7 +4,7 @@ Personal portfolio of **Zih-Jyun (Derek) Huang** (黃子竣). Spatial statistics
 
 **Live:** https://zihjyunderek.github.io
 
-Built with [Astro](https://astro.build): fully static, SEO-first, zero client JS. Design: light academic editorial theme, two typefaces (Source Serif 4 for text, JetBrains Mono for data), single deep-navy accent. Sections are numbered macro to micro in the source (01 profile to 05 contact) as an organizing convention; the numbers are not shown in the UI.
+Built with [Astro](https://astro.build): fully static, SEO-first, zero client JS. Design ("Curriculum"): a CV read on screen. Every page uses one two-column rail, section names on the left and a reading column on the right, on a graph-paper canvas with navy timeline markers and solid buttons; two self-hosted typefaces (Source Serif 4 for text, JetBrains Mono for data); a single deep-navy accent. No cards, chips, or skill bars.
 
 ## Retention policy: Only public
 
@@ -16,10 +16,10 @@ Everything tracked in this repo is publishable as-is. There is no private materi
 zihjyunderek.github.io/
 ├── src/
 │   ├── config.ts                 # EDIT: identity, links, keywords
-│   ├── data/profile.ts           # EDIT: experience, education, skills, stats
+│   ├── data/profile.ts           # EDIT: now/next status, experience, education, skills
 │   ├── content/projects/*.md     # add a file = add a project
 │   ├── content.config.ts         # frontmatter schema (validated at build)
-│   ├── components/               # Header, Footer, SectionHeading, ProjectCard
+│   ├── components/               # Section (the rail), ProjectItem, Entry, Header, Footer
 │   ├── layouts/Base.astro        # SEO: meta, OG, JSON-LD, font imports
 │   ├── pages/                    # index, projects, experience, skills, contact, 404
 │   └── styles/global.css         # full design system (CSS variables)
@@ -56,7 +56,7 @@ repo: "https://github.com/zihjyunderek/..."   # optional; private repo links are
 Markdown body renders as the project detail page.
 ```
 
-**Update personal details**: edit `src/config.ts` (name, email, GitHub, LinkedIn) and `src/data/profile.ts` (experience, education, certificates, skill bars, headline stats).
+**Update personal details**: edit `src/config.ts` (name, email, GitHub, LinkedIn) and `src/data/profile.ts` (now / next status, experience, education, skill groups, certificates).
 
 **Rebuild the CV**: `python scripts/build_cv.py` regenerates `public/cv/ZihJyunHuang_CV_en.pdf` from the data block at the top of that script. It auto-fits the type scale to exactly one page and fails if nothing fits, so a CV that grows past the limit is caught before it ships. Typography is Lato only, greyscale only; the four subset TTFs ship in `scripts/fonts/` (OFL, license included) so nothing needs installing. Keep the script and `src/data/profile.ts` in sync.
 

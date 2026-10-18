@@ -1,0 +1,35 @@
+---
+/**
+ * One dated entry (a job, a degree) on the timeline: organization on the
+ * left with dates right-aligned, then the role, then an optional note.
+ * Rendered inside <ul class="items timeline">.
+ */
+import type { Attachment } from '../data/profile';
+
+interface Props {
+  when: string;
+  title: string;
+  /** Role and place, or degree and grade. */
+  sub?: string;
+  /** Omit on the home page, where entries stay one line each. */
+  note?: string;
+  attachments?: Attachment[];
+}
+const { when, title, sub, note, attachments = [] } = Astro.props;
+---
+
+<li class="entry">
+  <div class="head">
+    <h3>{title}</h3>
+    <time>{when}</time>
+  </div>
+  {sub && <p class="role">{sub}</p>}
+  {note && <p class="note justify">{note}</p>}
+  {attachments.length > 0 && (
+    <p class="link-row">
+      {attachments.map((a) => (
+        <a href={a.href} target="_blank" rel="noopener">{a.label}</a>
+      ))}
+    </p>
+  )}
+</li>

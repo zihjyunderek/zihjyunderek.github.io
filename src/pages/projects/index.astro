@@ -1,13 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import Section from '../../components/Section.astro';
+import ProjectItem from '../../components/ProjectItem.astro';
 import { SITE, DOMAINS, PERSON_ID } from '../../config';
 
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order
 );
+
+// One section per area, in the order DOMAINS lists them; empty areas are skipped.
+const groups = Object.entries(DOMAINS)
+  .map(([key, label]) => ({ key, label, items: projects.filter((p) => p.data.domain === key) }))
+  .filter((g) => g.items.length > 0);
 
 const title = `Projects – ${SITE.shortName}`;
 const description =
@@ -29,49 +34,23 @@ const collectionLd = {
 ---
 
 <Base title={title} description={description} jsonLd={[collectionLd]}>
-  <section>
-    <div class="wrap">
+  <header class="wrap rail page-head">
+    <div class="rail-main">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> / <span>Projects</span>
       </nav>
-
-      <SectionHeading
-        no="02"
-        title="All Projects"
-        sub="Ordered macro to micro within each domain. Private work is shown at methodology level with de-identified results only."
-      />
-
-      <div class="filter-bar" role="group" aria-label="Filter projects by domain">
-        <button class="active" data-filter="all">All ({projects.length})</button>
-        {Object.entries(DOMAINS).map(([key, label]) => (
-          <button data-filter={key}>
-            {label} ({projects.filter((p) => p.data.domain === key).length})
-          </button>
-        ))}
-      </div>
-
-      <div class="project-grid" id="grid">
-        {projects.map((p) => <ProjectCard project={p} />)}
-      </div>
-
-      <p style="margin-top:2.75rem">
-        <a class="btn ghost" href="/">&larr; Back to home</a>
+      <h1>Projects</h1>
+      <p class="lead">
+        {projects.length} projects in {groups.length} areas. Private work is shown at the method level.
       </p>
     </div>
-  </section>
-</Base>
+  </header>
 
-<script>
-  /* Domain filter: pure DOM toggling, no framework needed. */
-  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-  const cards = document.querySelectorAll<HTMLElement>('#grid [data-domain]');
-  buttons.forEach((btn) =>
-    btn.addEventListener('click', () => {
-      buttons.forEach((b) => b.classList.toggle('active', b === btn));
-      const f = btn.dataset.filter;
-      cards.forEach((c) => {
-        c.style.display = f === 'all' || c.dataset.domain === f ? '' : 'none';
-      });
-    })
-  );
-</script>
+  {groups.map((g) => (
+    <Section id={g.key} title={`${g.label} (${g.items.length})`}>
+      <ul class="items projects">
+        {g.items.map((p) => <ProjectItem project={p} showDomain={false} />)}
+      </ul>
+    </Section>
+  ))}
+</Base>
