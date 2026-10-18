@@ -12,7 +12,7 @@ order: 1
 status: private
 ---
 
-The legacy of my work at Gensler Research Institute(GRI). Conventional regression assumes one relationship holds everywhere: that an extra subway stop changes rents by the same amount in CBD as in the outer boroughs. Cities don't work that way. This toolkit replaces that assumption with **Multiscale Geographically Weighted Regression (MGWR)**, letting each predictor operate at its own spatial scale.
+The legacy of my work at Gensler Research Institute (GRI). Conventional regression assumes one relationship holds everywhere: that an extra subway stop changes rents by the same amount in CBD as in the outer boroughs. Cities don't work that way. This toolkit replaces that assumption with **Multiscale Geographically Weighted Regression (MGWR)**, letting each predictor operate at its own spatial scale.
 
 > Confidential due to NDA.
 
