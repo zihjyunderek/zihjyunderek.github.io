@@ -1,0 +1,16 @@
+# Packages for scripts/build_figures.py (the analyses behind the figure CSVs).
+# Pinned to the versions the committed CSVs were built with. The site itself
+# needs none of these: it only reads the CSVs. scripts/fetch_acs.py needs none either;
+# scripts/extract_tracts.py needs geopandas and shapely.
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+mgwr==2.2.1
+spglm==1.1.0
+libpysal==4.15.1
+esda==2.10.0
+kmedoids==0.5.5
+shapely==2.2.0
+geopandas==1.2.0
+pyogrio==0.13.0

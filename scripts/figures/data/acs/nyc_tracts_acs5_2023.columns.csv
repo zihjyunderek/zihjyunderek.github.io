@@ -1,0 +1,46 @@
+column,acs_code,official_label
+"lat, lon, land_sqkm",,2023 Census Gazetteer: internal point and land area
+total_population,B01003_001E,Total Population: Estimate!!Total
+median_age,B01002_001E,Median Age by Sex: Estimate!!Median age --!!Total:
+median_household_income,B19013_001E,Median Household Income in the Past 12 Months (in 2023 Inflation-Adjusted Dollars): Estimate!!Median household income in the past 12 months (in 2023 inflation-adjusted dollars)
+gini_index,B19083_001E,Gini Index of Income Inequality: Estimate!!Gini Index
+median_gross_rent,B25064_001E,Median Gross Rent (Dollars): Estimate!!Median gross rent
+median_rent_pct_of_income,B25071_001E,Median Gross Rent as a Percentage of Household Income in the Past 12 Months (Dollars): Estimate!!Median gross rent as a percentage of household income
+median_home_value,B25077_001E,Median Value (Dollars): Estimate!!Median value (dollars)
+median_year_built,B25035_001E,Median Year Structure Built: Estimate!!Median year structure built
+median_rooms,B25018_001E,Median Number of Rooms: Estimate!!Median number of rooms
+housing_units,B25002_001E,Occupancy Status: Estimate!!Total:
+vacant_units,B25002_003E,Occupancy Status: Estimate!!Total:!!Vacant
+occupied_units,B25003_001E,Tenure: Estimate!!Total:
+renter_occupied_units,B25003_003E,Tenure: Estimate!!Total:!!Renter occupied
+units_by_year_built,B25034_001E,Year Structure Built: Estimate!!Total:
+units_built_2020_or_later,B25034_002E,Year Structure Built: Estimate!!Total:!!Built 2020 or later
+units_built_2010_to_2019,B25034_003E,Year Structure Built: Estimate!!Total:!!Built 2010 to 2019
+units_built_1939_or_earlier,B25034_011E,Year Structure Built: Estimate!!Total:!!Built 1939 or earlier
+population_25_plus,B15003_001E,Educational Attainment for the Population 25 Years and Over: Estimate!!Total:
+bachelors_degree,B15003_022E,Educational Attainment for the Population 25 Years and Over: Estimate!!Total:!!Bachelor's degree
+masters_degree,B15003_023E,Educational Attainment for the Population 25 Years and Over: Estimate!!Total:!!Master's degree
+professional_degree,B15003_024E,Educational Attainment for the Population 25 Years and Over: Estimate!!Total:!!Professional school degree
+doctorate_degree,B15003_025E,Educational Attainment for the Population 25 Years and Over: Estimate!!Total:!!Doctorate degree
+poverty_universe,B17001_001E,Poverty Status in the Past 12 Months by Sex by Age: Estimate!!Total:
+below_poverty,B17001_002E,Poverty Status in the Past 12 Months by Sex by Age: Estimate!!Total:!!Income in the past 12 months below poverty level:
+civilian_labor_force,B23025_003E,Employment Status for the Population 16 Years and Over: Estimate!!Total:!!In labor force:!!Civilian labor force:
+unemployed,B23025_005E,Employment Status for the Population 16 Years and Over: Estimate!!Total:!!In labor force:!!Civilian labor force:!!Unemployed
+workers,B08301_001E,Means of Transportation to Work: Estimate!!Total:
+commute_public_transit,B08301_010E,Means of Transportation to Work: Estimate!!Total:!!Public transportation (excluding taxicab):
+commute_bicycle,B08301_018E,Means of Transportation to Work: Estimate!!Total:!!Bicycle
+commute_walked,B08301_019E,Means of Transportation to Work: Estimate!!Total:!!Walked
+worked_from_home,B08301_021E,Means of Transportation to Work: Estimate!!Total:!!Worked from home
+households,B08201_001E,Household Size by Vehicles Available: Estimate!!Total:
+households_no_vehicle,B08201_002E,Household Size by Vehicles Available: Estimate!!Total:!!No vehicle available
+households_internet_universe,B28002_001E,Presence and Types of Internet Subscriptions in Household: Estimate!!Total:
+households_no_internet,B28002_013E,Presence and Types of Internet Subscriptions in Household: Estimate!!Total:!!No Internet access
+nativity_universe,B05002_001E,Place of Birth by Nativity and Citizenship Status: Estimate!!Total:
+foreign_born,B05002_013E,Place of Birth by Nativity and Citizenship Status: Estimate!!Total:!!Foreign-born:
+occupants_per_room_universe,B25014_001E,Tenure by Occupants per Room: Estimate!!Total:
+owner_crowded_1_01_to_1_50,B25014_005E,Tenure by Occupants per Room: Estimate!!Total:!!Owner occupied:!!1.01 to 1.50 occupants per room
+owner_crowded_1_51_to_2_00,B25014_006E,Tenure by Occupants per Room: Estimate!!Total:!!Owner occupied:!!1.51 to 2.00 occupants per room
+owner_crowded_2_01_or_more,B25014_007E,Tenure by Occupants per Room: Estimate!!Total:!!Owner occupied:!!2.01 or more occupants per room
+renter_crowded_1_01_to_1_50,B25014_011E,Tenure by Occupants per Room: Estimate!!Total:!!Renter occupied:!!1.01 to 1.50 occupants per room
+renter_crowded_1_51_to_2_00,B25014_012E,Tenure by Occupants per Room: Estimate!!Total:!!Renter occupied:!!1.51 to 2.00 occupants per room
+renter_crowded_2_01_or_more,B25014_013E,Tenure by Occupants per Room: Estimate!!Total:!!Renter occupied:!!2.01 or more occupants per room
