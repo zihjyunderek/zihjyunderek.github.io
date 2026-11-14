@@ -1,0 +1,4 @@
+Algorithm,Clusters found,Tracts left as noise,Silhouette of the rest
+DBSCAN,2,3%,0.32
+HDBSCAN,2,90%,0.45
+OPTICS,1,0%,

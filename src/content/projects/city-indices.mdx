@@ -1,0 +1,82 @@
+---
+title: "City-Indices"
+tagline: "A family of composite indices on one scaffolding: an Urban Spatial Exclusion Index (USEI), a Green Index and a Prosperity Index, each explicit about its components, scaling, weights and robustness."
+domain: urban
+stack: ["Python", "Composite Index", "PCA", "GeoPandas"]
+stats:
+  - { value: "3", label: "indices" }
+  - { value: "v15", label: "Prosperity Index" }
+  - { value: "7", label: "robustness schemes" }
+order: 5
+status: private
+basis: public-data
+---
+
+A composite index turns many tract metrics into one score that can be mapped, compared and tracked. It is only as trustworthy as the choices behind it, so the three indices here share one construction and differ only in what they measure:
+
+- **Urban Spatial Exclusion Index (USEI).** Being cut off from jobs, services and opportunity by where one lives.
+- **Green Index.** Environmental quality and access to green space.
+- **Prosperity Index.** Economic vitality. Its academic version reached its 15th iteration, each tightening the method, the validation or the presentation.
+
+> The indices and their inputs are confidential under NDA. The figures on this page build an exclusion index the same way from public American Community Survey data for New York City. It illustrates the method; it is not the USEI.
+
+## One scaffolding
+
+Every index makes the same choices explicit: which metrics enter, how each is scaled so no unit dominates, how the parts are weighted, and how the result is checked. Because the scaffolding is shared, scores are comparable across indices, and an improvement to the method reaches all three at once instead of being re-implemented. Every score is mapped tract by tract, so a high value can always be traced back to the components that drove it.
+
+## An exclusion index for New York City
+
+The illustrative index uses six public measures in three dimensions.
+
+<Figure
+  data="components.csv"
+  type="table"
+  title="Components of the illustrative index"
+  caption="Each component is clipped to its 1st and 99th percentile and rescaled to 0–100, where 100 is the most excluded. A dimension is the mean of its components and the index is the mean of the three dimensions. Rent burden is the median share of income spent on rent, which the ACS reports as one top category above 50%."
+  source="American Community Survey 2019–2023, 5-year estimates (U.S. Census Bureau), New York City census tracts."
+/>
+
+<Figure
+  data="index_map.csv"
+  type="map"
+  geometry="nyc_tracts"
+  place="geoid"
+  color="score"
+  toggle="view"
+  sharedScale
+  title="Exclusion index and its three dimensions by census tract"
+  caption="Each shape is one census tract. All four views share one color scale, so a shade means the same score in each. Switch views to see which dimension lies behind a high score."
+  source="American Community Survey 2019–2023, 5-year estimates (U.S. Census Bureau). 2,192 census tracts with at least 500 residents and 200 households. Built by scripts/figures/s04_exclusion_index.py. Tract boundaries: TIGER/Line 2023 (U.S. Census Bureau)."
+/>
+
+Averaging the tract scores within each borough gives a first reading of the map.
+
+<Figure
+  data="borough_profile.csv"
+  type="cell"
+  x="borough"
+  y="measure"
+  group="dimension"
+  color="score"
+  text="score"
+  title="Mean score by borough, index and components"
+  caption="Scores run from 0 to 100. Boroughs are ordered by the index, highest first. Reading down a column shows which components lift a borough's score."
+  source="Tract scores averaged within each borough, unweighted."
+/>
+
+The Bronx scores highest at 48 and Manhattan lowest at 25. The share without a college degree and rent burden are the two highest-scoring components in every borough: the Bronx averages 81 and 56 on them. Crowding and internet access separate the boroughs far less, from 15 to 32 and from 18 to 29.
+
+A composite index has to survive its own assumptions. The last check rebuilds the index under other reasonable choices and compares the ranking of tracts with the baseline.
+
+<Figure
+  data="robustness.csv"
+  type="dot"
+  x="rank_correlation"
+  y="scheme"
+  xLabel="Spearman rank correlation with the baseline"
+  title="How far the ranking of tracts moves under other choices"
+  caption="A value of 1 means every tract keeps its rank. The first four rows change how components are scaled or combined; the last three drop one dimension at a time."
+  source="Same tracts and components as the index."
+/>
+
+The ranking holds. How components are scaled or weighted barely matters, with correlations of 0.985 to 0.999. Dropping a whole dimension matters most, and the correlation still stays between 0.934 and 0.949.

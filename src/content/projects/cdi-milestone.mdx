@@ -1,0 +1,54 @@
+---
+title: "CDI-Milestone"
+tagline: "The decks I built for the City Design Index (CDI) milestone meetings at Gensler Research Institute, from the methodology and insight papers to the November executive deck."
+domain: cdi
+stack: ["Python", "MGWR", "Geo-bootstrap", "Slide design"]
+stats:
+  - { value: "8", label: "milestone decks" }
+  - { value: "15", label: "study cities" }
+  - { value: "EN, ZH", label: "editions since September" }
+featured: true
+order: 1
+status: private
+basis: public-data
+---
+
+The City Design Index (CDI) at Gensler Research Institute asks whether the design of a neighborhood is linked to how its residents feel about their city. Each milestone meeting closed a stage of that work with a deck. I built them from the analysis I ran, for analysts and for leadership, and from September on in English and Chinese.
+
+> The decks, the survey behind them and every result are confidential under NDA. This page lists what each deck covered. Its one drawing is redrawn from public census boundaries and shows no survey data.
+
+## The decks
+
+| Date | Deck | What it covers |
+| --- | --- | --- |
+| Aug 7, 2026 | What Shapes City Satisfaction in US Cities | The insight paper: a cluster-level reading of Washington, Austin, Miami, Dallas and Boston, regional profiles crossed with MGWR |
+| Aug 30, 2026 | Methodology Paper | How the index is built from public sources (ACS, LEHD LODES, OpenStreetMap, FEMA, EPA, USGS), in a review and a submission version |
+| Sep 26, 2026 | Which Dimension Split Works? A 15-City Re-test | Competing ways to split a design dimension in two, scored on a gate fixed before the results |
+| Sep 27, 2026 | What the 3Ds Literature Means for CDI | The density, diversity and design literature, read for its dimensions and causal logic, mapped onto the index |
+| Oct 9, 2026 | From Survey Answers to a Tract Map | How a geo-bootstrap turns individual answers into a tract-level satisfaction score, and how a group test checks it |
+| Oct 24, 2026 | November milestone, first results | Both checks on one model per city, compared across 15 cities |
+| Oct 26, 2026 | How We Test Whether Design Explains City Satisfaction | The method behind the two checks: the question each asks, its hypothesis, its test, and why respondents are split by income |
+| Nov 8, 2026 | Design Is Linked to How People Feel About Their City | The executive deck of the November milestone, on all 15 cities and both income groups |
+
+## The study cities
+
+The November deck opens on the 15 study cities. The drawing below takes the same view from public data only: every census tract of every city, shaded by its own size instead of by what residents said.
+
+<Figure
+  data="study_cities.csv"
+  type="map"
+  geometry="study_cities"
+  place="place"
+  color="size"
+  order="Largest fifth, Fourth fifth, Middle fifth, Second fifth, Smallest fifth"
+  title="The 15 study cities, tract by tract"
+  caption="Each city is fitted to its own square, so cities are not to scale. A tract is shaded by its area within its city, smallest darkest; small tracts mark where people live closest together. Row by row: Atlanta, Austin, Boston, Chicago, Dallas; Denver, Houston, Los Angeles, Miami, New York; Philadelphia, San Diego, San Francisco, Seattle, Washington."
+  source="Census tract boundaries: TIGER/Line 2023 (U.S. Census Bureau); water-only tracts and far islands left out. Size classes are quintiles of tract area within each city. Drawn by scripts/draw_study_cities.py."
+/>
+
+## How the decks are made
+
+- **One headline per slide.** Each title states what the slide shows; the evidence sits under it, the source and caveats at its foot.
+- **Numbers from the analysis, not by hand.** Every figure and table is generated from the result files of the run it reports, so a rerun updates the deck instead of a copy.
+- **Two languages, one source.** The English and Chinese editions are built from the same content, so they never drift apart.
+- **Method decks beside result decks.** Each result deck has a companion that explains the test behind it to analysts, so a finding can be checked before it is presented.

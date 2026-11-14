@@ -1,0 +1,6 @@
+Archetype,Medoid tract,Tracts,People per km²,"Income, $","Rent, $","Transit, %"
+Archetype 1,"Tract 83, Bronx",484,"30,799","53,560","1,356",55
+Archetype 2,"Tract 563.01, Brooklyn",400,"26,618","146,458","2,780",40
+Archetype 3,"Tract 866, Brooklyn",658,"20,780","77,728","1,908",48
+Archetype 4,"Tract 1215, Queens",449,"6,706","89,858","1,897",26
+Archetype 5,"Tract 114.02, Staten Island",168,"5,793","93,625","2,081",34

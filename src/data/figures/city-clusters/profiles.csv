@@ -1,0 +1,61 @@
+archetype,feature,z
+Archetype 1,Population density,+0.6
+Archetype 2,Population density,+0.5
+Archetype 3,Population density,+0.2
+Archetype 4,Population density,−0.9
+Archetype 5,Population density,−1.4
+Archetype 1,Household income,−1.2
+Archetype 2,Household income,+1.1
+Archetype 3,Household income,−0.2
+Archetype 4,Household income,+0.3
+Archetype 5,Household income,+0.5
+Archetype 1,Gross rent,−1.0
+Archetype 2,Gross rent,+1.2
+Archetype 3,Gross rent,−0.1
+Archetype 4,Gross rent,+0.2
+Archetype 5,Gross rent,0.0
+Archetype 1,Median age,−0.5
+Archetype 2,Median age,−0.2
+Archetype 3,Median age,0.0
+Archetype 4,Median age,+0.6
+Archetype 5,Median age,+0.5
+Archetype 1,College degree,−0.8
+Archetype 2,College degree,+1.6
+Archetype 3,College degree,−0.3
+Archetype 4,College degree,−0.2
+Archetype 5,College degree,+0.1
+Archetype 1,Poverty rate,+1.2
+Archetype 2,Poverty rate,−0.6
+Archetype 3,Poverty rate,0.0
+Archetype 4,Poverty rate,−0.6
+Archetype 5,Poverty rate,−0.7
+Archetype 1,Renters,+1.0
+Archetype 2,Renters,+0.3
+Archetype 3,Renters,+0.1
+Archetype 4,Renters,−1.0
+Archetype 5,Renters,−1.3
+Archetype 1,Pre-1940 homes,−0.2
+Archetype 2,Pre-1940 homes,+0.3
+Archetype 3,Pre-1940 homes,+0.3
+Archetype 4,Pre-1940 homes,−0.4
+Archetype 5,Pre-1940 homes,−0.5
+Archetype 1,Transit commuters,+0.8
+Archetype 2,Transit commuters,−0.1
+Archetype 3,Transit commuters,+0.3
+Archetype 4,Transit commuters,−0.8
+Archetype 5,Transit commuters,−1.2
+Archetype 1,No vehicle,+0.9
+Archetype 2,No vehicle,+0.7
+Archetype 3,No vehicle,0.0
+Archetype 4,No vehicle,−1.1
+Archetype 5,No vehicle,−1.3
+Archetype 1,Foreign born,−0.3
+Archetype 2,Foreign born,−0.8
+Archetype 3,Foreign born,+0.7
+Archetype 4,Foreign born,+0.4
+Archetype 5,Foreign born,−0.7
+Archetype 1,Crowded homes,+0.3
+Archetype 2,Crowded homes,−0.6
+Archetype 3,Crowded homes,+0.6
+Archetype 4,Crowded homes,−0.4
+Archetype 5,Crowded homes,−0.6

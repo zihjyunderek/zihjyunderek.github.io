@@ -1,6 +1,6 @@
 ---
-title: 'PyGWPCC: Geographically Weighted Correlation'
-tagline: 'A package-grade Python library for Geographically Weighted Pearson Correlation Coefficients: four kernel families, a vectorized computation engine, and a clean API.'
+title: 'GW-Corr'
+tagline: 'Geographically weighted Pearson correlation as a surface: four kernel families, a vectorized computation engine, significance masks, and a clean API.'
 domain: spatial
 stack: ['Python', 'NumPy (vectorized)', 'SciPy', 'Matplotlib']
 stats:
@@ -8,11 +8,11 @@ stats:
   - { value: 'vectorized', label: 'computation engine' }
   - { value: 'API-first', label: 'package design' }
 featured: false
-order: 9
+order: 10
 status: research
 ---
 
-A single correlation coefficient for an entire city is a fiction: income and green space may correlate positively uptown and negatively downtown. **PyGWPCC computes correlation as a surface**: a local Pearson coefficient at every location, weighted by spatial proximity.
+A single correlation coefficient for an entire city is a fiction: income and green space may correlate positively uptown and negatively downtown. **GW-Corr computes correlation as a surface**: a local Pearson coefficient at every location, weighted by spatial proximity.
 
 > Confidential due to NDA.
 
@@ -25,4 +25,4 @@ A single correlation coefficient for an entire city is a fiction: income and gre
 
 ## Role in the toolchain
 
-GWPCC is the reconnaissance step of my spatial workflow: before fitting MGWR or clustering archetypes, local correlation maps show *where* relationships flip sign, and which variables deserve spatially varying coefficients at all.
+GW-Corr is the reconnaissance step of my spatial workflow: before fitting MGWR or clustering archetypes, local correlation maps show *where* relationships flip sign, and which variables deserve spatially varying coefficients at all.

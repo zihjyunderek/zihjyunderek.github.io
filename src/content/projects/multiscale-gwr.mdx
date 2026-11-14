@@ -1,0 +1,112 @@
+---
+title: "Multiscale-GWR"
+tagline: "Multiscale geographically weighted regression on New York City rents: predictors chosen by AICc, three nested models, a bandwidth for every predictor, and the diagnostics that keep local estimates honest."
+domain: spatial
+stack: ["Python", "MGWR", "GWR", "GeoPandas"]
+stats:
+  - { value: "0.747", label: "MGWR adjusted R²" }
+  - { value: "44–1,015", label: "bandwidths, tracts" }
+  - { value: "2,158", label: "census tracts" }
+featured: true
+order: 3
+status: research
+basis: public-data
+---
+
+Conventional regression assumes one relationship holds everywhere: that an extra point of income changes rents by the same amount in Manhattan as in Staten Island. Cities do not work that way. **Multiscale Geographically Weighted Regression (MGWR)** fits a coefficient for every place and lets each predictor choose the distance over which its relationship holds. The result is a coefficient surface per variable, not a single number.
+
+> I run this workflow across US cities in the City Design Index, whose data is confidential under NDA. The example below runs the same steps on public American Community Survey data for New York City.
+
+## The workflow
+
+- **Variable selection.** Forward selection on GWR's AICc, with the bandwidth searched again at every step.
+- **Calibration.** OLS, GWR and MGWR on the same predictors, adaptive bisquare kernels, bandwidths chosen by AICc.
+- **Diagnostics.** Model comparison (adjusted R², AICc, ENP), global and local collinearity, significance corrected for multiple tests, and Moran's I on the residuals.
+- **Maps.** Coefficient surfaces masked by significance, and standardized residuals for every model.
+
+## New York City, step by step
+
+The example asks what goes with a tract's median gross rent. Eight census indicators are candidates; every variable is standardized.
+
+<Figure
+  data="forward_selection.csv"
+  type="dot"
+  x="aicc"
+  y="step"
+  xLabel="AICc after the step (lower is better)"
+  title="Forward selection of predictors by AICc"
+  caption="Each step adds the candidate that lowers GWR's AICc the most, with the bandwidth searched again every time. Selection stops when the best remaining candidate gains less than 10 points or five predictors are in."
+  source="American Community Survey 2019–2023, 5-year estimates (U.S. Census Bureau). 2,158 census tracts with at least 500 residents, 200 households and every variable; median rent is top-coded at $3,500 in 70 of them. Built by scripts/figures/s02_mgwr.py."
+/>
+
+Household income enters first and already brings the adjusted R² to 0.725. Median age, the foreign-born share, the share of homes built before 1940 and the share of adults with a college degree follow, lowering AICc from 3,625 to 3,483, and the selected bandwidth grows from 46 to 199 tracts as predictors are added. Selection stopped at the cap of five predictors.
+
+The five predictors are then fitted three ways: one coefficient for the whole city (OLS), local coefficients with one shared bandwidth (GWR), and local coefficients with a bandwidth for each predictor (MGWR).
+
+<Figure
+  data="model_comparison.csv"
+  type="table"
+  title="Three models of median gross rent"
+  caption="OLS fits one coefficient per predictor for the whole city; GWR and MGWR fit local ones. AICc: lower is better. ENP, the effective number of parameters, counts how far a model bends to local data. A residual Moran's I close to zero means the residuals no longer cluster on the map; p is its permutation p-value from 999 draws, on each tract's eight nearest neighbors."
+  source="Same tracts and predictors as Figure 1."
+/>
+
+One city-wide coefficient per predictor explains 65% of the variation in log rent and leaves residuals that cluster on the map (Moran's I 0.111). Letting coefficients vary raises the adjusted R² to 0.729 with one shared bandwidth and to 0.747 with a bandwidth for each predictor, and the clustering disappears. MGWR has the lowest AICc, 3,389 against 3,483 for GWR. Its residual Moran's I is slightly negative (−0.024, p = 0.012): small, but worth watching when a bandwidth is as narrow as 44 tracts.
+
+<Figure
+  data="bandwidths.csv"
+  type="dot"
+  x="neighbours"
+  y="term"
+  color="model"
+  log
+  xLabel="Bandwidth, nearest tracts (log scale)"
+  title="The spatial scale of each relationship"
+  caption="A bandwidth is the number of nearest tracts that inform a local estimate. GWR gives every term the same one. MGWR lets each term choose its own: a small bandwidth means the relationship changes from one neighborhood to the next, a large one means it holds across the city."
+  source="Same tracts and predictors as Figure 1. Adaptive bisquare kernel, bandwidths chosen by AICc."
+/>
+
+GWR settles on 199 tracts for every term. MGWR spreads the terms from 44 to 1,015 tracts. Income works at the smallest scale: its link with rent changes within a few dozen tracts. Education works at the largest: the 1,015 nearest tracts, almost half the city, inform each local estimate.
+
+<Figure
+  data="coefficients.csv"
+  type="map"
+  geometry="nyc_tracts"
+  place="geoid"
+  color="coefficient"
+  toggle="term"
+  sharedScale
+  blank="Not significant"
+  title="Local MGWR coefficients by census tract"
+  caption="Each shape is one census tract. A coefficient is the change in log rent, in standard deviations, that goes with one standard deviation more of the predictor. All views share one color scale, so shades compare across predictors. Grey tracts are estimates that are not significant at 5% after the correction for multiple tests."
+  source="Same model as Table 1. Tract boundaries: TIGER/Line 2023 (U.S. Census Bureau)."
+/>
+
+The college-degree coefficient is positive and significant in nearly every tract, between 0.08 and 0.25: a broad, steady premium. The income coefficient is significant in 58% of tracts and ranges from 0.28 to 1.40 where it is. Median age is the one negative term, from −0.58 to −0.13, significant in 24% of tracts. The foreign-born share and pre-1940 homes matter in pockets only, in 14% and 11% of tracts. These are associations in one cross-section, not causal effects.
+
+## Checks on the local estimates
+
+<Figure
+  data="diagnostics.csv"
+  type="table"
+  title="Collinearity, scale and significance by term"
+  caption="A VIF above 10 is the usual warning sign of collinearity; the local VIF repeats the check inside every GWR neighborhood. The last column counts MGWR estimates significant at 5% after the correction for multiple tests."
+  source="Same model as Table 1. Bandwidths in nearest tracts."
+/>
+
+City-wide, no predictor is collinear: the largest VIF is 2.37. Inside GWR neighborhoods the margin is thinner. Household income and college degree reach local VIFs of 10.48 and 10.57 in their worst neighborhoods, just past the usual threshold, so their local estimates should be read together.
+
+<Figure
+  data="residuals.csv"
+  type="map"
+  geometry="nyc_tracts"
+  place="geoid"
+  color="residual"
+  toggle="model"
+  sharedScale
+  title="Standardized residuals by model"
+  caption="Each shape is one census tract. Blue: rent is higher than the model predicts. Rust: lower. Patches of one color mean the model misses something spatial. Residuals beyond 3 standard deviations are drawn at 3."
+  source="Same models as Table 1. Tract boundaries: TIGER/Line 2023 (U.S. Census Bureau)."
+/>
+
+Under OLS, neighboring tracts tend to err in the same direction. Under GWR and MGWR the colors mix, which is what the drop in Moran's I in Table 1 measures. The change is subtle to the eye, which is why the statistic is reported beside every residual map.

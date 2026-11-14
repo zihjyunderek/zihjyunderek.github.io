@@ -1,0 +1,36 @@
+dimension,measure,borough,score
+Composite,Exclusion index,Bronx,48
+Composite,Exclusion index,Brooklyn,38
+Composite,Exclusion index,Queens,35
+Composite,Exclusion index,Staten Island,33
+Composite,Exclusion index,Manhattan,25
+Economy,Poverty,Bronx,48
+Economy,Poverty,Brooklyn,32
+Economy,Poverty,Queens,20
+Economy,Poverty,Staten Island,20
+Economy,Poverty,Manhattan,27
+Economy,Unemployment,Bronx,45
+Economy,Unemployment,Brooklyn,31
+Economy,Unemployment,Queens,28
+Economy,Unemployment,Staten Island,23
+Economy,Unemployment,Manhattan,28
+Housing,Rent burden,Bronx,56
+Housing,Rent burden,Brooklyn,45
+Housing,Rent burden,Queens,47
+Housing,Rent burden,Staten Island,49
+Housing,Rent burden,Manhattan,33
+Housing,Crowding,Bronx,32
+Housing,Crowding,Brooklyn,31
+Housing,Crowding,Queens,27
+Housing,Crowding,Staten Island,16
+Housing,Crowding,Manhattan,15
+Access,No internet,Bronx,29
+Access,No internet,Brooklyn,26
+Access,No internet,Queens,20
+Access,No internet,Staten Island,23
+Access,No internet,Manhattan,18
+Access,No college degree,Bronx,81
+Access,No college degree,Brooklyn,60
+Access,No college degree,Queens,67
+Access,No college degree,Staten Island,66
+Access,No college degree,Manhattan,31

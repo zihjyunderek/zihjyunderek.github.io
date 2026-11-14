@@ -1,0 +1,54 @@
+---
+title: "City-Survey"
+tagline: "From survey answers to a tract-level City Satisfaction Score: a geo-bootstrap for the score, and an undocumented composite recovered from delivered data alone, re-verified on every run."
+domain: urban
+stack: ["Python", "Pandas", "Geo-bootstrap", "Reverse engineering"]
+stats:
+  - { value: "≤1.3e-4", label: "max verified error" }
+  - { value: "3", label: "cities" }
+  - { value: "v4", label: "pipeline" }
+order: 6
+status: private
+basis: simulated
+---
+
+A resident survey answers how people feel about their city, but a map needs a score for every census tract, including tracts where few people answered. The City Satisfaction Score bridges the two, and it arrived as a composite across three cities with no methodology documentation. Rather than treat it as a black box, I derived its structure from the data itself and built a pipeline that re-verifies that structure on every run.
+
+> The delivered data is confidential under NDA. The figure and table on this page use simulated files with the same structure.
+
+## From answers to a tract score
+
+Survey answers are sparse and uneven across tracts. The geo-bootstrap builds each tract's score from a sample of nearby respondents, drawn so that the sample matches the tract's own population on two demographic traits at a time, with census shares as quotas and closer respondents more likely to be drawn. The draw is repeated many times and averaged, separately for car, walk and transit users, and the three combine by the tract's commuting shares. A pairing of traits only counts when its sample matches the census within a set tolerance.
+
+## Reverse-engineering, then locking it down
+
+The delivered files contained the scores but not the recipe. By working backward from the numbers, I recovered the relationship: per travel mode (car, walk, transit), a mode score is the mean of a four-question satisfaction battery over geo-bootstrapped tract means; those mode scores then combine through per-tract travel-mode weights into the composite.
+
+The crucial engineering decision: **the derived relationships are re-verified numerically at every pipeline run**, across all three cities, to a maximum absolute error of 1.3 × 10⁻⁴ (CSV rounding precision). So if an upstream input ever changes in a way that breaks the assumed structure, the pipeline catches it immediately rather than silently producing wrong scores. That's the difference between reverse-engineering something once and being able to *depend* on it.
+
+## The method on simulated files
+
+The delivered files held three things per tract: twelve question means (four per travel mode), three mode weights, and the composite score. Each candidate structure rebuilds the composite from the first two and is judged by its largest error against the third.
+
+<Figure
+  data="structure_errors.csv"
+  type="dot"
+  x="max_abs_error"
+  y="structure"
+  detail="city"
+  log
+  xLabel="Largest error, in points (log scale)"
+  title="Largest error of each candidate structure against the delivered score"
+  caption="Each dot is one simulated city. A mode score is the mean or the median of its four questions; the three mode scores are averaged plainly, or weighted by mode shares taken city-wide or tract by tract. Three candidates miss by 0.14 to 0.77 points on a five-point scale. The last one is off by 0.0005 at most."
+  source="Three simulated cities of 150 to 240 tracts, every file rounded to four decimals. Built by scripts/figures/s05_satisfaction.py."
+/>
+
+A structure that fits once can still break when an upstream input changes. So every run recomputes the largest error in each city and compares it with the error that rounding alone could cause.
+
+<Figure
+  data="verification.csv"
+  type="table"
+  title="Verification of the recovered structure, city by city"
+  caption="The rounding bound adds up half a unit of the fourth decimal in every delivered number that enters a tract's score. A run fails as soon as one tract exceeds its bound."
+  source="The same simulated files."
+/>

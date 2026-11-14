@@ -35,6 +35,8 @@ export const SITE = {
     'spatial statistics',
     'MGWR',
     'geographically weighted regression',
+    'GWPCA',
+    'City Design Index',
     'urban analytics',
     'Value at Risk',
     'implied volatility',
@@ -60,10 +62,14 @@ export const SITE = {
 export const PERSON_ID = `${SITE.url}/#person`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
 
-/** Display labels for the four project areas (sentence case, per site rules). */
+/**
+ * Display labels for the four project areas, in the order the projects page
+ * lists them (sentence case, per site rules). Project names follow the area:
+ * CDI-*, City-*, GW-* and the spatial methods, then finance.
+ */
 export const DOMAINS: Record<string, string> = {
-  spatial: 'Geospatial statistics',
+  cdi: 'City Design Index',
   urban: 'Urban analytics',
+  spatial: 'Geospatial statistics',
   finance: 'Quantitative finance',
-  engineering: 'Engineering and agentic systems',
 };

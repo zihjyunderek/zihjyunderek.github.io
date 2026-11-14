@@ -1,0 +1,7 @@
+Term,Global VIF,Largest local VIF,MGWR bandwidth,Tracts with a significant estimate
+Baseline (intercept),,,276,26%
+Household income,2.15,10.48,44,58%
+Median age,1.19,4.25,225,24%
+Foreign born,1.29,3.52,188,14%
+Pre-1940 homes,1.07,2.06,456,11%
+College degree,2.37,10.57,"1,015",100%

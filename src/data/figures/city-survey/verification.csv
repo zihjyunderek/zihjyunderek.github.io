@@ -1,0 +1,4 @@
+City,Tracts,Largest error,Rounding bound,Within bound
+City A,180,0.000460,0.000740,Yes
+City B,240,0.000500,0.000811,Yes
+City C,150,0.000431,0.000767,Yes

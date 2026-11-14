@@ -1,0 +1,5 @@
+Algorithm,K-Means,GMM,Ward,K-Medoids
+K-Means,,0.38,0.39,0.41
+GMM,0.38,,0.52,0.37
+Ward,0.39,0.52,,0.36
+K-Medoids,0.41,0.37,0.36,

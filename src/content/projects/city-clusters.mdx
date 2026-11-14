@@ -1,0 +1,130 @@
+---
+title: "City-Clusters"
+tagline: "Grouping census tracts into urban archetypes with seven algorithms in three families, then K-Medoids on a distance that weighs geography, so every archetype is anchored by a real tract."
+domain: urban
+stack: ["Python", "scikit-learn", "K-Medoids", "HDBSCAN"]
+stats:
+  - { value: "7", label: "algorithms" }
+  - { value: "3", label: "method families" }
+  - { value: "137", label: "metrics in the client work" }
+order: 4
+status: private
+basis: public-data
+---
+
+Describing a city tract by tract produces too many numbers to read. Clustering condenses them into a few **urban archetypes**: groups of neighborhoods that look alike on many measures at once. Rather than trust one method, the pipeline runs seven algorithms across three families and reports them side by side, then settles on K-Medoids for the archetypes themselves.
+
+> The 137 isochrone metrics and the client results are confidential under NDA. The figures on this page rerun the same steps on twelve public American Community Survey indicators for New York City.
+
+## The approach
+
+In the client work each tract is described by 137 isochrone metrics, what can be reached within a walk, a transit ride or a drive, covering mobility, land use, economic conditions, environmental quality and urban form. Each family gets the preprocessing its assumptions need:
+
+| Family | Algorithms | Features | Preprocessing |
+| --- | --- | --- | --- |
+| Numerical | K-Means, GMM, Ward | 30 curated | Yeo-Johnson power transform |
+| Spatial | K-Medoids (FasterPAM) | about 132 | Robust scaling and a fused distance |
+| Density | DBSCAN, HDBSCAN, OPTICS | 12 orthogonal | Yeo-Johnson power transform |
+
+For every method and every K the pipeline computes three validity indices and writes everything into one self-contained dashboard per city.
+
+## Deliberate choices
+
+- **K-Medoids for the archetypes.** A medoid is a real tract, not an average, so every archetype has a neighborhood one can point to and describe.
+- **A fused distance.** Distance in the features is blended with distance on the ground, so tracts that are both alike and near land together.
+- **Robust scaling.** Centering on the median and scaling by the interquartile range keeps outlier tracts, with extreme rent or pollution, from dominating.
+- **FasterPAM.** The `kmedoids` implementation of FasterPAM (Schubert and Rousseeuw, 2021) is fast and reproducible at city scale.
+
+## New York City, step by step
+
+The three families are run on twelve census indicators per tract, from population density and income to commuting and housing age. The first question is how many clusters the data supports.
+
+<Figure
+  data="validity.csv"
+  type="cell"
+  x="k"
+  y="algorithm"
+  group="family"
+  color="value"
+  text="value"
+  toggle="index"
+  title="Cluster validity by algorithm and number of clusters"
+  caption="Silhouette and Calinski-Harabasz: higher is better. Davies-Bouldin: lower is better. Shades run from the lowest to the highest value in the view. K-Medoids is scored on its own fused distance for the silhouette."
+  source="American Community Survey 2019–2023, 5-year estimates (U.S. Census Bureau). 2,159 census tracts with at least 500 residents, 200 households and all twelve indicators. Built by scripts/figures/s03_archetypes.py."
+/>
+
+No algorithm finds sharply separated groups: the silhouette never exceeds 0.24. It peaks at two or three clusters for every algorithm and declines slowly after that, so the indices alone do not settle K. At five clusters it stays between 0.14 and 0.20, with K-Medoids highest. For K-Medoids itself, five is the best of the solutions with four or more clusters, and the archetypes below use it.
+
+Density-based methods take no K. They find dense regions and leave the rest as noise.
+
+<Figure
+  data="density_family.csv"
+  type="table"
+  title="What the density-based methods find"
+  caption="Run on four principal components of the transformed indicators. The silhouette is computed on the tracts that were assigned to a cluster."
+  source="Same tracts as Figure 1."
+/>
+
+On this data they find one or two clusters. DBSCAN keeps 97% of tracts in two clusters, OPTICS puts every tract in one, and HDBSCAN finds two dense cores and leaves 90% of tracts as noise. Neighborhood indicators change gradually from tract to tract, so the archetypes below are cuts through a continuum, not islands.
+
+<Figure
+  data="archetype_map.csv"
+  type="map"
+  geometry="nyc_tracts"
+  place="geoid"
+  color="archetype"
+  toggle="algorithm"
+  title="Five archetypes, by algorithm"
+  caption="Each shape is one census tract. Archetypes are numbered by population density in the K-Medoids solution, densest first; the other solutions are renumbered to overlap it as much as possible."
+  source="Same tracts as Figure 1, K = 5. Tract boundaries: TIGER/Line 2023 (U.S. Census Bureau)."
+/>
+
+<Figure
+  data="agreement.csv"
+  type="table"
+  title="Agreement between the four solutions at K = 5"
+  caption="Adjusted Rand index: 1 means two solutions group the tracts identically, 0 means no more agreement than chance."
+  source="Same solutions as Figure 2."
+/>
+
+The four solutions agree only in part: the adjusted Rand index runs from 0.36 to 0.52. Ward and GMM are closest to each other. K-Medoids, the only one that also weighs distance on the ground, agrees with the others at 0.36 to 0.41. That is why every algorithm is reported side by side.
+
+## The K-Medoids archetypes
+
+The geography weight decides how far closeness on the ground counts.
+
+<Figure
+  data="geography_map.csv"
+  type="map"
+  geometry="nyc_tracts"
+  place="geoid"
+  color="archetype"
+  toggle="distance"
+  title="Five archetypes as geography enters the distance"
+  caption="Each shape is one census tract. With features only, similar tracts group wherever they are. As the geography share rises, archetypes turn into contiguous areas."
+  source="Same tracts as Figure 1, K = 5. Tract boundaries: TIGER/Line 2023 (U.S. Census Bureau)."
+/>
+
+Each archetype has a medoid, the tract with the smallest total distance to the other members. It is a real place with real numbers, not an average.
+
+<Figure
+  data="medoids.csv"
+  type="table"
+  title="The medoid tract of each archetype"
+  caption="Archetypes are numbered by population density, densest first. Values are the medoid tract's own."
+  source="K-Medoids with 20% geography, K = 5."
+/>
+
+<Figure
+  data="profiles.csv"
+  type="cell"
+  x="archetype"
+  y="feature"
+  color="z"
+  text="z"
+  title="How each archetype differs from the city"
+  caption="Mean of each indicator within the archetype, in standard deviations from the mean of all tracts. Blue is above the city mean, rust below."
+  source="Same solution as Table 3. Density, income and rent are in logs."
+/>
+
+Archetype 1 is dense and poor: income 1.2 standard deviations below the city mean, poverty 1.2 above, mostly renters who commute by transit. Archetype 2 is dense and affluent, with the highest income, rent and share of college graduates. Archetype 3, the largest group, sits near the city mean with more foreign-born residents and more crowded homes. Archetypes 4 and 5 are the low-density edges: fewer renters, fewer transit commuters, more households with a car. The medoids make this concrete. Tract 83 in the Bronx, with a median income of $53,560 and a median rent of $1,356, stands for Archetype 1; Tract 563.01 in Brooklyn, at $146,458 and $2,780, for Archetype 2.

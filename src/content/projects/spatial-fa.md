@@ -1,13 +1,13 @@
 ---
-title: "Spatial Factor Analysis"
-tagline: "A Python implementation of spatial factor-analysis methods from Thorson et al. (2015) and Berchuck et al. (2019), recovering latent spatial processes behind multivariate data."
+title: "Spatial-FA"
+tagline: "Spatial factor analysis after Thorson et al. (2015) and Berchuck et al. (2019): recovering the latent spatial processes behind multivariate data."
 domain: spatial
 stack: ["Python", "NumPy", "Bayesian", "Factor Analysis"]
 stats:
   - { value: "2", label: "papers implemented" }
   - { value: "latent", label: "spatial factors" }
   - { value: "Bayesian", label: "+ frequentist" }
-order: 8
+order: 11
 status: public
 repo: "https://github.com/zihjyunderek/Spatial_FA"
 ---

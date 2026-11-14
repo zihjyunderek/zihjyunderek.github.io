@@ -1,0 +1,8 @@
+scheme,rank_correlation
+"Z-scores, not 0–100",0.999
+Percentile ranks,0.985
+Weights from PCA,0.998
+Geometric mean,0.989
+Without economy,0.941
+Without housing,0.934
+Without access,0.949

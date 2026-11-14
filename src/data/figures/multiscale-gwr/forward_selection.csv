@@ -1,0 +1,6 @@
+step,aicc,adj_r2,bandwidth
+1. Household income,3625,0.725,46
+2. Median age,3573,0.731,68
+3. Foreign born,3516,0.732,104
+4. Pre-1940 homes,3503,0.729,151
+5. College degree,3483,0.729,199

@@ -1,0 +1,13 @@
+term,model,neighbours
+Baseline (intercept),GWR,199
+Baseline (intercept),MGWR,276
+Household income,GWR,199
+Household income,MGWR,44
+Median age,GWR,199
+Median age,MGWR,225
+Foreign born,GWR,199
+Foreign born,MGWR,188
+Pre-1940 homes,GWR,199
+Pre-1940 homes,MGWR,456
+College degree,GWR,199
+College degree,MGWR,1015

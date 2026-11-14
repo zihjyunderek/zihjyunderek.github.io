@@ -1,0 +1,13 @@
+structure,city,max_abs_error
+Plain mean,City A,0.515683
+City-wide weights,City A,0.427753
+"Tract weights, median",City A,0.148054
+"Tract weights, mean",City A,0.000460
+Plain mean,City B,0.774100
+City-wide weights,City B,0.581148
+"Tract weights, median",City B,0.143660
+"Tract weights, mean",City B,0.000500
+Plain mean,City C,0.714033
+City-wide weights,City C,0.554787
+"Tract weights, median",City C,0.146615
+"Tract weights, mean",City C,0.000431
