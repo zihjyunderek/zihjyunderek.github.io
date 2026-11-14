@@ -17,9 +17,11 @@ zihjyunderek.github.io/
 ├── src/
 │   ├── config.ts                 # EDIT: identity, links, keywords
 │   ├── data/profile.ts           # EDIT: now/next status, experience, education, skills
-│   ├── content/projects/*.md     # add a file = add a project
+│   ├── content/projects/         # add a file = add a project (.md, or .mdx with figures)
 │   ├── content.config.ts         # frontmatter schema (validated at build)
-│   ├── components/               # Section (the rail), ProjectItem, Entry, Header, Footer
+│   ├── data/figures/<project>/   # one CSV per figure, plus README.md (where each came from)
+│   ├── components/               # Section (the rail), ProjectItem, Entry, Header, Footer, Figure
+│   ├── lib/figures/              # build-time drawing behind Figure: data, classes, draw, map, theme
 │   ├── layouts/Base.astro        # SEO: meta, OG, JSON-LD, font imports
 │   ├── pages/                    # index, projects, experience, skills, contact, 404
 │   └── styles/global.css         # full design system (CSS variables)
@@ -29,13 +31,18 @@ zihjyunderek.github.io/
 │   ├── attachments/              # publishable evidence: education/ experience/ certificates/
 │   ├── favicon.svg
 │   └── robots.txt
-├── docs/                         # repo documentation: local-dev.md
+├── docs/                         # local-dev.md (workflow), figure-guidelines.md (how figures must look)
 ├── scripts/                      # build_cv.py (CV), fonts/ (Lato, OFL), dev.bat, preview.bat
+│   ├── fetch_acs.py              # one-off download of the public ACS extract (needs a free API key)
+│   ├── extract_tracts.py         # one-off save of the census tract shapes, GEOID and polygon only
+│   ├── draw_study_cities.py      # one-off drawing of the 15 CDI study cities from public tract boundaries
+│   ├── build_figures.py          # rebuilds the figure CSVs and map shapes from those two
+│   └── figures/                  # the analyses, one stage per file; config.py; data/ (the extract, the shapes)
 ├── .github/                      # CI: deploy.yml (Pages), dependabot.yml (updates)
 └── LICENSE                       # MIT for code; written content reserved
 ```
 
-## The two things you'll actually edit
+## The things you'll actually edit
 
 **Add a project**: drop a `.md` file in `src/content/projects/`:
 
@@ -43,18 +50,70 @@ zihjyunderek.github.io/
 ---
 title: "My New Project"
 tagline: "One sentence. Also the page meta description."
-domain: spatial            # spatial | urban | finance | engineering
+domain: spatial            # cdi | urban | spatial | finance
 stack: ["Python", "..."]
 stats:
   - { value: "31", label: "cities" }
-featured: false            # true = pinned first on home page (home shows 6)
+featured: false            # true = pinned first on home page (home shows 3)
 order: 13                  # sort position (lower = first)
 status: public             # public | private | research
 repo: "https://github.com/zihjyunderek/..."   # optional; private repo links are fine
 ---
 
 Markdown body renders as the project detail page.
+
+Project names follow their area, and the file name is the name in lower case: `CDI-Milestone` and `CDI-Demo` (City Design Index); `City-Clusters`, `City-Indices`, `City-Survey`, `City-Typology` (urban analytics); `Multiscale-GWR`, `GW-RF`, `GW-PCA`, `GW-Corr`, `Spatial-FA` (geospatial statistics); the thesis under quantitative finance. A renamed or merged project keeps its old address through `redirects` in `astro.config.mjs`.
 ```
+
+**Add a figure**: a figure is drawn from a CSV when the site is built and sits inline in the prose. The page receives finished SVG and HTML, so the site stays free of client JS; hover labels and the view switch are CSS.
+
+1. Rename the project file to `.mdx` and add `basis` to its frontmatter: `published`, `public-data`, or `simulated`. The label is printed in front of every source line on that page.
+2. Put the CSV in `src/data/figures/<project file name>/`, one row per mark, and note where it came from in `src/data/figures/README.md`. What the CSV says is what the figure prints.
+3. Place a `<Figure />` between two paragraphs:
+
+```mdx
+<Figure
+  data="basel_zone.csv"
+  type="cell"
+  x="pair"
+  y="model"
+  group="family"
+  color="zone"
+  text="code"
+  order="Green, Yellow, Red"
+  title="Basel traffic-light zone by model and currency pair"
+  caption="Darker cells are worse."
+  source="Thesis Table 5-10."
+/>
+```
+
+| Type | Draws | Needs | Optional |
+| --- | --- | --- | --- |
+| `dot` | a dot per value along each row | `x` (number), `y` (row name) | `color` (two series), `group`, `detail`, `log`, `reference`, `referenceLabel`, `xLabel` |
+| `cell` | a colored grid | `x` (column name), `y` (row name), `color` | `text`, `group`, `order`, `blank` |
+| `map` | a filled shape per place | `geometry` (shapes file), `place` (the column naming each shape, a GEOID), `color` | `order`, `blank`, `outside` |
+| `table` | the CSV as a table, every column under its own name | nothing else | |
+
+Every type takes `title` and `source` (required), `caption`, and `toggle`: a column with up to six values, between which the reader switches. Figures and tables are numbered separately, in page order.
+
+How `color` is read: a number column is cut into five equal steps of one hue, and when it holds values below zero the sign picks the hue. A text column with `order` is ranked, light to dark; without `order` its categories (five at most) each get a distinct color. A blank cell means "no value".
+
+A missing file, column, or `basis` fails the build with a message that names the project and the file, and so does a row name too long for a phone. Each prop is documented at the top of `src/components/Figure.astro`; colors are the `--data-*`, `--seq-*`, `--pos-*`, `--neg-*`, and `--cat-*` tokens in `global.css`. In `.mdx`, a literal `{` or `<` in prose must be written as `\{` or `\<`.
+
+How a figure has to look (spacing, grouping, wording, color) is set down in `docs/figure-guidelines.md`. Read it before adding a chart type or changing the styles.
+
+**Rebuild the figure data**: pages about client work show the method on public data, or on simulated files where no public data fits. The extract and the analyses are part of the repo, so every number can be reproduced:
+
+```bash
+python scripts/fetch_acs.py                      # once; reads CENSUS_API_KEY from the gitignored .env
+python scripts/extract_tracts.py PATH/TO/tracts.shp  # once; keeps GEOID and the polygon, nothing else
+python scripts/draw_study_cities.py PATH/TO/shapefiles  # once; the CDI-Milestone drawing, shapes only
+pip install -r scripts/requirements-figures.txt
+python scripts/build_figures.py                  # all stages; the MGWR stage takes about fifteen minutes
+python scripts/build_figures.py index archetypes # or only the stages named
+```
+
+Settings (variables, K, seed, map drawing) live in `scripts/figures/config.py`. After a rebuild, check the numbers quoted in the page text against the new CSVs. Maps draw census tracts from `src/data/figures/geometry/nyc_tracts.json`, which stage `geometry` writes from the shapes in `scripts/figures/data/geometry/` (TIGER/Line 2023 tracts clipped to the shoreline; GEOID is the only attribute kept). The extract comes from the Census Bureau Data API; this site is not endorsed or certified by the Census Bureau.
 
 **Update personal details**: edit `src/config.ts` (name, email, GitHub, LinkedIn) and `src/data/profile.ts` (now / next status, experience, education, skill groups, certificates).
 
@@ -102,7 +161,8 @@ After first deploy: verify the domain in [Google Search Console](https://search.
 
 - Dependabot opens monthly update PRs for npm packages and GitHub Actions (`.github/dependabot.yml`).
 - Dependencies are pinned via `package-lock.json`; CI installs with `npm ci`.
-- `package.json` is `private` (never publishable to npm) and declares `engines.node >= 22.12.0`, the Astro 7 minimum. CI pins Node 24 in `.github/workflows/deploy.yml`; raise both together.
+- Figures use four packages at build time only (`@astrojs/mdx`, `@observablehq/plot`, `linkedom`, `d3-dsv`), pinned to exact versions. None of them ships to the browser.
+- `package.json` is `private` (never publishable to npm) and declares `engines.node >= 22.23.4`, the minimum of the installed Astro (7.4). CI pins Node 24 in `.github/workflows/deploy.yml`; raise both together.
 
 ---
 
