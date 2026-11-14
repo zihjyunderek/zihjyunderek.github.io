@@ -11,6 +11,7 @@ featured: true
 order: 2
 repo: "https://github.com/zihjyunderek/G7_VaR"
 status: research
+basis: published
 ---
 
 My master's thesis at NCCU Money and Banking (M.S., 2026): *Forecasting FX Spot Value-at-Risk (VaR) Using Implied Volatility: Evidence from G7 Currency Pairs*. It bridges the two halves of my background: market-risk practice from CTBC and Foxconn treasury internships, and the statistical modeling I use daily. The question is deceptively simple: **can the market's own forward-looking view of volatility predict tomorrow's downside risk better than history can?**
@@ -25,6 +26,46 @@ Traditional Value-at-Risk looks backward: it estimates how bad a loss could be f
 ## Why it matters
 
 Implied volatility is a leading indicator; realized volatility is a lagging one. A VaR model fed by implied vol can react to a brewing crisis *before* it shows up in the return history, exactly when a risk desk most needs the warning. The project benchmarks implied-vol-driven VaR against classical historical and parametric approaches across all G7 crosses, then backtests coverage with standard exception tests.
+
+## Backtest results
+
+The thesis compares 13 models on seven currency pairs (the G7 currencies and USD/TWD). Each model forecasts the 1% VaR every trading day from January 2020 to December 2025, out of sample. A well-calibrated model is breached on 1% of days.
+
+<Figure
+  data="breach_ratio_1pct.csv"
+  type="dot"
+  x="breach_pct"
+  y="model"
+  group="family"
+  detail="pair"
+  log
+  reference={1}
+  referenceLabel="Nominal 1%"
+  xLabel="Days with a breach, % (log scale)"
+  title="How often losses exceeded the 1% VaR forecast"
+  caption="Each dot is one currency pair; pairs with the same ratio share a dot. Right of the line the model understated risk, left of it the model overstated risk. Hover or tap a dot for the pair and its ratio; dots that overlap share one label."
+  source="Thesis Table 5-2. Out-of-sample period January 2020–December 2025, 1,565 daily forecasts per pair (1,470 for USD/TWD)."
+/>
+
+Historical simulation and RiskMetrics are breached too often in every pair, on 1.34% to 2.45% of days. GJR-GARCH, XGBoost and LightGBM err the other way, below 1% in every pair. FFNN and RNN understate risk the most, with ratios up to 8.10% and 3.45%.
+
+Supervisors grade a VaR model with the Basel traffic light: the number of breaches in the last 250 trading days places it in a green, yellow or red zone.
+
+<Figure
+  data="basel_zone.csv"
+  type="cell"
+  x="pair"
+  y="model"
+  group="family"
+  color="zone"
+  text="code"
+  order="Green, Yellow, Red"
+  title="Basel traffic-light zone by model and currency pair"
+  caption="Green: at most 4 breaches of the 1% VaR in the window. Yellow: 5 to 9. Red: 10 or more. Darker cells are worse."
+  source="Thesis Table 5-10. Window: the last 250 out-of-sample trading days."
+/>
+
+QR-IM, GJR-GARCH and all four ensemble models are green in every pair. Each neural network leaves the green zone in at least three pairs, and FFNN and RNN reach red. The thesis singles out LightGBM and CatBoost: both are green in all seven pairs, with breach ratios of 0.27% to 0.89% and 0.54% to 1.15%. The two figures are read together: GJR-GARCH and XGBoost are also green, but only because they overstate risk, which the first figure shows as dots far left of the line.
 
 ## Engineering
 
