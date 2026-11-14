@@ -3,8 +3,9 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 /**
- * Projects live in `src/content/projects/*.md`.
- * Adding a project to the site = adding ONE markdown file. No code changes.
+ * Projects live in `src/content/projects/`, one file per project: `.md`,
+ * or `.mdx` when the page shows figures (`<Figure />`, see Figure.astro).
+ * Adding a project to the site = adding ONE file. No code changes.
  *
  * Frontmatter contract (validated at build time — typos fail the build):
  *  - title     : project name shown everywhere
@@ -16,9 +17,12 @@ import { z } from 'astro/zod';
  *  - order     : sort key within the projects index (low = first)
  *  - repo      : GitHub URL (private links allowed); omit to hide the button
  *  - status    : public | private | research (controls the badge)
+ *  - basis     : published | public-data | simulated. What the page's figures
+ *                show; required once the page has a figure, and printed in
+ *                front of every figure's source line.
  */
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
     tagline: z.string().max(220),
@@ -32,6 +36,7 @@ const projects = defineCollection({
     order: z.number().default(99),
     repo: z.url().optional(),
     status: z.enum(['public', 'private', 'research']).default('public'),
+    basis: z.enum(['published', 'public-data', 'simulated']).optional(),
   }),
 });
 

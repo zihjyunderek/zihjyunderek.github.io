@@ -35,6 +35,33 @@
   --accent-soft:   rgba(29, 53, 87, 0.07);
   --accent-border: rgba(29, 53, 87, 0.28);
 
+  /* data colors, used by figures only: the accent and a neutral for two
+     series, tints of the accent for magnitude. Values below zero take a
+     muted rust, the second hue of the figures, so that the sign of an
+     estimate reads at a glance. */
+  --data-1:    var(--accent);
+  --data-2:    #858E9C;
+  --data-none: #D2D6DC;   /* a mark with no value */
+  --data-out:  #E9ECF0;   /* a map shape outside the analysis: lighter than --data-none */
+  --seq-1: #D3DDEC;
+  --seq-2: #A9BDDB;
+  --seq-3: #7896C4;
+  --seq-4: #446AA3;
+  --seq-5: var(--accent);
+  --pos-1: var(--seq-2);
+  --pos-2: var(--seq-4);
+  --pos-3: var(--seq-5);
+  --neg-1: #E5BC96;
+  --neg-2: #CF8E5E;
+  --neg-3: #9A4B22;
+  /* categories with no order (clusters): five colors that stay apart for
+     color-blind readers, built from the same blue and rust families */
+  --cat-1: var(--accent);
+  --cat-2: #C8783C;
+  --cat-3: #6F93CB;
+  --cat-4: #E2BD84;
+  --cat-5: #7E3A14;
+
   /* type */
   --serif: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
   --mono:  'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
@@ -383,6 +410,156 @@ main { display: block; padding-bottom: var(--block); }
 @media (max-width: 640px) {
   .prose { overflow-wrap: break-word; }
   .prose table { display: block; overflow-x: auto; }
+  .prose .fig-table table { display: table; }   /* its wrapper scrolls instead */
+}
+
+/* ==========================================================================
+   Figures (Figure.astro)
+   Drawn at build time and placed inline in a project's prose. The picture
+   is SVG; the title, legend, hover labels, and view switch are HTML, so
+   everything here is plain CSS and no script runs.
+   ========================================================================== */
+.prose { counter-reset: fig tbl; }
+.fig { counter-increment: fig; margin: 2.75rem 0; }
+.fig.is-table { counter-increment: tbl; }
+.fig .fig-title { font-weight: 600; color: var(--ink); line-height: 1.45; }
+.fig .fig-title::before { content: 'Figure ' counter(fig) '. '; color: var(--accent); }
+.fig.is-table .fig-title::before { content: 'Table ' counter(tbl) '. '; }
+
+/* legend: a swatch and its name, in reading order */
+.fig .fig-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; list-style: none; margin: 0.8rem 0 0; padding: 0; }
+.fig .fig-legend li { display: flex; align-items: center; gap: 0.45rem; margin: 0; font-size: var(--fs-meta); color: var(--ink-2); text-align: left; }
+.fig .fig-legend i { flex: none; width: 0.8rem; height: 0.8rem; }
+
+/* each chart is drawn at three widths (WIDTHS in theme.ts); the one
+   nearest the column shows, so its text stays close to the set size */
+.fig-views { container-type: inline-size; }
+.fig-plot { position: relative; margin-top: 1.1rem; }
+.fig-plot svg { display: block; width: 100%; height: auto; }
+.fig-plot.mid, .fig-plot.narrow { display: none; }
+@container (max-width: 600px) {
+  .fig-plot.wide { display: none; }
+  .fig-plot.mid { display: block; }
+}
+@container (max-width: 440px) {
+  .fig-plot.mid { display: none; }
+  .fig-plot.narrow { display: block; }
+}
+
+/* a map carries no text, so one drawing serves every width and every view
+   (map.ts colors it for the checked view); on a wide column the legends
+   stand beside it, unless the drawing is itself wide (a row of small maps,
+   .wide): then it spans the column under its legend. Thin paper-colored
+   lines part the shapes. */
+.fig-map .fig-plot { max-width: 30rem; }
+.fig-map .fig-plot path { stroke: var(--bg); stroke-width: 1; stroke-linejoin: round; }
+.fig-map.wide .fig-plot { max-width: none; }
+@container (min-width: 600px) {
+  .fig-map:not(.wide) { display: grid; grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); column-gap: 1.75rem; align-items: start; }
+  .fig-map .fig-plot { grid-column: 1; grid-row: 1; }
+  .fig-map .fig-keys { grid-column: 2; grid-row: 1; }
+  .fig-map:not(.wide) .fig-legend { flex-direction: column; margin-top: 1.1rem; }
+}
+
+/* hover label: an invisible target over each value; pointing at it rings
+   the value and shows its name and number. With a mouse the target is the
+   size of the dot, so the label always belongs to the dot under the
+   pointer; for a finger it is larger. Dots that touch share one target,
+   stretched over them (--span), whose label lists every one. */
+.fig-hit { position: absolute; width: calc(var(--span, 0%) + 0.75rem); height: 0.75rem; margin: -0.375rem 0 0 -0.375rem; border-radius: 0.375rem; }
+.fig-hit.box { margin: 0; border-radius: 0; }
+.fig-hit:hover { z-index: 1; outline: 1.5px solid var(--ink); outline-offset: 1px; }
+.fig-hit.box:hover { outline-width: 2px; outline-offset: -1px; }
+@media (pointer: coarse) {
+  .fig-hit:not(.box) { width: calc(var(--span, 0%) + 1.5rem); height: 1.5rem; margin: -0.75rem 0 0 -0.75rem; border-radius: 0.75rem; }
+  .fig-hit:not(.box):hover { outline-offset: -0.3rem; }
+}
+.fig-tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 0.3rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 15rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--rule-2);
+  border-radius: 4px;
+  background: var(--bg-raised);
+  font-size: var(--fs-meta);
+  font-style: normal;
+  line-height: 1.45;
+  color: var(--ink);
+  pointer-events: none;
+}
+.fig-hit:hover .fig-tip { display: block; }
+.fig-tip > span { display: block; }
+.fig-hit.to-right .fig-tip { left: 0; transform: none; }
+.fig-hit.to-left .fig-tip { left: auto; right: 0; transform: none; }
+.fig-tip b { margin-left: 0.15rem; font-family: var(--mono); font-size: var(--fs-data); font-weight: 600; color: var(--accent); }
+
+/* view switch: radio buttons that look like the site's buttons. A view
+   hides while its own button is not the selected one; one rule per
+   position, six at most (MAX_VIEWS in Figure.astro). */
+.fig-switch { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+.fig-switch input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.fig-switch span {
+  display: block;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--rule-2);
+  border-radius: 4px;
+  background: var(--bg-raised);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  cursor: pointer;
+}
+.fig-switch span:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.fig-switch input:checked + span { border-color: var(--accent); background: var(--accent); color: #fff; }
+.fig-switch input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fig:has(.fig-switch label:nth-child(1) input:not(:checked)) .fig-view:nth-child(1),
+.fig:has(.fig-switch label:nth-child(2) input:not(:checked)) .fig-view:nth-child(2),
+.fig:has(.fig-switch label:nth-child(3) input:not(:checked)) .fig-view:nth-child(3),
+.fig:has(.fig-switch label:nth-child(4) input:not(:checked)) .fig-view:nth-child(4),
+.fig:has(.fig-switch label:nth-child(5) input:not(:checked)) .fig-view:nth-child(5),
+.fig:has(.fig-switch label:nth-child(6) input:not(:checked)) .fig-view:nth-child(6) { display: none; }
+/* a browser without :has() hides nothing: every view shows, under its name */
+.fig .fig-view-name { display: none; margin-top: 1.25rem; font-size: var(--fs-meta); font-weight: 600; color: var(--ink); }
+@supports not selector(:has(*)) {
+  .fig-switch { display: none; }
+  .fig .fig-view-name { display: block; }
+  /* a map is drawn once, in its first view's colors: show that view only */
+  .fig-keys .fig-view ~ .fig-view { display: none; }
+}
+
+/* table: the CSV as printed, set like a table in a journal. Rules above
+   and below and under the column names only, no vertical lines; numbers in
+   mono, right-aligned so digits line up */
+.fig-table { margin-top: 1.1rem; overflow-x: auto; }
+.fig .fig-table table { margin: 0; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.fig .fig-table th, .fig .fig-table td { padding: 0.5rem 1.25rem 0.5rem 0; border-bottom: 0; vertical-align: baseline; color: var(--ink-2); font-weight: 400; }
+.fig .fig-table th:last-child, .fig .fig-table td:last-child { padding-right: 0; }
+.fig .fig-table thead th { border-bottom: 1px solid var(--rule-2); font-weight: 600; color: var(--ink); vertical-align: bottom; }
+.fig .fig-table tbody tr:first-child > * { padding-top: 0.7rem; }
+.fig .fig-table tbody tr:last-child > * { padding-bottom: 0.7rem; }
+.fig .fig-table td.is-num, .fig .fig-table tbody th { white-space: nowrap; }
+.fig .fig-table .is-num { text-align: right; }
+@container (max-width: 600px) {
+  .fig .fig-table th, .fig .fig-table td { padding-right: 0.75rem; }
+}
+@container (max-width: 440px) {
+  .fig .fig-table th, .fig .fig-table td { padding-right: 0.5rem; }
+  .fig .fig-table tbody th { white-space: normal; }
+}
+.fig .fig-table td.is-num { font-family: var(--mono); font-size: var(--fs-data); font-variant-numeric: tabular-nums; }
+.fig .fig-table tbody tr:hover { background: var(--accent-soft); }
+
+.fig .fig-caption { margin-top: 1rem; font-size: var(--fs-meta); line-height: 1.6; color: var(--ink-2); }
+.fig .fig-source { margin-top: 0.3rem; font-size: var(--fs-meta); line-height: 1.6; color: var(--ink-3); }
+/* same rule as the reading text: too short a measure to justify on phones */
+@media (max-width: 560px) {
+  .fig .fig-caption, .fig .fig-source { text-align: left; }
 }
 
 /* ---- 404 ---- */

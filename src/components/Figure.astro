@@ -1,0 +1,233 @@
+---
+/**
+ * A figure or table drawn at build time from a CSV and placed inline in a
+ * project's prose. The page receives finished SVG and HTML: no script runs in
+ * the browser. Hover labels and the view switch are CSS (`global.css`,
+ * "Figures"). Layout and wording rules: `docs/figure-guidelines.md`.
+ *
+ * Used from a project's `.mdx` file, where the data file is looked up in
+ * `src/data/figures/<project slug>/`:
+ *
+ *   <Figure data="zones.csv" type="cell" x="pair" y="model" color="zone"
+ *     title="..." source="..." />
+ *   <Figure data="index_map.csv" type="map" geometry="nyc_tracts" place="geoid"
+ *     color="score" title="..." source="..." />
+ *
+ * Input rule: what the CSV says is what the figure prints. A wrong or missing
+ * input fails the build with a message that names the project and the file.
+ */
+import { getEntry } from 'astro:content';
+import { isNumeric, levels, loadRows, num, type Row } from '../lib/figures/data';
+import { draw, type Hit, type LegendItem } from '../lib/figures/draw';
+import { drawMap } from '../lib/figures/map';
+import { WIDTHS, type Width } from '../lib/figures/theme';
+
+interface Props {
+  /** CSV file name inside `src/data/figures/<project slug>/` */
+  data: string;
+  /**
+   * dot: a dot per value along a row. cell: a colored grid. map: a filled shape
+   * per place. table: the CSV as a table, every column in file order under its own name.
+   */
+  type: 'dot' | 'cell' | 'map' | 'table';
+  /** dot: the number column. cell: the column of column names. */
+  x?: string;
+  /** dot, cell: the column of row names. */
+  y?: string;
+  /** map: the shapes, a file in `src/data/figures/geometry/` named without `.json` */
+  geometry?: string;
+  /** map: the column that names each row's shape, as the geometry file does (a GEOID) */
+  place?: string;
+  /** map: what a shape with no row means, for the legend */
+  outside?: string;
+  /** dot: a series column (two series at most). cell, map: the column that sets the color. */
+  color?: string;
+  /** dot, cell: a column that groups the rows under a name */
+  group?: string;
+  /** dot: a column that tells apart the dots on one row, named in the hover label */
+  detail?: string;
+  /** cell: a column printed inside each cell */
+  text?: string;
+  /** color categories from light to dark, comma-separated; default is file order */
+  order?: string;
+  /** cell, map: what a blank color cell means, for the legend */
+  blank?: string;
+  /** a column with one value per view; the reader switches between views */
+  toggle?: string;
+  /**
+   * cell, map, with `toggle`: cut a number column into color steps once for
+   * all views, so shades compare across views. Default is view by view.
+   * Categories always share one scale.
+   */
+  sharedScale?: boolean;
+  title: string;
+  /** one or two sentences on how to read the figure */
+  caption?: string;
+  /** where the numbers come from */
+  source: string;
+  /** dot: axis title; default is the column name */
+  xLabel?: string;
+  /** dot: log axis */
+  log?: boolean;
+  /** dot: a reference value, drawn as a vertical line, and its name */
+  reference?: number;
+  referenceLabel?: string;
+}
+
+/** What kind of data a project's figures show, declared once in its frontmatter. */
+const BASIS = {
+  published: 'Published results',
+  'public-data': 'Public data',
+  simulated: 'Simulated data',
+} as const;
+
+/** Views one figure can switch between; `global.css` holds one rule per view. */
+const MAX_VIEWS = 6;
+/** A figure is a summary, not a dataset: a view with more rows fails the build. */
+const MAX_ROWS = 5000;
+
+interface Panel { size?: Width; svg: string; hits: Hit[] }
+interface Table { columns: string[]; numeric: boolean[]; rows: Row[] }
+interface View { name: string; legend: LegendItem[]; panels: Panel[]; table?: Table }
+
+const props = Astro.props;
+const { data, type, x, y, color, group, detail, text, toggle, title, caption, source, blank = 'No value' } = props;
+const { geometry, place, outside = 'Not in the analysis' } = props;
+const slug = String(Astro.params.slug);
+const project = await getEntry('projects', slug);
+const id = `fig-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+
+function build(): { basis: keyof typeof BASIS; views: View[]; map?: { svg: string; wide: boolean } } {
+  if (!title?.trim() || !source?.trim()) throw new Error('title and source are both required.');
+  const basis = project?.data.basis;
+  if (!basis) {
+    throw new Error(`the page shows a figure, so its frontmatter must declare basis (${Object.keys(BASIS).join(' | ')}).`);
+  }
+  if ((type === 'dot' || type === 'cell') && (!x || !y)) throw new Error(`a ${type} figure needs x="<column>" and y="<column>".`);
+  if (type === 'map' && (!geometry || !place || !color)) {
+    throw new Error('a map needs geometry="<shapes file>", place="<column>" and color="<column>".');
+  }
+
+  const rows = loadRows(slug, data, [x, y, color, group, detail, text, toggle, place]);
+  const order = props.order?.split(',').map((name) => name.trim());
+  // a category keeps its color in every view; numbers are scaled view by view unless told otherwise
+  const categories = Boolean(color) && rows.some((row) => row[color!] !== '' && !Number.isFinite(num(color!)(row)));
+  const names = toggle ? levels(rows, toggle) : [''];
+  if (names.length > MAX_VIEWS) {
+    throw new Error(`"${toggle}" has ${names.length} values; a figure switches between ${MAX_VIEWS} views at most.`);
+  }
+
+  const subsets = names.map((name) => (toggle ? rows.filter((row) => row[toggle] === name) : rows));
+  const scaleOf = (subset: Row[]) => (categories || props.sharedScale ? rows : subset);
+  for (const subset of subsets) {
+    if (subset.length > MAX_ROWS) throw new Error(`${subset.length} rows in one view; the limit is ${MAX_ROWS}.`);
+  }
+  if (type === 'map') {
+    // one drawing for every view; each view brings its legend
+    const map = drawMap({
+      views: subsets.map((subset) => ({ rows: subset, scaleRows: scaleOf(subset) })),
+      geometry: geometry!, place: place!, color: color!, order, blank, outside, scope: id, label: title,
+    });
+    return { basis, views: names.map((name, i) => ({ name, legend: map.legends[i], panels: [] })), map: { svg: map.svg, wide: map.wide } };
+  }
+
+  const views = names.map((name, i): View => {
+    const subset = subsets[i];
+    const label = name ? `${title}: ${name}` : title;
+    const scaleRows = scaleOf(subset);
+    if (type === 'table') {
+      const columns = Object.keys(subset[0]).filter((column) => column !== toggle);
+      return { name, legend: [], panels: [], table: { columns, numeric: columns.map((column) => isNumeric(subset, column)), rows: subset } };
+    }
+    const spec = { ...props, type, x: x!, y: y!, rows: subset, scaleRows, order, blank, label };
+    const panels = (Object.keys(WIDTHS) as Width[]).map((size) => ({ size, ...draw(spec, WIDTHS[size]) }));
+    return { name, legend: panels[0].legend, panels };
+  });
+  return { basis, views };
+}
+
+let built: ReturnType<typeof build>;
+try {
+  built = build();
+} catch (error) {
+  throw new Error(`Figure ${slug}/${data}: ${(error as Error).message}`);
+}
+const { basis, views, map } = built;
+/** A label near an edge opens toward the middle, so it never leaves the figure. */
+const side = (hit: Hit) => {
+  const center = hit.left + (hit.width ?? hit.span ?? 0) / 2;
+  return center < 30 ? 'to-right' : center > 70 ? 'to-left' : null;
+};
+const spot = (hit: Hit) =>
+  `left:${hit.left}%;top:${hit.top}%` +
+  (hit.width === undefined ? '' : `;width:${hit.width}%;height:${hit.height}%`) +
+  (hit.span === undefined ? '' : `;--span:${hit.span}%`);
+---
+
+<figure class:list={['fig', { 'is-table': type === 'table' }]} id={id}>
+  <figcaption class="fig-title">{title}</figcaption>
+  {views.length > 1 && (
+    <div class="fig-switch" role="radiogroup" aria-label={`${title}: choose a view`}>
+      {views.map((view, i) => (
+        <label><input type="radio" name={id} checked={i === 0} /><span>{view.name}</span></label>
+      ))}
+    </div>
+  )}
+  <div class="fig-views">
+    {map && (
+      <div class:list={['fig-map', { wide: map.wide }]}>
+        <div class="fig-keys">
+          {views.map((view) => (
+            <div class="fig-view map">
+              {view.name && <p class="fig-view-name">{view.name}</p>}
+              <ul class="fig-legend">
+                {view.legend.map((item) => <li><i style={`background:${item.token}`}></i>{item.label}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div class="fig-plot"><Fragment set:html={map.svg} /></div>
+      </div>
+    )}
+    {!map && views.map((view) => (
+      <div class:list={['fig-view', type]}>
+        {view.name && <p class="fig-view-name">{view.name}</p>}
+        {view.legend.length > 0 && (
+          <ul class="fig-legend">
+            {view.legend.map((item) => <li><i style={`background:${item.token}`}></i>{item.label}</li>)}
+          </ul>
+        )}
+        {view.table && (
+          <div class="fig-table">
+            <table>
+              <thead>
+                <tr>{view.table.columns.map((column, i) => <th scope="col" class:list={{ 'is-num': view.table!.numeric[i] }}>{column}</th>)}</tr>
+              </thead>
+              <tbody>
+                {view.table.rows.map((row) => (
+                  <tr>
+                    {view.table!.columns.map((column, i) => (
+                      i === 0
+                        ? <th scope="row">{row[column]}</th>
+                        : <td class:list={{ 'is-num': view.table!.numeric[i] }}>{row[column]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {view.panels.map((panel) => (
+          <div class:list={['fig-plot', panel.size]}>
+            <Fragment set:html={panel.svg} />
+            {panel.hits.map((hit) => (
+              <i class:list={['fig-hit', { box: hit.width !== undefined }, side(hit)]} style={spot(hit)}><span class="fig-tip">{hit.lines.map((line) => <span>{line.name}{line.value && <Fragment> <b>{line.value}</b></Fragment>}</span>)}</span></i>
+            ))}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+  {caption && <p class="fig-caption">{caption}</p>}
+  <p class="fig-source">{BASIS[basis]}. {source}</p>
+</figure>
