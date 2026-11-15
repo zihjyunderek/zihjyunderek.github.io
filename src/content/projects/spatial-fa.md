@@ -9,7 +9,7 @@ stats:
   - { value: "Bayesian", label: "+ frequentist" }
 order: 12
 status: public
-repo: "https://github.com/zihjyunderek/Spatial_FA"
+repo: "https://github.com/zihjyunderek/Spatial-FA"
 ---
 
 Sometimes many observed variables are really driven by a few hidden spatial processes. **Spatial Factor Analysis (SFA)** recovers those latent processes, reducing dimensionality while explicitly modeling the spatial correlation that ordinary factor analysis ignores.

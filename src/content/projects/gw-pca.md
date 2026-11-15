@@ -9,7 +9,7 @@ stats:
   - { value: "robust", label: "outlier handling" }
 order: 10
 status: public
-repo: "https://github.com/zihjyunderek/GWPCA"
+repo: "https://github.com/zihjyunderek/GW-PCA"
 ---
 
 Global PCA assumes the relationships between variables are the same everywhere in your study area. For spatial data, that's usually false. **Geographically Weighted PCA (GWPCA)** lets the principal-component decomposition vary across space, revealing where the structure of multivariate relationships shifts.

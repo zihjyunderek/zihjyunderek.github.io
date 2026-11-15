@@ -9,7 +9,7 @@ stats:
   - { value: "QR + ML", label: "dual approach" }
 featured: true
 order: 13
-repo: "https://github.com/zihjyunderek/G7_VaR"
+repo: "https://github.com/zihjyunderek/G7-VaR"
 status: research
 basis: published
 ---
@@ -69,4 +69,4 @@ QR-IM, GJR-GARCH and all four ensemble models are green in every pair. Each neur
 
 ## Engineering
 
-The full pipeline is containerized (`Dockerfile` plus `docker-compose`) with a config-driven runner (`run_configs.py`) that sweeps currency pairs and model specifications reproducibly. The literature base (Estimating VaR from implied volatilities; backtesting VaR models) is version-controlled alongside the code, so the theory and the implementation never drift apart. The complete implementation lives in the [G7_VaR repository](https://github.com/zihjyunderek/G7_VaR) on GitHub.
+The full pipeline is containerized (`Dockerfile` plus `docker-compose`) with a config-driven runner (`run_configs.py`) that sweeps currency pairs and model specifications reproducibly. A test reads every result table of the published thesis and checks each printed value against the merged backtest output, so the code and the thesis cannot drift apart. The complete implementation lives in the [G7-VaR repository](https://github.com/zihjyunderek/G7-VaR) on GitHub.
