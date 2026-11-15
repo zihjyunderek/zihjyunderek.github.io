@@ -7,7 +7,7 @@ stats:
   - { value: "6", label: "dashboard modes" }
   - { value: "2", label: "builders" }
   - { value: "9", label: "naming audit checks" }
-order: 2
+order: 3
 status: private
 repo: "https://github.com/zihjyunderek/CDI_Demo"
 ---

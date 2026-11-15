@@ -7,11 +7,11 @@ stats:
   - { value: "15", label: "cities" }
   - { value: "6", label: "competing dimension splits" }
   - { value: "fixed", label: "gate before results" }
-order: 7
+order: 8
 status: private
 ---
 
-The City Design Index reads a city as **regional profiles times multipliers**. Clusters of tracts that look alike on design metrics are the profiles; MGWR coefficients of the City Satisfaction Score on the design dimensions are the multipliers. Together they say which kinds of design go with how residents rate their city, and where. This project covers the insight paper that first read five cities this way and the typology work that tested its dimensions across 15.
+The City Design Index reads a city as **regional profiles times multipliers**. Clusters of tracts that look alike on design metrics are the profiles; MGWR coefficients of the City Satisfaction Score on the design dimensions are the multipliers. Together they say which kinds of design go with how residents rate their city, and where. This project tests the dimensions themselves across 15 cities; the papers that report the method and the first five cities are in CDI-Papers.
 
 > The survey, the metrics and every finding are confidential under NDA. This page describes the method.
 
@@ -24,10 +24,6 @@ For every city the same chain runs, one stage after another:
 3. **Dimensions to indices.** A genetic algorithm picks, for each cluster and dimension, the metrics that compose the dimension's index.
 4. **Indices to profiles.** K-Medoids on the dimension scores gives the regional profiles.
 5. **Profiles to multipliers.** MGWR of the satisfaction score on the dimension indices, with one bandwidth per dimension, gives a multiplier for every tract, read by cluster.
-
-## The insight paper
-
-The insight paper read five cities, Washington, Austin, Miami, Dallas and Boston, cluster by cluster: within one profile, how strongly each design dimension moves satisfaction against the socio-economic baseline. Its evidence discipline carried into later work. Every number in the paper and its deck comes from one file regenerated from the model runs, nothing is typed by hand, and a city without a finished model carries its size and a "pending" status, never a placeholder result.
 
 ## Testing the dimensions themselves
 

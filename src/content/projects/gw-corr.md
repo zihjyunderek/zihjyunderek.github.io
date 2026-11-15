@@ -8,7 +8,7 @@ stats:
   - { value: 'vectorized', label: 'computation engine' }
   - { value: 'API-first', label: 'package design' }
 featured: false
-order: 10
+order: 11
 status: research
 ---
 

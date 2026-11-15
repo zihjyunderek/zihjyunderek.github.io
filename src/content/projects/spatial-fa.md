@@ -7,7 +7,7 @@ stats:
   - { value: "2", label: "papers implemented" }
   - { value: "latent", label: "spatial factors" }
   - { value: "Bayesian", label: "+ frequentist" }
-order: 11
+order: 12
 status: public
 repo: "https://github.com/zihjyunderek/Spatial_FA"
 ---
