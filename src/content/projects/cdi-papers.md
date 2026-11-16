@@ -9,6 +9,7 @@ stats:
   - { value: "7", label: "insight paper releases" }
 order: 2
 status: private
+repo: "https://github.com/zihjyunderek/CDI-Papers"
 ---
 
 The City Design Index (CDI) at Gensler Research Institute reads a city as regional profiles times multipliers: clusters of tracts that look alike on design metrics, and MGWR coefficients of the City Satisfaction Score on the design dimensions. Two papers report it. The methodology paper explains how the engine works; the insight paper reports what it found. I built both, with their decks, from the model output.

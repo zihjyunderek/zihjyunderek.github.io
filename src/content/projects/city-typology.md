@@ -9,6 +9,7 @@ stats:
   - { value: "fixed", label: "gate before results" }
 order: 8
 status: private
+repo: "https://github.com/zihjyunderek/City-Typology"
 ---
 
 The City Design Index reads a city as **regional profiles times multipliers**. Clusters of tracts that look alike on design metrics are the profiles; MGWR coefficients of the City Satisfaction Score on the design dimensions are the multipliers. Together they say which kinds of design go with how residents rate their city, and where. This project tests the dimensions themselves across 15 cities; the papers that report the method and the first five cities are in CDI-Papers.

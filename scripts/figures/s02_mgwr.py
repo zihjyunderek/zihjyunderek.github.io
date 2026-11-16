@@ -1,4 +1,4 @@
-"""OLS, GWR and MGWR on public ACS data, for the Multiscale-GWR page.
+"""OLS, GWR and MGWR on public ACS data, for the MGWR page.
 
 Question: what goes with a tract's median rent, and over what distance does
 each relationship hold? Variables enter by forward selection on GWR's AICc,
