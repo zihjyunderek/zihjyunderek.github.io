@@ -21,13 +21,13 @@ A single correlation coefficient for an entire city is a fiction: income and gre
 
 - **The full GW summary statistics** (Brunsdon, Fotheringham and Charlton, 2002): local mean, standard deviation, variance, skewness and coefficient of variation for every variable; covariance, Pearson and Spearman correlation for every pair; and the weighted median, interquartile range and quantile imbalance.
 - **Kernels and distances**: bi-square, tri-cube, Gaussian, exponential and box-car kernels, each with a fixed or adaptive bandwidth, on Minkowski, rotated or ellipsoidal great-circle distances.
-- **Inference**: a local t-test with an effective sample size and a Fisher-z interval for every correlation, and a randomisation test for every statistic.
-- **Bandwidth selection** by leave-one-out cross-validation with a golden-section search.
+- **Inference**: a local t-test with an effective sample size and a Fisher-z interval for every correlation, and a randomisation test for every statistic with exact Monte Carlo p-values.
+- **Bandwidth selection** for the local mean and median by leave-one-out cross-validation, squared error for the mean and absolute error for the median, with a golden-section search.
 - **Vectorized engine**: weighted moments in NumPy batch operations over blocks of locations, so city-scale runs stay fast and memory stays bounded.
 
 ## Validation
 
-Every statistic, for all five kernels, fixed and adaptive, matches GWmodel's `gwss()` (Gollini et al., 2015) to a relative 1e-9, and so do the distance options and the bandwidth search. The checks found two places where GWmodel departs from the method it implements: its Monte Carlo test reorders the observed statistics instead of recomputing them on permuted data, and its cross-validation score drives the bandwidth to the top of its range. GW-Corr follows the method in both.
+Every statistic, for all five kernels, fixed and adaptive, matches GWmodel's `gwss()` (Gollini et al., 2015) to a relative 1e-9, and so do the distance options and the bandwidth search. The checks found two places where GWmodel departs from the method it implements: its Monte Carlo test reorders the observed statistics instead of recomputing them on permuted data, and its cross-validation score drives the bandwidth to the top of its range. GW-Corr follows the published method in both and keeps GWmodel's behaviour as an option.
 
 ## Role in the toolchain
 
