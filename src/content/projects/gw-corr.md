@@ -8,7 +8,7 @@ stats:
   - { value: '11', label: 'local statistics per variable or pair' }
   - { value: '1e-9', label: 'largest relative gap to GWmodel' }
 featured: false
-order: 11
+order: 13
 status: research
 repo: 'https://github.com/zihjyunderek/GW-Corr'
 ---

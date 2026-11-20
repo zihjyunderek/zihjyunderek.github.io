@@ -7,7 +7,7 @@ stats:
   - { value: "15", label: "cities" }
   - { value: "6", label: "competing dimension splits" }
   - { value: "fixed", label: "gate before results" }
-order: 8
+order: 9
 status: private
 repo: "https://github.com/zihjyunderek/City-Typology"
 ---

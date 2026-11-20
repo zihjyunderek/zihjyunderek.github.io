@@ -7,7 +7,7 @@ stats:
   - { value: "v5.2", label: "release" }
   - { value: "local", label: "components" }
   - { value: "robust", label: "outlier handling" }
-order: 10
+order: 12
 status: public
 repo: "https://github.com/zihjyunderek/GW-PCA"
 ---

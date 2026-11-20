@@ -7,7 +7,7 @@ stats:
   - { value: "Local", label: "model fitting" }
   - { value: "Multi-city", label: "prediction" }
   - { value: "Moran's I", label: "residual check" }
-order: 9
+order: 11
 status: public
 repo: "https://github.com/zihjyunderek/GW-RF"
 ---
