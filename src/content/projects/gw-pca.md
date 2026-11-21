@@ -2,9 +2,9 @@
 title: "GW-PCA"
 tagline: "Standard and robust geographically weighted PCA: principal components that vary across space, with bandwidth and component selection and outlier-resistant estimation."
 domain: spatial
-stack: ["GWPCA", "Robust PCA", "Bandwidth selection", "Diagnostics"]
+stack: ["GWPCA", "R GWmodel", "Robust PCA", "Bandwidth selection"]
 stats:
-  - { value: "v5.2", label: "release" }
+  - { value: "3", label: "code generations, all kept" }
   - { value: "local", label: "components" }
   - { value: "robust", label: "outlier handling" }
 order: 12
@@ -22,4 +22,4 @@ The framework follows the methodology of Harris, Brunsdon and Charlton (2011) an
 
 ## Features
 
-Dynamic model selection (choosing the number of components and bandwidth), comprehensive diagnostics, and production-grade output handling. It's built to be a reliable tool rather than a one-off script: versioned through v5.2, with the same scaffolding and configuration discipline as the rest of my spatial toolkit.
+Dynamic model selection (choosing the number of components and bandwidth), comprehensive diagnostics, and production-grade output handling. The code went through three generations, all kept with their history: a first implementation in pure Python, an R-Wrapper around GWmodel (ver5.18 to ver5.26), and the current two packages, one for the model and one for clusters and maps.

@@ -18,11 +18,11 @@ A brief listed global cities with no geometry attached. City-Size-Demo resolves 
 
 ## A source ladder
 
-Each city declares its sources in order: government open data first (the Australian Bureau of Statistics, the US Census Bureau, Statistics Canada, Japan's MLIT), then OpenStreetMap, then geoBoundaries, and GADM as a last resort. A source wins only if its geodesic area matches the official reference within a tolerance. Among several candidates the closest match wins, so a city cannot be mistaken for its central district.
+Each city declares its sources in order: government open data first (national statistics offices and mapping agencies), then OpenStreetMap, then geoBoundaries, and GADM as a last resort. A source wins only if its geodesic area matches the official reference within a tolerance. Among several candidates the closest match wins, so a city cannot be mistaken for its central district.
 
 ## Validation on every run
 
-Each city carries the area its national statistics office or city government publishes. Every fetched polygon is checked against it and flagged ok, warn or fail in every output; a city without a boundary shows as pending, never as a placeholder shape. Composite definitions are built as geometry: Tokyo is the union of its 23 special wards, Guadalajara and Monterrey the unions of their metropolitan municipalities.
+Each city carries the area its national statistics office or city government publishes. Every fetched polygon is checked against it and flagged ok, warn or fail in every output; a city without a boundary shows as pending, never as a placeholder shape. Composite definitions are built as geometry: a city defined as a set of wards or municipalities is the union of their polygons.
 
 ## Size classes
 
