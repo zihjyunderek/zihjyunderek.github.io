@@ -1,5 +1,5 @@
 ---
-title: "City-Global-Demo"
+title: "City-Size-Demo"
 tagline: "54 global cities sized by administrative area and subdivision count, every boundary fetched from open government data or OpenStreetMap and every area checked against the official figure."
 domain: urban
 stack: ["Python", "GeoPandas", "Shapely", "OpenStreetMap", "Jenks natural breaks"]
@@ -9,10 +9,10 @@ stats:
   - { value: "3", label: "size classes" }
 order: 10
 status: private
-repo: "https://github.com/zihjyunderek/City-Global-Demo"
+repo: "https://github.com/zihjyunderek/City-Size-Demo"
 ---
 
-A brief listed global cities with no geometry attached. City-Global-Demo resolves each city to a real administrative boundary, computes its geodesic area and the number of its administrative subdivisions, the cross-country counterpart of US census tracts, and sorts the cities into small, medium and large. It writes a table, a report, a shapefile per city and an interactive page.
+A brief listed global cities with no geometry attached. City-Size-Demo resolves each city to a real administrative boundary, computes its geodesic area and the number of its administrative subdivisions, the cross-country counterpart of US census tracts, and sorts the cities into small, medium and large. It writes a table, a report, a shapefile per city and an interactive page.
 
 > The brief and its results are internal to Gensler Research Institute. This page describes how the pipeline works.
 
