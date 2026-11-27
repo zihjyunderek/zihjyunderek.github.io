@@ -9,7 +9,7 @@ stats:
   - { value: "Moran's I", label: "residual check" }
 order: 11
 status: public
-repo: "https://github.com/zihjyunderek/PyGRF"
+repo: "https://github.com/zihjyunderek/GW-RF"
 ---
 
 Random forests are powerful but spatially naive: they treat a tract in Boston and a tract in Phoenix as exchangeable rows. A **geographically weighted random forest** (Geographical Random Forest, GRF) fixes that by fitting a local forest around each location, so the model can learn that the drivers of an outcome differ across geography.

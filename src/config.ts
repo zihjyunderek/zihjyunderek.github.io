@@ -63,11 +63,13 @@ export const PERSON_ID = `${SITE.url}/#person`;
 export const WEBSITE_ID = `${SITE.url}/#website`;
 
 /**
- * Display labels for the four project areas, in the order the projects page
- * lists them (sentence case, per site rules). Project names follow the area:
- * CDI-*, City-*, GW-* and the spatial methods, then finance.
+ * Display labels for the project areas, in the order the projects page lists
+ * them (sentence case, per site rules). Project names follow the area:
+ * Gensler-*, CDI-*, GW-* and the spatial methods, then finance. An area with
+ * no project (urban) is skipped.
  */
 export const DOMAINS: Record<string, string> = {
+  gensler: 'Gensler',
   cdi: 'City Design Index',
   urban: 'Urban analytics',
   spatial: 'Geospatial statistics',

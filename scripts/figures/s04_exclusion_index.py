@@ -1,4 +1,4 @@
-"""An exclusion index on ACS proxies, for the City-Indices page.
+"""An exclusion index on ACS proxies, for the CDI-Indices page.
 
 The USEI itself rests on access metrics that are confidential. This stage
 shows the same construction on public data: choose components, put them on
@@ -23,7 +23,7 @@ from .s01_indicators import complete, load_tracts
 
 logger = logging.getLogger(__name__)
 
-SLUG = "city-indices"
+SLUG = "cdi-indices"
 
 
 def scaled(values: pd.DataFrame) -> pd.DataFrame:

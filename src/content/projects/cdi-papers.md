@@ -7,7 +7,7 @@ stats:
   - { value: "2", label: "papers" }
   - { value: "2", label: "methodology versions, review and submission" }
   - { value: "7", label: "insight paper releases" }
-order: 2
+order: 3
 status: private
 repo: "https://github.com/zihjyunderek/CDI-Papers"
 ---

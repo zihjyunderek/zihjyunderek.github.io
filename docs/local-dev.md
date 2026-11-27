@@ -55,7 +55,7 @@ dev 模式為了即時性會跳過部分優化；preview 才是 GitHub Pages 真
 ```text
 python scripts\fetch_acs.py                       只需一次；API key 放在 repo 根目錄的 .env（已被 .gitignore 排除）
 python scripts\extract_tracts.py <tract 圖層路徑>  只需一次；從 tract 邊界圖層只取 GEOID 和多邊形
-python scripts\draw_study_cities.py <shapefiles 資料夾>  只需一次；CDI-Milestone 的 15 城市示意圖，只用邊界
+python scripts\draw_study_cities.py <shapefiles 資料夾>  只需一次；Gensler-Milestone 的 15 城市示意圖，只用邊界
 pip install -r scripts\requirements-figures.txt   分析用的 Python 套件（網站本身不需要）
 python scripts\build_figures.py                   重跑全部分析，覆寫 src/data/figures/ 的 CSV 與地圖形狀
 ```

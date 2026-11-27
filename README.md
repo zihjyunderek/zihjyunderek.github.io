@@ -62,7 +62,7 @@ repo: "https://github.com/zihjyunderek/..."   # optional; private repo links are
 
 Markdown body renders as the project detail page.
 
-Project names follow their area, and the file name is the name in lower case: `CDI-Milestone` and `CDI-Demo` (City Design Index); `City-Clusters`, `City-Indices`, `City-Survey`, `City-Typology` (urban analytics); `Multiscale-GWR`, `GW-RF`, `GW-PCA`, `GW-Corr`, `Spatial-FA` (geospatial statistics); the thesis under quantitative finance. A renamed or merged project keeps its old address through `redirects` in `astro.config.mjs`.
+Project names follow their repository, and the file name is the name in lower case. Gensler first (`Gensler-Milestone`, `Gensler-tasks`), then City Design Index, the CDI repositories by weight: `CDI-Demo`, `CDI-Papers`, `CDI-Typology`, `CDI-Survey`, `CDI-Clusters`, `CDI-Indices` (`order` in the frontmatter); then `Multiscale-GWR`, `GW-RF`, `GW-PCA`, `GW-Corr`, `Spatial-FA` (geospatial statistics) and the thesis (quantitative finance). Gensler-data is not listed (NDA). A renamed or merged project keeps its old address through `redirects` in `astro.config.mjs`.
 ```
 
 **Add a figure**: a figure is drawn from a CSV when the site is built and sits inline in the prose. The page receives finished SVG and HTML, so the site stays free of client JS; hover labels and the view switch are CSS.
@@ -107,7 +107,7 @@ How a figure has to look (spacing, grouping, wording, color) is set down in `doc
 ```bash
 python scripts/fetch_acs.py                      # once; reads CENSUS_API_KEY from the gitignored .env
 python scripts/extract_tracts.py PATH/TO/tracts.shp  # once; keeps GEOID and the polygon, nothing else
-python scripts/draw_study_cities.py PATH/TO/shapefiles  # once; the CDI-Milestone drawing, shapes only
+python scripts/draw_study_cities.py PATH/TO/shapefiles  # once; the Gensler-Milestone drawing, shapes only
 pip install -r scripts/requirements-figures.txt
 python scripts/build_figures.py                  # all stages; the MGWR stage takes about fifteen minutes
 python scripts/build_figures.py index archetypes # or only the stages named

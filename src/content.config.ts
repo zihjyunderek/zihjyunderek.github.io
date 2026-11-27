@@ -10,7 +10,7 @@ import { z } from 'astro/zod';
  * Frontmatter contract (validated at build time — typos fail the build):
  *  - title     : project name shown everywhere
  *  - tagline   : one-line summary (also used as the page meta description)
- *  - domain    : cdi | urban | spatial | finance (labels and order: DOMAINS in config.ts)
+ *  - domain    : gensler | cdi | urban | spatial | finance (labels and order: DOMAINS in config.ts)
  *  - stack     : tech list, rendered as a comma-separated line
  *  - stats     : 1–4 key figures, listed in the project page's facts column
  *  - featured  : true => pinned first on the home page (home shows 3)
@@ -26,7 +26,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     tagline: z.string().max(220),
-    domain: z.enum(['cdi', 'urban', 'spatial', 'finance']),
+    domain: z.enum(['gensler', 'cdi', 'urban', 'spatial', 'finance']),
     stack: z.array(z.string()),
     stats: z
       .array(z.object({ value: z.string(), label: z.string() }))

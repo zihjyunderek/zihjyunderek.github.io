@@ -1,15 +1,15 @@
 ---
-title: "City-Typology"
+title: "CDI-Typology"
 tagline: "Which kinds of neighborhood design go with how residents rate their city: regional profiles from clustering, multipliers from MGWR, and competing dimension designs tested on a fixed gate across 15 cities."
-domain: urban
+domain: cdi
 stack: ["Python", "Factor analysis", "Genetic algorithm", "MGWR"]
 stats:
   - { value: "15", label: "cities" }
   - { value: "6", label: "competing dimension splits" }
   - { value: "fixed", label: "gate before results" }
-order: 9
+order: 4
 status: private
-repo: "https://github.com/zihjyunderek/City-Typology"
+repo: "https://github.com/zihjyunderek/CDI-Typology"
 ---
 
 The City Design Index reads a city as **regional profiles times multipliers**. Clusters of tracts that look alike on design metrics are the profiles; MGWR coefficients of the City Satisfaction Score on the design dimensions are the multipliers. Together they say which kinds of design go with how residents rate their city, and where. This project tests the dimensions themselves across 15 cities; the papers that report the method and the first five cities are in CDI-Papers.

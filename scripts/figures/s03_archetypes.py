@@ -1,4 +1,4 @@
-"""Clustering tracts into archetypes, for the City-Clusters page.
+"""Clustering tracts into archetypes, for the CDI-Clusters page.
 
 Seven algorithms in three families, as in the project, on ACS indicators:
   numerical  K-Means, GMM, Ward           Yeo-Johnson features
@@ -31,7 +31,7 @@ from .s01_indicators import complete, load_tracts
 
 logger = logging.getLogger(__name__)
 
-SLUG = "city-clusters"
+SLUG = "cdi-clusters"
 INDICES = ("Silhouette", "Davies-Bouldin", "Calinski-Harabasz")
 
 

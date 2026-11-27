@@ -7,9 +7,9 @@ stats:
   - { value: "6", label: "dashboard modes" }
   - { value: "2", label: "builders" }
   - { value: "9", label: "naming audit checks" }
-order: 3
+order: 2
 status: private
-repo: "https://github.com/zihjyunderek/CDI_Demo"
+repo: "https://github.com/zihjyunderek/CDI-Demo"
 ---
 
 The City Design Index runs a long chain for every city: about a hundred tract metrics, factor analysis, dimension indices, clusters, and an MGWR of resident satisfaction on the dimensions. CDI-Demo turns one run of that chain into a single HTML file that a reviewer can open without any setup and read from the first metric to the last coefficient.

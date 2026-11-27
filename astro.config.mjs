@@ -16,16 +16,25 @@ export default defineConfig({
   redirects: {
     '/projects/decoding-the-city-mgwr': '/projects/multiscale-gwr/',
     '/projects/mgwr-toolkit': '/projects/multiscale-gwr/',
-    '/projects/archetype-clustering': '/projects/city-clusters/',
-    '/projects/kmedoids-archetype': '/projects/city-clusters/',
-    '/projects/urban-exclusion-index': '/projects/city-indices/',
-    '/projects/composite-index-suite': '/projects/city-indices/',
-    '/projects/survey-composite-score': '/projects/city-survey/',
+    '/projects/archetype-clustering': '/projects/cdi-clusters/',
+    '/projects/kmedoids-archetype': '/projects/cdi-clusters/',
+    '/projects/urban-exclusion-index': '/projects/cdi-indices/',
+    '/projects/composite-index-suite': '/projects/cdi-indices/',
+    '/projects/survey-composite-score': '/projects/cdi-survey/',
     '/projects/pygrf-spatial-ml': '/projects/gw-rf/',
     '/projects/gwpca-r-wrapper': '/projects/gw-pca/',
     '/projects/pygwpcc': '/projects/gw-corr/',
     '/projects/spatial-factor-analysis': '/projects/spatial-fa/',
     '/projects/python-notebook-toolkit': '/projects/',
+    // 2026-11-27: repositories renamed (CDI-Milestone -> Gensler-Milestone, City-* -> CDI-*);
+    // City-Size-Demo became a work task and Gensler-data is no longer listed.
+    '/projects/cdi-milestone': '/projects/gensler-milestone/',
+    '/projects/city-clusters': '/projects/cdi-clusters/',
+    '/projects/city-indices': '/projects/cdi-indices/',
+    '/projects/city-survey': '/projects/cdi-survey/',
+    '/projects/city-typology': '/projects/cdi-typology/',
+    '/projects/city-size-demo': '/projects/',
+    '/projects/gensler-data': '/projects/',
   },
   integrations: [
     // Project pages that show figures are `.mdx`, so prose can place a

@@ -1,4 +1,4 @@
-"""Simulated illustration for the City-Survey page.
+"""Simulated illustration for the CDI-Survey page.
 
 The real scores are confidential and no public survey has the same structure,
 so this stage simulates files shaped like the delivered ones and then repeats
@@ -21,7 +21,7 @@ from . import config
 
 logger = logging.getLogger(__name__)
 
-SLUG = "city-survey"
+SLUG = "cdi-survey"
 RECOVERED = "Tract weights, mean"  # the structure the project recovered
 
 

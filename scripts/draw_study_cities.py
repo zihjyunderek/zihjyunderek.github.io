@@ -1,4 +1,4 @@
-"""Draw, once, the CDI-Milestone illustration: the 15 study cities, each tract shaded by its size.
+"""Draw, once, the Gensler-Milestone illustration: the 15 study cities, each tract shaded by its size.
 
     python scripts/draw_study_cities.py PATH/TO/shapefiles
 
@@ -12,7 +12,7 @@ one shape per city, which keeps the drawing light.
 
 Writes:
   * src/data/figures/geometry/study_cities.json      the 15 cities in a 5 x 3 grid, in drawing units
-  * src/data/figures/cdi-milestone/study_cities.csv  each shape's name ("Atlanta: Smallest fifth") and class
+  * src/data/figures/gensler-milestone/study_cities.csv  each shape's name ("Atlanta: Smallest fifth") and class
 
 The raw layers are about 30 MB, so they are not committed: this drawing is an
 illustration, not data a figure measures. Settings are the constants below.
@@ -59,7 +59,7 @@ OUTLYING = 1.5
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_SHAPES = REPO_ROOT / "src" / "data" / "figures" / "geometry" / "study_cities.json"
-OUT_CSV = REPO_ROOT / "src" / "data" / "figures" / "cdi-milestone" / "study_cities.csv"
+OUT_CSV = REPO_ROOT / "src" / "data" / "figures" / "gensler-milestone" / "study_cities.csv"
 
 
 def city(folder: Path) -> gpd.GeoDataFrame:

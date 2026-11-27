@@ -82,7 +82,7 @@ Search Console 左側 → **索引 → Sitemap** → 輸入 `sitemap-index.xml` 
 
 1. 首頁 `/`
 2. `/projects/`
-3. 最想被搜到的 2–3 個專案頁（例如 `/projects/cdi-milestone/`、`/projects/multiscale-gwr/`、`/projects/implied-vol-var/`）。2026-11 改版後舊網址（例如 `/projects/decoding-the-city-mgwr/`）會轉到新頁，舊網址不必再送
+3. 最想被搜到的 2–3 個專案頁（例如 `/projects/gensler-milestone/`、`/projects/multiscale-gwr/`、`/projects/implied-vol-var/`）。2026-11 改版後舊網址（例如 `/projects/decoding-the-city-mgwr/`）會轉到新頁，舊網址不必再送
 
 > 這個站只有 18 頁，而且每一頁都能從首頁點得到。依 Google 的說法，500 頁以下且能從首頁走到的網站「其實不需要 sitemap」。送出首頁之後，爬蟲會沿著導覽列和專案連結自己走完其餘 17 頁。sitemap 是加速用的保險，不是前提。
 
