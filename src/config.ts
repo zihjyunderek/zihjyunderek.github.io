@@ -13,7 +13,7 @@ export const SITE = {
    */
   alternateName: '黃子竣',
   shortName: 'Derek Huang',
-  jobTitle: 'Data Analyst',
+  jobTitle: 'Project Consultant',
   /** Current employer. Leave '' between roles; JSON-LD then omits worksFor. */
   org: '',
   title: 'Zih-Jyun (Derek) Huang 黃子竣',

@@ -2,7 +2,7 @@
 title: "Option-Implied VaR for G7 Currencies"
 tagline: "Master's thesis (NCCU, 2026): forecasting FX spot Value-at-Risk from option-implied volatilities with quantile regression and machine learning, across the G7 currency pairs."
 domain: finance
-stack: ["Python", "Quantile Regression", "CatBoost", "Docker"]
+stack: ["Python", "Quantile Regression", "CatBoost", "PyTorch"]
 stats:
   - { value: "G7", label: "currency pairs" }
   - { value: "VaR", label: "risk forecasting" }
@@ -69,4 +69,4 @@ QR-IM, GJR-GARCH and all four ensemble models are green in every pair. Each neur
 
 ## Engineering
 
-The full pipeline is containerized (`Dockerfile` plus `docker-compose`) with a config-driven runner (`run_configs.py`) that sweeps currency pairs and model specifications reproducibly. A test reads every result table of the published thesis and checks each printed value against the merged backtest output, so the code and the thesis cannot drift apart. The complete implementation lives in the [G7-VaR repository](https://github.com/zihjyunderek/G7-VaR) on GitHub.
+The repository is laid out like a replication package: one configuration file holds every setting and the nineteen runs, one module implements each method section of the thesis, three scripts produce the forecasts, the event studies and the tables, and every table of the thesis is a CSV under `results/`. A test reads each result table of the published thesis and checks every printed value against those results, so the code and the thesis cannot drift apart. The licensed market data are not included; the README lists the Bloomberg tickers needed to rebuild them. The complete implementation lives in the [G7-VaR repository](https://github.com/zihjyunderek/G7-VaR) on GitHub.

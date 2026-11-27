@@ -60,7 +60,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     org: 'Gensler Research Institute',
-    role: 'Data Analyst, Cities Research',
+    role: 'Project Consultant, Cities Research',
     when: '2025/02 – 2026/08',
     where: 'New York (remote from Taipei)',
     note: 'Statistical research on major US cities. Geospatial regression models linking urban indicators to population, home prices, and rents. Flagship study: "Decoding the City: Unveiling NYC\'s Geographical Phenomena with MGWR".',

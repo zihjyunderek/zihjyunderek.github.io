@@ -146,7 +146,7 @@ EXPERIENCE = [
     },
     {
         "org": "Gensler Research Institute",
-        "role": "Data Analyst, Cities Research",
+        "role": "Project Consultant, Cities Research",
         "meta": "New York, United States (remote)",
         "when": "2025/02 – 2026/08",
         "bullets": [
